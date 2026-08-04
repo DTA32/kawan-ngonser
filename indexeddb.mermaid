@@ -1,0 +1,65 @@
+erDiagram
+    %% ============================================================
+    %% Kawan Ngonser - IndexedDB ERD (matches REQUIREMENTS.md v7 and
+    %% the implemented Dexie schema in kawan-ngonser-frontend/app/db).
+    %% On-device user data (TR-4 / section 3.3), one set per planned
+    %% concert. The backend holds none of this - server-side schema
+    %% lives in mongodb.mermaid.
+    %% performance_id / event_id refer to the concert data cached in
+    %% local_concert_cache.payload (same business ids the server uses).
+    %% All datetime fields are stored as epoch milliseconds.
+    %% Theme (section 3.4) lives in localStorage, not here - it must be
+    %% readable before first paint.
+    %% Solid line  = owned by the plan
+    %% Dashed line = reference by id
+    %% ============================================================
+
+    local_concert_cache {
+        string event_id PK "planned concert"
+        int version "compared against GET /concerts/:id/version (F-1)"
+        string source "server | json_upload (TR-6)"
+        json payload "raw payload exactly as served or uploaded (3.1)"
+        json normalized "canonical parsed form for fast boot"
+        datetime fetched_at
+    }
+
+    local_plans {
+        string event_id PK "one plan per planned concert"
+        json attending_day_indexes "subset of concert days (O-1)"
+        string conflict_display_pref "equal | hidden (O-2, S-3 - 'smaller' was dropped)"
+        bool backburner_notify_default "O-2/S-3 checkbox: new backburners notify by default (N-1c opt-out mode)"
+        json widget_order "concert-day home widgets (S-1)"
+        int lead_time_override_min "nullable, falls back to app config (S-2)"
+    }
+
+    local_kv {
+        string key PK "app-config cache | notification schedule + fired ledger | sync-dismissed versions | pending image warm-ups"
+        json value
+    }
+
+    local_picks {
+        string performance_id FK "performances[].performance_id in cached payload"
+        string status "preferred | backburner | skipped (O-4, W-2)"
+        bool notify_opt_in "backburner-only opt-in (N-1c, C19/C23)"
+    }
+
+    local_custom_events {
+        string custom_event_id PK "user-created: lunch, toilet break... (W-2)"
+        string name
+        datetime start_time
+        datetime end_time "nullable"
+    }
+
+    local_performance_overrides {
+        string performance_id FK "flagged so sync warns before replacing (F-1, C12)"
+        datetime new_start_time "nullable - time change (W-2)"
+        datetime new_end_time "nullable"
+        bool removed "performer cancelled (W-2)"
+    }
+
+    local_plans ||..|| local_concert_cache : "same event_id"
+    local_plans ||--o{ local_picks : "owns"
+    local_plans ||--o{ local_custom_events : "owns"
+    local_plans ||--o{ local_performance_overrides : "owns"
+    local_picks }o..|| local_concert_cache : "performance_id in payload"
+    local_performance_overrides }o..|| local_concert_cache : "performance_id in payload"

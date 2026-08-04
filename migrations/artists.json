@@ -1,0 +1,1262 @@
+[
+  {
+    "name": ".Feast",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/39f07b5656c1061598b5d68d1c5f5cb1/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "510",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/1b0aaf0b8624a49b1ee61d1cc38ae151/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Adhitia Sofyan",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/5126ac73f5e14c1da79fbb5ad891da88/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Adrian Khalif",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/2d75b7e4fc60082bd8550f5303ca4784/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Ali",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/5bc64e92c273be6fa6c6d47241dbc1b8/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Alkateri",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/7948a9a4b940c65dc69ae1180a743e72/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "All Acc3ss",
+    "photo_url": "https://ui-avatars.com/api/?name=All%20Acc3ss&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Alter JKT",
+    "photo_url": "https://ui-avatars.com/api/?name=Alter%20JKT&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Awcek Sound Fun",
+    "photo_url": "https://ui-avatars.com/api/?name=Awcek%20Sound%20Fun&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Banda Neira",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/7921e45510c6f03827463a9b850f21bb/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Barasuara",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/fe3cac25a8eaaae9c6ed96c5255210f2/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Beijing Connection",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/a1dee5b0aae51bdfdc3524af3bbd818e/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Bernadya",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/5bd274a72993ee8b8e72a7a8aedc12b5/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Biru Baru",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/451730f2395e6ccd0455157e05bf62b2/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Black Horses",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/b393ca85961a17c8366c8b86891b1ccd/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Blowjams",
+    "photo_url": "https://ui-avatars.com/api/?name=Blowjams&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Boyband Hits: Forever Young People",
+    "photo_url": "https://ui-avatars.com/api/?name=Boyband%20Hits%3A%20Forever%20Young%20People&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Crowdsurfers ft. Faizal Permana 510",
+    "photo_url": "https://ui-avatars.com/api/?name=Crowdsurfers%20ft.%20Faizal%20Permana%20510&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "D'MASIV",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/a50000adf744e0fdd3d1d83b42c72b78/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "DJ Tama",
+    "photo_url": "https://ui-avatars.com/api/?name=DJ%20Tama&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "DNA ft. MC Parkz",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/3707a4e0a40877b8c6aba66ca575a7e8/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Efek Rumah Kaca",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/f69b96ae54fed1cd68eb09065828ee5b/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Elephant Kind",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/44e9c752dd8101fcc7c7ed351617e027/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Eleventwelfth",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/259ba634a2dad4d3af513028e5f496d4/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Enau",
+    "photo_url": "https://ui-avatars.com/api/?name=Enau&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Endah N Rhesa",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/68fc179e85136c76f0a84fd9a34ae3a6/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Fiersa Besari",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/e2329b053efab49ff5020d366ea4b65e/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Float",
+    "photo_url": "https://ui-avatars.com/api/?name=Float&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "For Revenge",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/f74afc7c5dcdb9614587a6983ba6b2bb/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Fresly Nikijuluw",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/53fe1f2cb6be0534d15edf8262c79615/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "FSTVLST",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/bc6806ab6cbce74ce01040dfe2be4c40/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Geisha",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/bc4300385dddbacbf2f78fc202edbae7/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Ghea Indrawari",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/cb0d05647042d418496db5dc5e227149/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Gledeg",
+    "photo_url": "https://ui-avatars.com/api/?name=Gledeg&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Grind Boys",
+    "photo_url": "https://ui-avatars.com/api/?name=Grind%20Boys&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Haddad Alwi",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/476bd6ef5e207caead15d0b6a5c7f7f4/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Hindia",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/b33a022fb4490dce3b6e12d1c19c0123/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "HIVI!",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/c1dfa2d95839e86d3009c0bd162a4cd7/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Idgitaf",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/c3ede278e554e8739fc6ba6325732d7b/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Inis",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/88cdaa0649f49fe4d40d8c6f372912dd/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Inoya House",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/0e4aa71744b6699fe695d73da8ff3a57/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Isyana Sarasvati",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/68992c9778c42e16b7cf174c0f7aacaf/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Jason Ranti & Dongker",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/924cefb57a7c1cafcaf2c14ce8be630f/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Jemsii x Suisei",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/3dc06a68c53c598ddeccd85d932e5546/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Jen",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/46b81d6f2551900b284b1d128131960d/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Jet (AUS)",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/b642b703a106326142c40814476a5753/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Juan Reza",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/cab9815d47fe45b9d169bb72702b2fda/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Juicy Luicy",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/b94e4bb5570b617550f28dbe0012f973/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "K3BI",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/ed7bb655cc596910f43e0cff03529391/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Kale",
+    "photo_url": "https://ui-avatars.com/api/?name=Kale&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Kangen Band",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/a30f4cfdd616ad91d8c60e61721d2e0f/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Kelompok Penerbang Roket",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/cfb83d10b8bde4cc6f12aaadc52fcc99/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "King Nassar",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/26f1d907eb1ff0fae612aea349f93fe7/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Kotak",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/e4673ae29322bf70b5334b158caac8a6/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Kunto Aji",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/d73c1d98dd547a5af5ac65519714bc9e/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Lomba Sihir",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/2d4522350f5c69024d0cfcd119d50abf/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Mahalini",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/bbb3c9932bf14c2ca059e24a041baf91/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Marbles",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/3ddf26a9c8d5da6d11f6d34f6fd236e4/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Marcello Tahitoe",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/bf174822c949c4be02a51a7f88cd67fa/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Moluccan Soul",
+    "photo_url": "https://ui-avatars.com/api/?name=Moluccan%20Soul&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Monkey Boots",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/5bc98750536a84592873131a7b571248/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Murphy Radio",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/1e0c558056427dff265069c0a33f88a8/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Nadhif Basalamah",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/cd2dd619e3dae4ad0a57e05b444025d9/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Namoy Budaya",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/85ed6c1ddf53985ce9a83c6a02e0e24e/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Naykilla",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/12e601b18bd5ea7740c7df01e009eecc/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "NDX AKA",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/f169c4abf9e83651218772531562d37f/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Neck Deep (UK)",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/990ddfdf3d47197dd4a49f981688b013/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "NPD",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/f588009b6590c892a172587846ec2ca5/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Nusantara Beat (NED)",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/e137b6053410f5b9d1eb130862086b69/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Oldies But Goodies",
+    "photo_url": "https://ui-avatars.com/api/?name=Oldies%20But%20Goodies&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Olsam",
+    "photo_url": "https://ui-avatars.com/api/?name=Olsam&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "OM Lorenza",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/c9f221bd358c92eeae3ec89db58c13b0/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Orutaku Club",
+    "photo_url": "https://ui-avatars.com/api/?name=Orutaku%20Club&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Pamungkas",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/cf78395171e26a522ba28f4d41b5b6bc/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Parade Hujan (Payung Teduh x Pusakata)",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/91d3cd424ca166f83dcca1077b330f27/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Pee Wee Gaskins x Rocket Rockers",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/ecdf412d823b2ec2af7b45db65b5d094/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Pelteras",
+    "photo_url": "https://ui-avatars.com/api/?name=Pelteras&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Pemuda Malam Senin",
+    "photo_url": "https://ui-avatars.com/api/?name=Pemuda%20Malam%20Senin&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Pendarra",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/c2d6e2b9fc3d1b34e8556d8b1fa33597/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Perunggu",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/e4bfca711615ed266ce885a6a6b9bcf1/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Polkawars ft. Alahad",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/c18ab44fdf867ad463eb1486b0cfcf86/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Poris",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/369a81839e41ae9969193d895876c26c/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Radit Echoman x Steppa Gyal",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/013cba51d760d76c9aaf6af4dda77305/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Raisa",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/264c09078b475136ec7eef6431678f33/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Reality Club",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/be7235d469d786aa4e18c5e6d67b7e73/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Rizky Febian",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/fca4535821c7c06bfc92abad91ce9c74/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Robokop ft. Mikkizia",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/3d0420de552370b61649d6760ea1f412/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Rumahsakit",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/cc100c009b97d41e991ef5cc0dba4859/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Sal Priadi",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/513217e1630470658eb37ac7d7eb1910/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Secret Guest",
+    "photo_url": "https://ui-avatars.com/api/?name=Secret%20Guest&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Silampukau",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/792cb6ebe7f0054c2d7f062d274debf7/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Skandal",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/3a75abda641cd269b7fff00721698137/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Smash",
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Sm%2Ash_crop.jpg/330px-Sm%2Ash_crop.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Societeit de Harmonie",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/65207260eeaf8ac1adac375b95e0d6e7/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Sore Ze Band",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/32f4f77338a64dc5209c893ce218152d/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Souljah",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/9956ce924ab692c85a3d37bf77339cc2/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Stand Up Indo Jakarta Timur",
+    "photo_url": "https://ui-avatars.com/api/?name=Stand%20Up%20Indo%20Jakarta%20Timur&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Strangers",
+    "photo_url": "https://ui-avatars.com/api/?name=Strangers&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Suara Wijaya 80: Ardhito Pramono, Erikson Jayanto, Hezky Joe",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/77ceb11092a63a7525cb29c0c7cee126/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Sukses Lancar Rejeki",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/56036b4d4f328fd86c169db6ad92f843/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Syikat Musik Service",
+    "photo_url": "https://ui-avatars.com/api/?name=Syikat%20Musik%20Service&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Teenage Death Star",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/8e3a0a7c1965d144ddcae4e0194bd50d/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Ten2Five",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/3d70bc6273c95068bf657cf4c1541e8a/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Tenxi",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/8fabf3e3108bde88b2c87823f271afb4/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "The Adams",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/572e18ffa114e2ee49891249e7810b48/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "The Changcuters x Vierratale x Nidji",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/126a654707a618837cbe0621f8fa844c/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "The Cottons",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/a4831615a305f1cd811d16e45f8b11f0/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "The Jeblogs",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/0ff608de485cfc41821928861acc8f24/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "The Milo",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/d106047807330dc0e2b1859d7a3e1d80/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "The Panturas",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/e1dbf46f0d6db821d5d157f50c67cdc0/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "The Paps",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/89d08054bff5b132e0d5123998d6475b/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "The SIGIT",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/27d6d2e9ce07a7a03e9e16f0b0ce90a7/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Tiga Dara",
+    "photo_url": "https://ui-avatars.com/api/?name=Tiga%20Dara&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Tipe-X",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/9c001a299dccb65424372e063b4cd2dc/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Tribute to L'Arc-en-Ciel by J-Rocks",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/33f71c6ddd613bfa1d7d079b9ae76607/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Tribute to Oasis by Magicpie ft. Aldi Taher",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/4194ef5efebf5f99db43b7db38545151/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Tribute to The Beatles by G-Pluck ft. Bilal Indrajaya",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/6f51af7c46e2490826898b829b161450/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "TSP Squad",
+    "photo_url": "https://ui-avatars.com/api/?name=TSP%20Squad&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Tulus",
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Tulus_Performs_at_Jakarta_International_Jazz_Java_Festival_2020_%28cropped%29.jpg/330px-Tulus_Performs_at_Jakarta_International_Jazz_Java_Festival_2020_%28cropped%29.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Upleaf",
+    "photo_url": "https://ui-avatars.com/api/?name=Upleaf&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Verryans",
+    "photo_url": "https://ui-avatars.com/api/?name=Verryans&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Voxy",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/1cbd37c72dc9e21d0f660ce926c79919/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Wali",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/d69f5395a2022c6e94a9184639e4fdb8/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Weekenders Service Crew",
+    "photo_url": "https://ui-avatars.com/api/?name=Weekenders%20Service%20Crew&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "White Chorus",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/00db3887fb7bb1760632b58b4d3200c7/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  },
+  {
+    "name": "Yura Yunita",
+    "photo_url": "https://cdn-images.dzcdn.net/images/artist/6e25146a588af8bf24c345186e79861a/250x250-000000-80-0-0.jpg",
+    "created_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  }
+]

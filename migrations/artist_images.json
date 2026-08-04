@@ -1,0 +1,885 @@
+{
+  ".Feast": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/39f07b5656c1061598b5d68d1c5f5cb1/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": ".Feast",
+    "deezer_id": 12529764,
+    "link": "https://www.deezer.com/artist/12529764",
+    "nb_fan": 7006,
+    "query": ".Feast"
+  },
+  "510": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/1b0aaf0b8624a49b1ee61d1cc38ae151/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "510",
+    "deezer_id": 14264983,
+    "link": "https://www.deezer.com/artist/14264983",
+    "nb_fan": 364,
+    "query": "510"
+  },
+  "Adhitia Sofyan": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/5126ac73f5e14c1da79fbb5ad891da88/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Adhitia Sofyan",
+    "deezer_id": 1616041,
+    "link": "https://www.deezer.com/artist/1616041",
+    "nb_fan": 7385,
+    "query": "Adhitia Sofyan"
+  },
+  "Adrian Khalif": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/2d75b7e4fc60082bd8550f5303ca4784/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Adrian Khalif",
+    "deezer_id": 12542110,
+    "link": "https://www.deezer.com/artist/12542110",
+    "nb_fan": 124,
+    "query": "Adrian Khalif"
+  },
+  "Ali": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/5bc64e92c273be6fa6c6d47241dbc1b8/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "ALI",
+    "deezer_id": 145465392,
+    "link": "https://www.deezer.com/artist/145465392",
+    "nb_fan": 84,
+    "query": "Ali"
+  },
+  "Alkateri": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/7948a9a4b940c65dc69ae1180a743e72/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Alkateri",
+    "deezer_id": 181466177,
+    "link": "https://www.deezer.com/artist/181466177",
+    "nb_fan": 26,
+    "query": "Alkateri"
+  },
+  "Banda Neira": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/7921e45510c6f03827463a9b850f21bb/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Banda Neira",
+    "deezer_id": 7315548,
+    "link": "https://www.deezer.com/artist/7315548",
+    "nb_fan": 9631,
+    "query": "Banda Neira"
+  },
+  "Barasuara": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/fe3cac25a8eaaae9c6ed96c5255210f2/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Barasuara",
+    "deezer_id": 8873664,
+    "link": "https://www.deezer.com/artist/8873664",
+    "nb_fan": 8618,
+    "query": "Barasuara"
+  },
+  "Beijing Connection": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/a1dee5b0aae51bdfdc3524af3bbd818e/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Beijing Connection",
+    "deezer_id": 121904982,
+    "link": "https://www.deezer.com/artist/121904982",
+    "nb_fan": 35,
+    "query": "Beijing Connection"
+  },
+  "Bernadya": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/5bd274a72993ee8b8e72a7a8aedc12b5/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Bernadya",
+    "deezer_id": 183486337,
+    "link": "https://www.deezer.com/artist/183486337",
+    "nb_fan": 1671,
+    "query": "Bernadya"
+  },
+  "Biru Baru": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/451730f2395e6ccd0455157e05bf62b2/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Biru Baru",
+    "deezer_id": 53896152,
+    "link": "https://www.deezer.com/artist/53896152",
+    "nb_fan": 109,
+    "query": "Biru Baru"
+  },
+  "Black Horses": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/b393ca85961a17c8366c8b86891b1ccd/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Black Horses",
+    "deezer_id": 14190295,
+    "link": "https://www.deezer.com/artist/14190295",
+    "nb_fan": 23,
+    "query": "Black Horses"
+  },
+  "D'MASIV": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/a50000adf744e0fdd3d1d83b42c72b78/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "D'MASIV",
+    "deezer_id": 2004741,
+    "link": "https://www.deezer.com/artist/2004741",
+    "nb_fan": 39709,
+    "query": "D'MASIV"
+  },
+  "DNA ft. MC Parkz": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/3707a4e0a40877b8c6aba66ca575a7e8/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "DNA",
+    "deezer_id": 72655872,
+    "link": "https://www.deezer.com/artist/72655872",
+    "nb_fan": 163,
+    "query": "DNA"
+  },
+  "Efek Rumah Kaca": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/f69b96ae54fed1cd68eb09065828ee5b/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Efek Rumah Kaca",
+    "deezer_id": 469707,
+    "link": "https://www.deezer.com/artist/469707",
+    "nb_fan": 13278,
+    "query": "Efek Rumah Kaca"
+  },
+  "Elephant Kind": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/44e9c752dd8101fcc7c7ed351617e027/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Elephant Kind",
+    "deezer_id": 5837265,
+    "link": "https://www.deezer.com/artist/5837265",
+    "nb_fan": 1901,
+    "query": "Elephant Kind"
+  },
+  "Eleventwelfth": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/259ba634a2dad4d3af513028e5f496d4/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "eleventwelfth",
+    "deezer_id": 11968345,
+    "link": "https://www.deezer.com/artist/11968345",
+    "nb_fan": 274,
+    "query": "Eleventwelfth"
+  },
+  "Endah N Rhesa": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/68fc179e85136c76f0a84fd9a34ae3a6/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Endah N Rhesa",
+    "deezer_id": 1445976,
+    "link": "https://www.deezer.com/artist/1445976",
+    "nb_fan": 8425,
+    "query": "Endah N Rhesa"
+  },
+  "Fiersa Besari": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/e2329b053efab49ff5020d366ea4b65e/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Fiersa Besari",
+    "deezer_id": 7239528,
+    "link": "https://www.deezer.com/artist/7239528",
+    "nb_fan": 23085,
+    "query": "Fiersa Besari"
+  },
+  "For Revenge": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/f74afc7c5dcdb9614587a6983ba6b2bb/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "For Revenge",
+    "deezer_id": 11276778,
+    "link": "https://www.deezer.com/artist/11276778",
+    "nb_fan": 1444,
+    "query": "For Revenge"
+  },
+  "Fresly Nikijuluw": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/53fe1f2cb6be0534d15edf8262c79615/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Fresly Nikijuluw",
+    "deezer_id": 121046292,
+    "link": "https://www.deezer.com/artist/121046292",
+    "nb_fan": 40,
+    "query": "Fresly Nikijuluw"
+  },
+  "FSTVLST": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/bc6806ab6cbce74ce01040dfe2be4c40/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "FSTVLST",
+    "deezer_id": 54176162,
+    "link": "https://www.deezer.com/artist/54176162",
+    "nb_fan": 318,
+    "query": "FSTVLST"
+  },
+  "Geisha": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/bc4300385dddbacbf2f78fc202edbae7/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Geisha",
+    "deezer_id": 59876,
+    "link": "https://www.deezer.com/artist/59876",
+    "nb_fan": 12269,
+    "query": "Geisha"
+  },
+  "Ghea Indrawari": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/cb0d05647042d418496db5dc5e227149/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Ghea Indrawari",
+    "deezer_id": 70010462,
+    "link": "https://www.deezer.com/artist/70010462",
+    "nb_fan": 351,
+    "query": "Ghea Indrawari"
+  },
+  "Haddad Alwi": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/476bd6ef5e207caead15d0b6a5c7f7f4/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Haddad Alwi",
+    "deezer_id": 291108,
+    "link": "https://www.deezer.com/artist/291108",
+    "nb_fan": 1515,
+    "query": "Haddad Alwi"
+  },
+  "Hindia": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/b33a022fb4490dce3b6e12d1c19c0123/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Hindia",
+    "deezer_id": 53171212,
+    "link": "https://www.deezer.com/artist/53171212",
+    "nb_fan": 15321,
+    "query": "Hindia"
+  },
+  "HIVI!": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/c1dfa2d95839e86d3009c0bd162a4cd7/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Hivi!",
+    "deezer_id": 1615694,
+    "link": "https://www.deezer.com/artist/1615694",
+    "nb_fan": 12413,
+    "query": "HIVI!"
+  },
+  "Idgitaf": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/c3ede278e554e8739fc6ba6325732d7b/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Idgitaf",
+    "deezer_id": 114652382,
+    "link": "https://www.deezer.com/artist/114652382",
+    "nb_fan": 506,
+    "query": "Idgitaf"
+  },
+  "Inis": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/88cdaa0649f49fe4d40d8c6f372912dd/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Inis",
+    "deezer_id": 2566211,
+    "link": "https://www.deezer.com/artist/2566211",
+    "nb_fan": 25,
+    "query": "Inis"
+  },
+  "Inoya House": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/0e4aa71744b6699fe695d73da8ff3a57/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Inoya House",
+    "deezer_id": 145428862,
+    "link": "https://www.deezer.com/artist/145428862",
+    "nb_fan": 0,
+    "query": "Inoya House"
+  },
+  "Isyana Sarasvati": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/68992c9778c42e16b7cf174c0f7aacaf/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Isyana Sarasvati",
+    "deezer_id": 6887463,
+    "link": "https://www.deezer.com/artist/6887463",
+    "nb_fan": 60765,
+    "query": "Isyana Sarasvati"
+  },
+  "Jason Ranti & Dongker": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/924cefb57a7c1cafcaf2c14ce8be630f/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Jason Ranti",
+    "deezer_id": 50548882,
+    "link": "https://www.deezer.com/artist/50548882",
+    "nb_fan": 772,
+    "query": "Jason Ranti"
+  },
+  "Jemsii x Suisei": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/3dc06a68c53c598ddeccd85d932e5546/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Jemsii",
+    "deezer_id": 115250662,
+    "link": "https://www.deezer.com/artist/115250662",
+    "nb_fan": 414,
+    "query": "Jemsii"
+  },
+  "Jen": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/46b81d6f2551900b284b1d128131960d/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Jen",
+    "deezer_id": 244750732,
+    "link": "https://www.deezer.com/artist/244750732",
+    "nb_fan": 1170,
+    "query": "Jen"
+  },
+  "Jet (AUS)": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/b642b703a106326142c40814476a5753/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Jet",
+    "deezer_id": 597,
+    "link": "https://www.deezer.com/artist/597",
+    "nb_fan": 121525,
+    "query": "Jet"
+  },
+  "Juan Reza": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/cab9815d47fe45b9d169bb72702b2fda/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Juan Reza",
+    "deezer_id": 171046237,
+    "link": "https://www.deezer.com/artist/171046237",
+    "nb_fan": 166,
+    "query": "Juan Reza"
+  },
+  "Juicy Luicy": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/b94e4bb5570b617550f28dbe0012f973/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Juicy Luicy",
+    "deezer_id": 7062765,
+    "link": "https://www.deezer.com/artist/7062765",
+    "nb_fan": 2001,
+    "query": "Juicy Luicy"
+  },
+  "K3BI": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/ed7bb655cc596910f43e0cff03529391/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "K3bi",
+    "deezer_id": 269393242,
+    "link": "https://www.deezer.com/artist/269393242",
+    "nb_fan": 62,
+    "query": "K3BI"
+  },
+  "Kangen Band": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/a30f4cfdd616ad91d8c60e61721d2e0f/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Kangen Band",
+    "deezer_id": 453410,
+    "link": "https://www.deezer.com/artist/453410",
+    "nb_fan": 17232,
+    "query": "Kangen Band"
+  },
+  "Kelompok Penerbang Roket": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/cfb83d10b8bde4cc6f12aaadc52fcc99/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Kelompok Penerbang Roket",
+    "deezer_id": 6857913,
+    "link": "https://www.deezer.com/artist/6857913",
+    "nb_fan": 2705,
+    "query": "Kelompok Penerbang Roket"
+  },
+  "King Nassar": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/26f1d907eb1ff0fae612aea349f93fe7/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "King Nassar",
+    "deezer_id": 95493092,
+    "link": "https://www.deezer.com/artist/95493092",
+    "nb_fan": 9,
+    "query": "King Nassar"
+  },
+  "Kotak": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/e4673ae29322bf70b5334b158caac8a6/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Kotak",
+    "deezer_id": 1492684,
+    "link": "https://www.deezer.com/artist/1492684",
+    "nb_fan": 17709,
+    "query": "Kotak"
+  },
+  "Kunto Aji": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/d73c1d98dd547a5af5ac65519714bc9e/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Kunto Aji",
+    "deezer_id": 6889175,
+    "link": "https://www.deezer.com/artist/6889175",
+    "nb_fan": 8233,
+    "query": "Kunto Aji"
+  },
+  "Lomba Sihir": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/2d4522350f5c69024d0cfcd119d50abf/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Lomba Sihir",
+    "deezer_id": 123249592,
+    "link": "https://www.deezer.com/artist/123249592",
+    "nb_fan": 425,
+    "query": "Lomba Sihir"
+  },
+  "Mahalini": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/bbb3c9932bf14c2ca059e24a041baf91/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Mahalini",
+    "deezer_id": 7569204,
+    "link": "https://www.deezer.com/artist/7569204",
+    "nb_fan": 2768,
+    "query": "Mahalini"
+  },
+  "Marbles": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/3ddf26a9c8d5da6d11f6d34f6fd236e4/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Marbles",
+    "deezer_id": 68922,
+    "link": "https://www.deezer.com/artist/68922",
+    "nb_fan": 261,
+    "query": "Marbles"
+  },
+  "Marcello Tahitoe": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/bf174822c949c4be02a51a7f88cd67fa/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Marcello Tahitoe",
+    "deezer_id": 1528586,
+    "link": "https://www.deezer.com/artist/1528586",
+    "nb_fan": 2490,
+    "query": "Marcello Tahitoe"
+  },
+  "Monkey Boots": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/5bc98750536a84592873131a7b571248/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Monkey Boots",
+    "deezer_id": 4053999,
+    "link": "https://www.deezer.com/artist/4053999",
+    "nb_fan": 4347,
+    "query": "Monkey Boots"
+  },
+  "Murphy Radio": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/1e0c558056427dff265069c0a33f88a8/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Murphy Radio",
+    "deezer_id": 12329502,
+    "link": "https://www.deezer.com/artist/12329502",
+    "nb_fan": 234,
+    "query": "Murphy Radio"
+  },
+  "Nadhif Basalamah": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/cd2dd619e3dae4ad0a57e05b444025d9/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Nadhif Basalamah",
+    "deezer_id": 54510232,
+    "link": "https://www.deezer.com/artist/54510232",
+    "nb_fan": 878,
+    "query": "Nadhif Basalamah"
+  },
+  "Namoy Budaya": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/85ed6c1ddf53985ce9a83c6a02e0e24e/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Namoy Budaya",
+    "deezer_id": 198414037,
+    "link": "https://www.deezer.com/artist/198414037",
+    "nb_fan": 10,
+    "query": "Namoy Budaya"
+  },
+  "Naykilla": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/12e601b18bd5ea7740c7df01e009eecc/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Naykilla",
+    "deezer_id": 56801562,
+    "link": "https://www.deezer.com/artist/56801562",
+    "nb_fan": 512,
+    "query": "Naykilla"
+  },
+  "NDX AKA": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/f169c4abf9e83651218772531562d37f/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Ndx Aka",
+    "deezer_id": 11060858,
+    "link": "https://www.deezer.com/artist/11060858",
+    "nb_fan": 565,
+    "query": "NDX AKA"
+  },
+  "Neck Deep (UK)": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/990ddfdf3d47197dd4a49f981688b013/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Neck Deep",
+    "deezer_id": 3837171,
+    "link": "https://www.deezer.com/artist/3837171",
+    "nb_fan": 47715,
+    "query": "Neck Deep"
+  },
+  "NPD": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/f588009b6590c892a172587846ec2ca5/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "NPD",
+    "deezer_id": 54806732,
+    "link": "https://www.deezer.com/artist/54806732",
+    "nb_fan": 8,
+    "query": "NPD"
+  },
+  "Nusantara Beat (NED)": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/e137b6053410f5b9d1eb130862086b69/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Nusantara Beat",
+    "deezer_id": 208901187,
+    "link": "https://www.deezer.com/artist/208901187",
+    "nb_fan": 1125,
+    "query": "Nusantara Beat"
+  },
+  "OM Lorenza": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/c9f221bd358c92eeae3ec89db58c13b0/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "OM LORENZA",
+    "deezer_id": 301174831,
+    "link": "https://www.deezer.com/artist/301174831",
+    "nb_fan": 2,
+    "query": "OM Lorenza"
+  },
+  "Pamungkas": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/cf78395171e26a522ba28f4d41b5b6bc/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Pamungkas",
+    "deezer_id": 9927150,
+    "link": "https://www.deezer.com/artist/9927150",
+    "nb_fan": 19434,
+    "query": "Pamungkas"
+  },
+  "Parade Hujan (Payung Teduh x Pusakata)": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/91d3cd424ca166f83dcca1077b330f27/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Parade Hujan",
+    "deezer_id": 218515145,
+    "link": "https://www.deezer.com/artist/218515145",
+    "nb_fan": 15,
+    "query": "Parade Hujan"
+  },
+  "Pee Wee Gaskins x Rocket Rockers": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/ecdf412d823b2ec2af7b45db65b5d094/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Pee Wee Gaskins",
+    "deezer_id": 468784,
+    "link": "https://www.deezer.com/artist/468784",
+    "nb_fan": 37236,
+    "query": "Pee Wee Gaskins"
+  },
+  "Pendarra": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/c2d6e2b9fc3d1b34e8556d8b1fa33597/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Pendarra",
+    "deezer_id": 227427045,
+    "link": "https://www.deezer.com/artist/227427045",
+    "nb_fan": 46,
+    "query": "Pendarra"
+  },
+  "Perunggu": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/e4bfca711615ed266ce885a6a6b9bcf1/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Perunggu",
+    "deezer_id": 79488312,
+    "link": "https://www.deezer.com/artist/79488312",
+    "nb_fan": 704,
+    "query": "Perunggu"
+  },
+  "Polkawars ft. Alahad": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/c18ab44fdf867ad463eb1486b0cfcf86/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Polka Wars",
+    "deezer_id": 7940186,
+    "link": "https://www.deezer.com/artist/7940186",
+    "nb_fan": 680,
+    "query": "Polkawars"
+  },
+  "Poris": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/369a81839e41ae9969193d895876c26c/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Poris",
+    "deezer_id": 161145672,
+    "link": "https://www.deezer.com/artist/161145672",
+    "nb_fan": 43,
+    "query": "Poris"
+  },
+  "Radit Echoman x Steppa Gyal": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/013cba51d760d76c9aaf6af4dda77305/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Radit Echoman",
+    "deezer_id": 50481262,
+    "link": "https://www.deezer.com/artist/50481262",
+    "nb_fan": 2,
+    "query": "Radit Echoman"
+  },
+  "Raisa": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/264c09078b475136ec7eef6431678f33/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Raisa",
+    "deezer_id": 1419075,
+    "link": "https://www.deezer.com/artist/1419075",
+    "nb_fan": 56949,
+    "query": "Raisa"
+  },
+  "Reality Club": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/be7235d469d786aa4e18c5e6d67b7e73/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Reality Club",
+    "deezer_id": 7144335,
+    "link": "https://www.deezer.com/artist/7144335",
+    "nb_fan": 3000,
+    "query": "Reality Club"
+  },
+  "Rizky Febian": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/fca4535821c7c06bfc92abad91ce9c74/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Rizky Febian",
+    "deezer_id": 6909371,
+    "link": "https://www.deezer.com/artist/6909371",
+    "nb_fan": 15182,
+    "query": "Rizky Febian"
+  },
+  "Robokop ft. Mikkizia": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/3d0420de552370b61649d6760ea1f412/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Robokop",
+    "deezer_id": 816274,
+    "link": "https://www.deezer.com/artist/816274",
+    "nb_fan": 56,
+    "query": "Robokop"
+  },
+  "Rumahsakit": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/cc100c009b97d41e991ef5cc0dba4859/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "rumahsakit",
+    "deezer_id": 5577653,
+    "link": "https://www.deezer.com/artist/5577653",
+    "nb_fan": 979,
+    "query": "Rumahsakit"
+  },
+  "Sal Priadi": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/513217e1630470658eb37ac7d7eb1910/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Sal Priadi",
+    "deezer_id": 13808249,
+    "link": "https://www.deezer.com/artist/13808249",
+    "nb_fan": 2762,
+    "query": "Sal Priadi"
+  },
+  "Silampukau": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/792cb6ebe7f0054c2d7f062d274debf7/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Silampukau",
+    "deezer_id": 8314728,
+    "link": "https://www.deezer.com/artist/8314728",
+    "nb_fan": 1209,
+    "query": "Silampukau"
+  },
+  "Skandal": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/3a75abda641cd269b7fff00721698137/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Skandal",
+    "deezer_id": 363928,
+    "link": "https://www.deezer.com/artist/363928",
+    "nb_fan": 3757,
+    "query": "Skandal"
+  },
+  "Smash": {
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Sm%2Ash_crop.jpg/330px-Sm%2Ash_crop.jpg",
+    "source": "wikipedia",
+    "link": "https://en.wikipedia.org/wiki/Smash_(Indonesian_band)"
+  },
+  "Societeit de Harmonie": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/65207260eeaf8ac1adac375b95e0d6e7/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Societeit de Harmonie",
+    "deezer_id": 260144401,
+    "link": "https://www.deezer.com/artist/260144401",
+    "nb_fan": 59,
+    "query": "Societeit de Harmonie"
+  },
+  "Sore Ze Band": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/32f4f77338a64dc5209c893ce218152d/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Sore",
+    "deezer_id": 387129561,
+    "link": "https://www.deezer.com/artist/387129561",
+    "nb_fan": 31,
+    "query": "Sore"
+  },
+  "Souljah": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/9956ce924ab692c85a3d37bf77339cc2/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Souljah",
+    "deezer_id": 456792,
+    "link": "https://www.deezer.com/artist/456792",
+    "nb_fan": 19598,
+    "query": "Souljah"
+  },
+  "Suara Wijaya 80: Ardhito Pramono, Erikson Jayanto, Hezky Joe": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/77ceb11092a63a7525cb29c0c7cee126/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Ardhito Pramono",
+    "deezer_id": 12198466,
+    "link": "https://www.deezer.com/artist/12198466",
+    "nb_fan": 8395,
+    "query": "Ardhito Pramono"
+  },
+  "Sukses Lancar Rejeki": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/56036b4d4f328fd86c169db6ad92f843/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Sukses Lancar Rejeki",
+    "deezer_id": 262340321,
+    "link": "https://www.deezer.com/artist/262340321",
+    "nb_fan": 16,
+    "query": "Sukses Lancar Rejeki"
+  },
+  "Teenage Death Star": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/8e3a0a7c1965d144ddcae4e0194bd50d/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Teenage Death Star",
+    "deezer_id": 5509706,
+    "link": "https://www.deezer.com/artist/5509706",
+    "nb_fan": 160,
+    "query": "Teenage Death Star"
+  },
+  "Ten2Five": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/3d70bc6273c95068bf657cf4c1541e8a/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Ten2Five",
+    "deezer_id": 4914686,
+    "link": "https://www.deezer.com/artist/4914686",
+    "nb_fan": 2971,
+    "query": "Ten2Five"
+  },
+  "Tenxi": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/8fabf3e3108bde88b2c87823f271afb4/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "TENXI",
+    "deezer_id": 133850752,
+    "link": "https://www.deezer.com/artist/133850752",
+    "nb_fan": 1071,
+    "query": "Tenxi"
+  },
+  "The Adams": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/572e18ffa114e2ee49891249e7810b48/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "The Adams",
+    "deezer_id": 497614,
+    "link": "https://www.deezer.com/artist/497614",
+    "nb_fan": 1700,
+    "query": "The Adams"
+  },
+  "The Changcuters x Vierratale x Nidji": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/126a654707a618837cbe0621f8fa844c/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "The Changcuters",
+    "deezer_id": 76841,
+    "link": "https://www.deezer.com/artist/76841",
+    "nb_fan": 12309,
+    "query": "The Changcuters"
+  },
+  "The Cottons": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/a4831615a305f1cd811d16e45f8b11f0/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "The Cottons",
+    "deezer_id": 12398822,
+    "link": "https://www.deezer.com/artist/12398822",
+    "nb_fan": 24,
+    "query": "The Cottons"
+  },
+  "The Jeblogs": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/0ff608de485cfc41821928861acc8f24/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "The jeblogs",
+    "deezer_id": 110085082,
+    "link": "https://www.deezer.com/artist/110085082",
+    "nb_fan": 99,
+    "query": "The Jeblogs"
+  },
+  "The Milo": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/d106047807330dc0e2b1859d7a3e1d80/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "The Milo",
+    "deezer_id": 5489229,
+    "link": "https://www.deezer.com/artist/5489229",
+    "nb_fan": 294,
+    "query": "The Milo"
+  },
+  "The Panturas": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/e1dbf46f0d6db821d5d157f50c67cdc0/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "The Panturas",
+    "deezer_id": 11617523,
+    "link": "https://www.deezer.com/artist/11617523",
+    "nb_fan": 1702,
+    "query": "The Panturas"
+  },
+  "The Paps": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/89d08054bff5b132e0d5123998d6475b/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "The Paps",
+    "deezer_id": 14934181,
+    "link": "https://www.deezer.com/artist/14934181",
+    "nb_fan": 298,
+    "query": "The Paps"
+  },
+  "The SIGIT": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/27d6d2e9ce07a7a03e9e16f0b0ce90a7/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "The SIGIT",
+    "deezer_id": 2289511,
+    "link": "https://www.deezer.com/artist/2289511",
+    "nb_fan": 11857,
+    "query": "The SIGIT"
+  },
+  "Tipe-X": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/9c001a299dccb65424372e063b4cd2dc/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Tipe-X",
+    "deezer_id": 1650952,
+    "link": "https://www.deezer.com/artist/1650952",
+    "nb_fan": 25604,
+    "query": "Tipe-X"
+  },
+  "Tribute to L'Arc-en-Ciel by J-Rocks": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/33f71c6ddd613bfa1d7d079b9ae76607/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "J-Rocks",
+    "deezer_id": 5551139,
+    "link": "https://www.deezer.com/artist/5551139",
+    "nb_fan": 21712,
+    "query": "J-Rocks"
+  },
+  "Tribute to Oasis by Magicpie ft. Aldi Taher": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/4194ef5efebf5f99db43b7db38545151/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Aldi Taher",
+    "deezer_id": 10452485,
+    "link": "https://www.deezer.com/artist/10452485",
+    "nb_fan": 8,
+    "query": "Aldi Taher"
+  },
+  "Tribute to The Beatles by G-Pluck ft. Bilal Indrajaya": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/6f51af7c46e2490826898b829b161450/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Bilal Indrajaya",
+    "deezer_id": 15215925,
+    "link": "https://www.deezer.com/artist/15215925",
+    "nb_fan": 179,
+    "query": "Bilal Indrajaya"
+  },
+  "Tulus": {
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Tulus_Performs_at_Jakarta_International_Jazz_Java_Festival_2020_%28cropped%29.jpg/330px-Tulus_Performs_at_Jakarta_International_Jazz_Java_Festival_2020_%28cropped%29.jpg",
+    "source": "wikipedia",
+    "link": "https://en.wikipedia.org/wiki/Tulus_(singer)"
+  },
+  "Voxy": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/1cbd37c72dc9e21d0f660ce926c79919/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Voxy",
+    "deezer_id": 62642282,
+    "link": "https://www.deezer.com/artist/62642282",
+    "nb_fan": 14,
+    "query": "Voxy"
+  },
+  "Wali": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/d69f5395a2022c6e94a9184639e4fdb8/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Wali",
+    "deezer_id": 454896,
+    "link": "https://www.deezer.com/artist/454896",
+    "nb_fan": 6825,
+    "query": "Wali"
+  },
+  "White Chorus": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/00db3887fb7bb1760632b58b4d3200c7/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "White Chorus",
+    "deezer_id": 62167952,
+    "link": "https://www.deezer.com/artist/62167952",
+    "nb_fan": 51,
+    "query": "White Chorus"
+  },
+  "Yura Yunita": {
+    "image": "https://cdn-images.dzcdn.net/images/artist/6e25146a588af8bf24c345186e79861a/250x250-000000-80-0-0.jpg",
+    "source": "deezer",
+    "deezer_name": "Yura Yunita",
+    "deezer_id": 5716969,
+    "link": "https://www.deezer.com/artist/5716969",
+    "nb_fan": 5547,
+    "query": "Yura Yunita"
+  }
+}

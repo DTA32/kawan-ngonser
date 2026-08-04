@@ -1,0 +1,1214 @@
+{
+  "event_id": "sounds-project-2026",
+  "version": 1,
+  "name": "The Sounds Project Vol.9",
+  "logo": "https://thesoundsproject.com/storage/files/1/logo/LOGO%20TSP9.webp",
+  "place": "Ecovention & Ecopark Ancol, Jakarta",
+  "description": "The Sounds Project Vol.9 — Beyond Memories. Where the dreamers go, live concert matters: 3 days, 7 stages, and 100+ performances at Ecovention & Ecopark Ancol, Jakarta, on 7-9 August 2026.",
+  "timezone": "Asia/Jakarta",
+  "days": [
+    {
+      "day_index": 1,
+      "date": "2026-08-07"
+    },
+    {
+      "day_index": 2,
+      "date": "2026-08-08"
+    },
+    {
+      "day_index": 3,
+      "date": "2026-08-09"
+    }
+  ],
+  "stages": [
+    {
+      "stage_id": "tsp",
+      "name": "The Sounds Project Stage",
+      "color": "#F28C28"
+    },
+    {
+      "stage_id": "musicverse",
+      "name": "Musicverse Stage",
+      "color": "#D64550"
+    },
+    {
+      "stage_id": "mg",
+      "name": "MG Stage",
+      "color": "#35A7DB"
+    },
+    {
+      "stage_id": "garden",
+      "name": "Garden Stage",
+      "color": "#3FA34D"
+    },
+    {
+      "stage_id": "tspco",
+      "name": "TSP&CO Stage",
+      "color": "#2D6CDF"
+    },
+    {
+      "stage_id": "joged",
+      "name": "Joged Stage",
+      "color": "#B5446E"
+    },
+    {
+      "stage_id": "tspsquad",
+      "name": "TSPSQUAD Stage",
+      "color": "#D9A514"
+    }
+  ],
+  "performances": [
+    {
+      "performance_id": "tsp-d1-juicy-luicy",
+      "artist_name": "Juicy Luicy",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/b94e4bb5570b617550f28dbe0012f973/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tsp",
+      "start_time": "2026-08-07T15:30:00+07:00",
+      "end_time": "2026-08-07T16:30:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d1-lomba-sihir",
+      "artist_name": "Lomba Sihir",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/2d4522350f5c69024d0cfcd119d50abf/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tsp",
+      "start_time": "2026-08-07T16:45:00+07:00",
+      "end_time": "2026-08-07T17:45:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d1-the-changcuters-x-vierratale-x-nidji",
+      "artist_name": "The Changcuters x Vierratale x Nidji",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/126a654707a618837cbe0621f8fa844c/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tsp",
+      "start_time": "2026-08-07T18:15:00+07:00",
+      "end_time": "2026-08-07T19:15:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d1-naykilla",
+      "artist_name": "Naykilla",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/12e601b18bd5ea7740c7df01e009eecc/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tsp",
+      "start_time": "2026-08-07T19:30:00+07:00",
+      "end_time": "2026-08-07T20:30:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d1-bernadya",
+      "artist_name": "Bernadya",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/5bd274a72993ee8b8e72a7a8aedc12b5/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tsp",
+      "start_time": "2026-08-07T20:45:00+07:00",
+      "end_time": "2026-08-07T21:45:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d1-mahalini",
+      "artist_name": "Mahalini",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/bbb3c9932bf14c2ca059e24a041baf91/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tsp",
+      "start_time": "2026-08-07T22:00:00+07:00",
+      "end_time": "2026-08-07T23:00:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d1-the-adams",
+      "artist_name": "The Adams",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/572e18ffa114e2ee49891249e7810b48/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tsp",
+      "start_time": "2026-08-07T23:15:00+07:00",
+      "end_time": "2026-08-08T00:15:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d2-510",
+      "artist_name": "510",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/1b0aaf0b8624a49b1ee61d1cc38ae151/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "tsp",
+      "start_time": "2026-08-08T15:30:00+07:00",
+      "end_time": "2026-08-08T16:30:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d2-kangen-band",
+      "artist_name": "Kangen Band",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/a30f4cfdd616ad91d8c60e61721d2e0f/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "tsp",
+      "start_time": "2026-08-08T16:45:00+07:00",
+      "end_time": "2026-08-08T17:45:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d2-barasuara",
+      "artist_name": "Barasuara",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/fe3cac25a8eaaae9c6ed96c5255210f2/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "tsp",
+      "start_time": "2026-08-08T19:00:00+07:00",
+      "end_time": "2026-08-08T20:00:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d2-neck-deep-uk",
+      "artist_name": "Neck Deep (UK)",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/990ddfdf3d47197dd4a49f981688b013/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "tsp",
+      "start_time": "2026-08-08T20:30:00+07:00",
+      "end_time": "2026-08-08T21:30:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d2-wali",
+      "artist_name": "Wali",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/d69f5395a2022c6e94a9184639e4fdb8/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "tsp",
+      "start_time": "2026-08-08T22:00:00+07:00",
+      "end_time": "2026-08-08T23:00:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d2-king-nassar",
+      "artist_name": "King Nassar",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/26f1d907eb1ff0fae612aea349f93fe7/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "tsp",
+      "start_time": "2026-08-08T23:15:00+07:00",
+      "end_time": "2026-08-09T00:15:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d3-for-revenge",
+      "artist_name": "For Revenge",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/f74afc7c5dcdb9614587a6983ba6b2bb/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "tsp",
+      "start_time": "2026-08-09T15:30:00+07:00",
+      "end_time": "2026-08-09T16:30:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d3-tulus",
+      "artist_name": "Tulus",
+      "artist_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Tulus_Performs_at_Jakarta_International_Jazz_Java_Festival_2020_%28cropped%29.jpg/330px-Tulus_Performs_at_Jakarta_International_Jazz_Java_Festival_2020_%28cropped%29.jpg",
+      "day_index": 3,
+      "stage_id": "tsp",
+      "start_time": "2026-08-09T16:45:00+07:00",
+      "end_time": "2026-08-09T17:45:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d3-efek-rumah-kaca",
+      "artist_name": "Efek Rumah Kaca",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/f69b96ae54fed1cd68eb09065828ee5b/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "tsp",
+      "start_time": "2026-08-09T18:15:00+07:00",
+      "end_time": "2026-08-09T19:15:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d3-perunggu",
+      "artist_name": "Perunggu",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/e4bfca711615ed266ce885a6a6b9bcf1/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "tsp",
+      "start_time": "2026-08-09T19:30:00+07:00",
+      "end_time": "2026-08-09T20:30:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d3-jet-aus",
+      "artist_name": "Jet (AUS)",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/b642b703a106326142c40814476a5753/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "tsp",
+      "start_time": "2026-08-09T20:45:00+07:00",
+      "end_time": "2026-08-09T21:45:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d3-feast",
+      "artist_name": ".Feast",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/39f07b5656c1061598b5d68d1c5f5cb1/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "tsp",
+      "start_time": "2026-08-09T22:00:00+07:00",
+      "end_time": "2026-08-09T23:00:00+07:00"
+    },
+    {
+      "performance_id": "tsp-d3-hindia",
+      "artist_name": "Hindia",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/b33a022fb4490dce3b6e12d1c19c0123/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "tsp",
+      "start_time": "2026-08-09T23:15:00+07:00",
+      "end_time": "2026-08-10T00:15:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d1-hivi",
+      "artist_name": "HIVI!",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/c1dfa2d95839e86d3009c0bd162a4cd7/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-07T16:45:00+07:00",
+      "end_time": "2026-08-07T17:45:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d1-raisa",
+      "artist_name": "Raisa",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/264c09078b475136ec7eef6431678f33/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-07T18:15:00+07:00",
+      "end_time": "2026-08-07T19:15:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d1-nusantara-beat-ned",
+      "artist_name": "Nusantara Beat (NED)",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/e137b6053410f5b9d1eb130862086b69/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-07T19:30:00+07:00",
+      "end_time": "2026-08-07T20:30:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d1-pamungkas",
+      "artist_name": "Pamungkas",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/cf78395171e26a522ba28f4d41b5b6bc/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-07T20:45:00+07:00",
+      "end_time": "2026-08-07T21:45:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d1-idgitaf",
+      "artist_name": "Idgitaf",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/c3ede278e554e8739fc6ba6325732d7b/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-07T22:00:00+07:00",
+      "end_time": "2026-08-07T23:00:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d1-tipe-x",
+      "artist_name": "Tipe-X",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/9c001a299dccb65424372e063b4cd2dc/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-07T23:15:00+07:00",
+      "end_time": "2026-08-08T00:15:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d2-sal-priadi",
+      "artist_name": "Sal Priadi",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/513217e1630470658eb37ac7d7eb1910/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-08T15:30:00+07:00",
+      "end_time": "2026-08-08T16:30:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d2-elephant-kind",
+      "artist_name": "Elephant Kind",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/44e9c752dd8101fcc7c7ed351617e027/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-08T16:45:00+07:00",
+      "end_time": "2026-08-08T17:45:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d2-moluccan-soul",
+      "artist_name": "Moluccan Soul",
+      "artist_image": "https://ui-avatars.com/api/?name=Moluccan%20Soul&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 2,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-08T18:15:00+07:00",
+      "end_time": "2026-08-08T19:15:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d2-d-masiv",
+      "artist_name": "D'MASIV",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/a50000adf744e0fdd3d1d83b42c72b78/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-08T19:30:00+07:00",
+      "end_time": "2026-08-08T20:30:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d2-reality-club",
+      "artist_name": "Reality Club",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/be7235d469d786aa4e18c5e6d67b7e73/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-08T20:45:00+07:00",
+      "end_time": "2026-08-08T21:45:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d2-float",
+      "artist_name": "Float",
+      "artist_image": "https://ui-avatars.com/api/?name=Float&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 2,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-08T22:00:00+07:00",
+      "end_time": "2026-08-08T23:00:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d2-biru-baru",
+      "artist_name": "Biru Baru",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/451730f2395e6ccd0455157e05bf62b2/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-08T23:15:00+07:00",
+      "end_time": "2026-08-09T00:15:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d3-npd",
+      "artist_name": "NPD",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/f588009b6590c892a172587846ec2ca5/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-09T15:30:00+07:00",
+      "end_time": "2026-08-09T16:30:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d3-kunto-aji",
+      "artist_name": "Kunto Aji",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/d73c1d98dd547a5af5ac65519714bc9e/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-09T16:45:00+07:00",
+      "end_time": "2026-08-09T17:45:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d3-yura-yunita",
+      "artist_name": "Yura Yunita",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/6e25146a588af8bf24c345186e79861a/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-09T18:15:00+07:00",
+      "end_time": "2026-08-09T19:15:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d3-isyana-sarasvati",
+      "artist_name": "Isyana Sarasvati",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/68992c9778c42e16b7cf174c0f7aacaf/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-09T19:30:00+07:00",
+      "end_time": "2026-08-09T20:30:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d3-tribute-to-the-beatles-by-g-pluck-ft-bilal-indrajaya",
+      "artist_name": "Tribute to The Beatles by G-Pluck ft. Bilal Indrajaya",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/6f51af7c46e2490826898b829b161450/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-09T20:45:00+07:00",
+      "end_time": "2026-08-09T21:45:00+07:00"
+    },
+    {
+      "performance_id": "musicverse-d3-tribute-to-l-arc-en-ciel-by-j-rocks",
+      "artist_name": "Tribute to L'Arc-en-Ciel by J-Rocks",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/33f71c6ddd613bfa1d7d079b9ae76607/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "musicverse",
+      "start_time": "2026-08-09T22:00:00+07:00",
+      "end_time": "2026-08-09T23:00:00+07:00"
+    },
+    {
+      "performance_id": "mg-d1-rizky-febian",
+      "artist_name": "Rizky Febian",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/fca4535821c7c06bfc92abad91ce9c74/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "mg",
+      "start_time": "2026-08-07T15:45:00+07:00",
+      "end_time": "2026-08-07T16:45:00+07:00"
+    },
+    {
+      "performance_id": "mg-d1-suara-wijaya-80-ardhito-pramono-erikson-jayanto-hezky-joe",
+      "artist_name": "Suara Wijaya 80: Ardhito Pramono, Erikson Jayanto, Hezky Joe",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/77ceb11092a63a7525cb29c0c7cee126/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "mg",
+      "start_time": "2026-08-07T17:00:00+07:00",
+      "end_time": "2026-08-07T18:00:00+07:00"
+    },
+    {
+      "performance_id": "mg-d1-pee-wee-gaskins-x-rocket-rockers",
+      "artist_name": "Pee Wee Gaskins x Rocket Rockers",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/ecdf412d823b2ec2af7b45db65b5d094/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "mg",
+      "start_time": "2026-08-07T18:45:00+07:00",
+      "end_time": "2026-08-07T19:45:00+07:00"
+    },
+    {
+      "performance_id": "mg-d1-alkateri",
+      "artist_name": "Alkateri",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/7948a9a4b940c65dc69ae1180a743e72/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "mg",
+      "start_time": "2026-08-07T20:00:00+07:00",
+      "end_time": "2026-08-07T21:00:00+07:00"
+    },
+    {
+      "performance_id": "mg-d1-k3bi",
+      "artist_name": "K3BI",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/ed7bb655cc596910f43e0cff03529391/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "mg",
+      "start_time": "2026-08-07T21:15:00+07:00",
+      "end_time": "2026-08-07T22:15:00+07:00"
+    },
+    {
+      "performance_id": "mg-d1-ndx-aka",
+      "artist_name": "NDX AKA",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/f169c4abf9e83651218772531562d37f/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "mg",
+      "start_time": "2026-08-07T22:30:00+07:00",
+      "end_time": "2026-08-07T23:30:00+07:00"
+    },
+    {
+      "performance_id": "mg-d2-the-sigit",
+      "artist_name": "The SIGIT",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/27d6d2e9ce07a7a03e9e16f0b0ce90a7/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "mg",
+      "start_time": "2026-08-08T15:45:00+07:00",
+      "end_time": "2026-08-08T16:45:00+07:00"
+    },
+    {
+      "performance_id": "mg-d2-eleventwelfth",
+      "artist_name": "Eleventwelfth",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/259ba634a2dad4d3af513028e5f496d4/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "mg",
+      "start_time": "2026-08-08T17:00:00+07:00",
+      "end_time": "2026-08-08T18:00:00+07:00"
+    },
+    {
+      "performance_id": "mg-d2-monkey-boots",
+      "artist_name": "Monkey Boots",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/5bc98750536a84592873131a7b571248/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "mg",
+      "start_time": "2026-08-08T18:45:00+07:00",
+      "end_time": "2026-08-08T19:45:00+07:00"
+    },
+    {
+      "performance_id": "mg-d2-poris",
+      "artist_name": "Poris",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/369a81839e41ae9969193d895876c26c/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "mg",
+      "start_time": "2026-08-08T20:00:00+07:00",
+      "end_time": "2026-08-08T21:00:00+07:00"
+    },
+    {
+      "performance_id": "mg-d2-murphy-radio",
+      "artist_name": "Murphy Radio",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/1e0c558056427dff265069c0a33f88a8/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "mg",
+      "start_time": "2026-08-08T21:15:00+07:00",
+      "end_time": "2026-08-08T22:15:00+07:00"
+    },
+    {
+      "performance_id": "mg-d2-grind-boys",
+      "artist_name": "Grind Boys",
+      "artist_image": "https://ui-avatars.com/api/?name=Grind%20Boys&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 2,
+      "stage_id": "mg",
+      "start_time": "2026-08-08T22:30:00+07:00",
+      "end_time": "2026-08-08T23:30:00+07:00"
+    },
+    {
+      "performance_id": "mg-d3-souljah",
+      "artist_name": "Souljah",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/9956ce924ab692c85a3d37bf77339cc2/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "mg",
+      "start_time": "2026-08-09T15:45:00+07:00",
+      "end_time": "2026-08-09T16:45:00+07:00"
+    },
+    {
+      "performance_id": "mg-d3-haddad-alwi",
+      "artist_name": "Haddad Alwi",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/476bd6ef5e207caead15d0b6a5c7f7f4/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "mg",
+      "start_time": "2026-08-09T17:00:00+07:00",
+      "end_time": "2026-08-09T18:00:00+07:00"
+    },
+    {
+      "performance_id": "mg-d3-fstvlst",
+      "artist_name": "FSTVLST",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/bc6806ab6cbce74ce01040dfe2be4c40/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "mg",
+      "start_time": "2026-08-09T18:45:00+07:00",
+      "end_time": "2026-08-09T19:45:00+07:00"
+    },
+    {
+      "performance_id": "mg-d3-parade-hujan-payung-teduh-x-pusakata",
+      "artist_name": "Parade Hujan (Payung Teduh x Pusakata)",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/91d3cd424ca166f83dcca1077b330f27/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "mg",
+      "start_time": "2026-08-09T20:00:00+07:00",
+      "end_time": "2026-08-09T21:00:00+07:00"
+    },
+    {
+      "performance_id": "mg-d3-tribute-to-oasis-by-magicpie-ft-aldi-taher",
+      "artist_name": "Tribute to Oasis by Magicpie ft. Aldi Taher",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/4194ef5efebf5f99db43b7db38545151/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "mg",
+      "start_time": "2026-08-09T21:15:00+07:00",
+      "end_time": "2026-08-09T22:15:00+07:00"
+    },
+    {
+      "performance_id": "mg-d3-dna-ft-mc-parkz",
+      "artist_name": "DNA ft. MC Parkz",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/3707a4e0a40877b8c6aba66ca575a7e8/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "mg",
+      "start_time": "2026-08-09T23:15:00+07:00",
+      "end_time": "2026-08-10T00:15:00+07:00"
+    },
+    {
+      "performance_id": "garden-d1-kelompok-penerbang-roket",
+      "artist_name": "Kelompok Penerbang Roket",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/cfb83d10b8bde4cc6f12aaadc52fcc99/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "garden",
+      "start_time": "2026-08-07T15:15:00+07:00",
+      "end_time": "2026-08-07T16:15:00+07:00"
+    },
+    {
+      "performance_id": "garden-d1-adrian-khalif",
+      "artist_name": "Adrian Khalif",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/2d75b7e4fc60082bd8550f5303ca4784/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "garden",
+      "start_time": "2026-08-07T16:30:00+07:00",
+      "end_time": "2026-08-07T17:30:00+07:00"
+    },
+    {
+      "performance_id": "garden-d1-rumahsakit",
+      "artist_name": "Rumahsakit",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/cc100c009b97d41e991ef5cc0dba4859/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "garden",
+      "start_time": "2026-08-07T19:00:00+07:00",
+      "end_time": "2026-08-07T20:00:00+07:00"
+    },
+    {
+      "performance_id": "garden-d1-pelteras",
+      "artist_name": "Pelteras",
+      "artist_image": "https://ui-avatars.com/api/?name=Pelteras&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 1,
+      "stage_id": "garden",
+      "start_time": "2026-08-07T20:15:00+07:00",
+      "end_time": "2026-08-07T21:15:00+07:00"
+    },
+    {
+      "performance_id": "garden-d1-the-jeblogs",
+      "artist_name": "The Jeblogs",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/0ff608de485cfc41821928861acc8f24/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "garden",
+      "start_time": "2026-08-07T21:30:00+07:00",
+      "end_time": "2026-08-07T22:30:00+07:00"
+    },
+    {
+      "performance_id": "garden-d1-tenxi",
+      "artist_name": "Tenxi",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/8fabf3e3108bde88b2c87823f271afb4/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "garden",
+      "start_time": "2026-08-07T22:45:00+07:00",
+      "end_time": "2026-08-07T23:45:00+07:00"
+    },
+    {
+      "performance_id": "garden-d2-gledeg",
+      "artist_name": "Gledeg",
+      "artist_image": "https://ui-avatars.com/api/?name=Gledeg&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 2,
+      "stage_id": "garden",
+      "start_time": "2026-08-08T15:15:00+07:00",
+      "end_time": "2026-08-08T16:15:00+07:00"
+    },
+    {
+      "performance_id": "garden-d2-ghea-indrawari",
+      "artist_name": "Ghea Indrawari",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/cb0d05647042d418496db5dc5e227149/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "garden",
+      "start_time": "2026-08-08T16:30:00+07:00",
+      "end_time": "2026-08-08T17:30:00+07:00"
+    },
+    {
+      "performance_id": "garden-d2-teenage-death-star",
+      "artist_name": "Teenage Death Star",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/8e3a0a7c1965d144ddcae4e0194bd50d/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "garden",
+      "start_time": "2026-08-08T18:15:00+07:00",
+      "end_time": "2026-08-08T19:15:00+07:00"
+    },
+    {
+      "performance_id": "garden-d2-the-milo",
+      "artist_name": "The Milo",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/d106047807330dc0e2b1859d7a3e1d80/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "garden",
+      "start_time": "2026-08-08T19:30:00+07:00",
+      "end_time": "2026-08-08T20:30:00+07:00"
+    },
+    {
+      "performance_id": "garden-d2-jason-ranti-dongker",
+      "artist_name": "Jason Ranti & Dongker",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/924cefb57a7c1cafcaf2c14ce8be630f/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "garden",
+      "start_time": "2026-08-08T20:45:00+07:00",
+      "end_time": "2026-08-08T21:45:00+07:00"
+    },
+    {
+      "performance_id": "garden-d2-ali",
+      "artist_name": "Ali",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/5bc64e92c273be6fa6c6d47241dbc1b8/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "garden",
+      "start_time": "2026-08-08T22:00:00+07:00",
+      "end_time": "2026-08-08T23:00:00+07:00"
+    },
+    {
+      "performance_id": "garden-d2-white-chorus",
+      "artist_name": "White Chorus",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/00db3887fb7bb1760632b58b4d3200c7/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "garden",
+      "start_time": "2026-08-08T23:15:00+07:00",
+      "end_time": "2026-08-09T00:15:00+07:00"
+    },
+    {
+      "performance_id": "garden-d3-sukses-lancar-rejeki",
+      "artist_name": "Sukses Lancar Rejeki",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/56036b4d4f328fd86c169db6ad92f843/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "garden",
+      "start_time": "2026-08-09T15:15:00+07:00",
+      "end_time": "2026-08-09T16:15:00+07:00"
+    },
+    {
+      "performance_id": "garden-d3-nadhif-basalamah",
+      "artist_name": "Nadhif Basalamah",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/cd2dd619e3dae4ad0a57e05b444025d9/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "garden",
+      "start_time": "2026-08-09T16:30:00+07:00",
+      "end_time": "2026-08-09T17:30:00+07:00"
+    },
+    {
+      "performance_id": "garden-d3-kotak",
+      "artist_name": "Kotak",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/e4673ae29322bf70b5334b158caac8a6/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "garden",
+      "start_time": "2026-08-09T18:30:00+07:00",
+      "end_time": "2026-08-09T19:30:00+07:00"
+    },
+    {
+      "performance_id": "garden-d3-smash",
+      "artist_name": "Smash",
+      "artist_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Sm%2Ash_crop.jpg/330px-Sm%2Ash_crop.jpg",
+      "day_index": 3,
+      "stage_id": "garden",
+      "start_time": "2026-08-09T19:45:00+07:00",
+      "end_time": "2026-08-09T20:45:00+07:00"
+    },
+    {
+      "performance_id": "garden-d3-ten2five",
+      "artist_name": "Ten2Five",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/3d70bc6273c95068bf657cf4c1541e8a/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "garden",
+      "start_time": "2026-08-09T21:00:00+07:00",
+      "end_time": "2026-08-09T22:00:00+07:00"
+    },
+    {
+      "performance_id": "garden-d3-juan-reza",
+      "artist_name": "Juan Reza",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/cab9815d47fe45b9d169bb72702b2fda/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "garden",
+      "start_time": "2026-08-09T22:00:00+07:00",
+      "end_time": "2026-08-09T23:00:00+07:00"
+    },
+    {
+      "performance_id": "garden-d3-robokop-ft-mikkizia",
+      "artist_name": "Robokop ft. Mikkizia",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/3d0420de552370b61649d6760ea1f412/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "garden",
+      "start_time": "2026-08-09T23:15:00+07:00",
+      "end_time": "2026-08-10T00:15:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d1-black-horses",
+      "artist_name": "Black Horses",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/b393ca85961a17c8366c8b86891b1ccd/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tspco",
+      "start_time": "2026-08-07T15:45:00+07:00",
+      "end_time": "2026-08-07T16:45:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d1-kale",
+      "artist_name": "Kale",
+      "artist_image": "https://ui-avatars.com/api/?name=Kale&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 1,
+      "stage_id": "tspco",
+      "start_time": "2026-08-07T17:00:00+07:00",
+      "end_time": "2026-08-07T18:00:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d1-marbles",
+      "artist_name": "Marbles",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/3ddf26a9c8d5da6d11f6d34f6fd236e4/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tspco",
+      "start_time": "2026-08-07T18:30:00+07:00",
+      "end_time": "2026-08-07T19:30:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d1-fresly-nikijuluw",
+      "artist_name": "Fresly Nikijuluw",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/53fe1f2cb6be0534d15edf8262c79615/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tspco",
+      "start_time": "2026-08-07T19:45:00+07:00",
+      "end_time": "2026-08-07T20:45:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d1-om-lorenza",
+      "artist_name": "OM Lorenza",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/c9f221bd358c92eeae3ec89db58c13b0/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tspco",
+      "start_time": "2026-08-07T21:00:00+07:00",
+      "end_time": "2026-08-07T22:00:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d1-sore-ze-band",
+      "artist_name": "Sore Ze Band",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/32f4f77338a64dc5209c893ce218152d/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tspco",
+      "start_time": "2026-08-07T22:15:00+07:00",
+      "end_time": "2026-08-07T23:15:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d2-geisha",
+      "artist_name": "Geisha",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/bc4300385dddbacbf2f78fc202edbae7/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "tspco",
+      "start_time": "2026-08-08T15:45:00+07:00",
+      "end_time": "2026-08-08T16:45:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d2-societeit-de-harmonie",
+      "artist_name": "Societeit de Harmonie",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/65207260eeaf8ac1adac375b95e0d6e7/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "tspco",
+      "start_time": "2026-08-08T17:00:00+07:00",
+      "end_time": "2026-08-08T18:00:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d2-the-cottons",
+      "artist_name": "The Cottons",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/a4831615a305f1cd811d16e45f8b11f0/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "tspco",
+      "start_time": "2026-08-08T19:00:00+07:00",
+      "end_time": "2026-08-08T20:00:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d2-strangers",
+      "artist_name": "Strangers",
+      "artist_image": "https://ui-avatars.com/api/?name=Strangers&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 2,
+      "stage_id": "tspco",
+      "start_time": "2026-08-08T20:15:00+07:00",
+      "end_time": "2026-08-08T21:15:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d2-beijing-connection",
+      "artist_name": "Beijing Connection",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/a1dee5b0aae51bdfdc3524af3bbd818e/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "tspco",
+      "start_time": "2026-08-08T21:30:00+07:00",
+      "end_time": "2026-08-08T22:30:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d2-the-paps",
+      "artist_name": "The Paps",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/89d08054bff5b132e0d5123998d6475b/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "tspco",
+      "start_time": "2026-08-08T22:45:00+07:00",
+      "end_time": "2026-08-08T23:45:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d3-the-panturas",
+      "artist_name": "The Panturas",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/e1dbf46f0d6db821d5d157f50c67cdc0/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "tspco",
+      "start_time": "2026-08-09T15:45:00+07:00",
+      "end_time": "2026-08-09T16:45:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d3-skandal",
+      "artist_name": "Skandal",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/3a75abda641cd269b7fff00721698137/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "tspco",
+      "start_time": "2026-08-09T17:00:00+07:00",
+      "end_time": "2026-08-09T18:00:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d3-fiersa-besari",
+      "artist_name": "Fiersa Besari",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/e2329b053efab49ff5020d366ea4b65e/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "tspco",
+      "start_time": "2026-08-09T19:00:00+07:00",
+      "end_time": "2026-08-09T20:00:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d3-marcello-tahitoe",
+      "artist_name": "Marcello Tahitoe",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/bf174822c949c4be02a51a7f88cd67fa/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "tspco",
+      "start_time": "2026-08-09T20:15:00+07:00",
+      "end_time": "2026-08-09T21:15:00+07:00"
+    },
+    {
+      "performance_id": "tspco-d3-polkawars-ft-alahad",
+      "artist_name": "Polkawars ft. Alahad",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/c18ab44fdf867ad463eb1486b0cfcf86/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "tspco",
+      "start_time": "2026-08-09T21:30:00+07:00",
+      "end_time": "2026-08-09T22:30:00+07:00"
+    },
+    {
+      "performance_id": "joged-d1-pendarra",
+      "artist_name": "Pendarra",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/c2d6e2b9fc3d1b34e8556d8b1fa33597/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "joged",
+      "start_time": "2026-08-07T15:45:00+07:00",
+      "end_time": "2026-08-07T16:45:00+07:00"
+    },
+    {
+      "performance_id": "joged-d1-endah-n-rhesa",
+      "artist_name": "Endah N Rhesa",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/68fc179e85136c76f0a84fd9a34ae3a6/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "joged",
+      "start_time": "2026-08-07T17:00:00+07:00",
+      "end_time": "2026-08-07T18:00:00+07:00"
+    },
+    {
+      "performance_id": "joged-d1-syikat-musik-service",
+      "artist_name": "Syikat Musik Service",
+      "artist_image": "https://ui-avatars.com/api/?name=Syikat%20Musik%20Service&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 1,
+      "stage_id": "joged",
+      "start_time": "2026-08-07T18:15:00+07:00",
+      "end_time": "2026-08-07T19:15:00+07:00"
+    },
+    {
+      "performance_id": "joged-d1-alter-jkt",
+      "artist_name": "Alter JKT",
+      "artist_image": "https://ui-avatars.com/api/?name=Alter%20JKT&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 1,
+      "stage_id": "joged",
+      "start_time": "2026-08-07T19:30:00+07:00",
+      "end_time": "2026-08-07T20:30:00+07:00"
+    },
+    {
+      "performance_id": "joged-d1-boyband-hits-forever-young-people",
+      "artist_name": "Boyband Hits: Forever Young People",
+      "artist_image": "https://ui-avatars.com/api/?name=Boyband%20Hits%3A%20Forever%20Young%20People&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 1,
+      "stage_id": "joged",
+      "start_time": "2026-08-07T20:45:00+07:00",
+      "end_time": "2026-08-07T21:45:00+07:00"
+    },
+    {
+      "performance_id": "joged-d1-jemsii-x-suisei",
+      "artist_name": "Jemsii x Suisei",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/3dc06a68c53c598ddeccd85d932e5546/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "joged",
+      "start_time": "2026-08-07T22:00:00+07:00",
+      "end_time": "2026-08-07T23:00:00+07:00"
+    },
+    {
+      "performance_id": "joged-d2-banda-neira",
+      "artist_name": "Banda Neira",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/7921e45510c6f03827463a9b850f21bb/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "joged",
+      "start_time": "2026-08-08T15:45:00+07:00",
+      "end_time": "2026-08-08T16:45:00+07:00"
+    },
+    {
+      "performance_id": "joged-d2-adhitia-sofyan",
+      "artist_name": "Adhitia Sofyan",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/5126ac73f5e14c1da79fbb5ad891da88/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "joged",
+      "start_time": "2026-08-08T17:00:00+07:00",
+      "end_time": "2026-08-08T18:00:00+07:00"
+    },
+    {
+      "performance_id": "joged-d2-silampukau",
+      "artist_name": "Silampukau",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/792cb6ebe7f0054c2d7f062d274debf7/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "joged",
+      "start_time": "2026-08-08T18:45:00+07:00",
+      "end_time": "2026-08-08T19:45:00+07:00"
+    },
+    {
+      "performance_id": "joged-d2-inis",
+      "artist_name": "Inis",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/88cdaa0649f49fe4d40d8c6f372912dd/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "joged",
+      "start_time": "2026-08-08T20:00:00+07:00",
+      "end_time": "2026-08-08T21:00:00+07:00"
+    },
+    {
+      "performance_id": "joged-d2-crowdsurfers-ft-faizal-permana-510",
+      "artist_name": "Crowdsurfers ft. Faizal Permana 510",
+      "artist_image": "https://ui-avatars.com/api/?name=Crowdsurfers%20ft.%20Faizal%20Permana%20510&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 2,
+      "stage_id": "joged",
+      "start_time": "2026-08-08T21:15:00+07:00",
+      "end_time": "2026-08-08T22:15:00+07:00"
+    },
+    {
+      "performance_id": "joged-d3-enau",
+      "artist_name": "Enau",
+      "artist_image": "https://ui-avatars.com/api/?name=Enau&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 3,
+      "stage_id": "joged",
+      "start_time": "2026-08-09T15:45:00+07:00",
+      "end_time": "2026-08-09T16:45:00+07:00"
+    },
+    {
+      "performance_id": "joged-d3-radit-echoman-x-steppa-gyal",
+      "artist_name": "Radit Echoman x Steppa Gyal",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/013cba51d760d76c9aaf6af4dda77305/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "joged",
+      "start_time": "2026-08-09T17:00:00+07:00",
+      "end_time": "2026-08-09T18:00:00+07:00"
+    },
+    {
+      "performance_id": "joged-d3-orutaku-club",
+      "artist_name": "Orutaku Club",
+      "artist_image": "https://ui-avatars.com/api/?name=Orutaku%20Club&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 3,
+      "stage_id": "joged",
+      "start_time": "2026-08-09T19:15:00+07:00",
+      "end_time": "2026-08-09T20:15:00+07:00"
+    },
+    {
+      "performance_id": "joged-d3-weekenders-service-crew",
+      "artist_name": "Weekenders Service Crew",
+      "artist_image": "https://ui-avatars.com/api/?name=Weekenders%20Service%20Crew&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 3,
+      "stage_id": "joged",
+      "start_time": "2026-08-09T20:30:00+07:00",
+      "end_time": "2026-08-09T21:30:00+07:00"
+    },
+    {
+      "performance_id": "joged-d3-blowjams",
+      "artist_name": "Blowjams",
+      "artist_image": "https://ui-avatars.com/api/?name=Blowjams&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 3,
+      "stage_id": "joged",
+      "start_time": "2026-08-09T21:45:00+07:00",
+      "end_time": "2026-08-09T22:45:00+07:00"
+    },
+    {
+      "performance_id": "joged-d3-namoy-budaya",
+      "artist_name": "Namoy Budaya",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/85ed6c1ddf53985ce9a83c6a02e0e24e/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "joged",
+      "start_time": "2026-08-09T23:00:00+07:00",
+      "end_time": "2026-08-10T00:00:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d1-stand-up-indo-jakarta-timur",
+      "artist_name": "Stand Up Indo Jakarta Timur",
+      "artist_image": "https://ui-avatars.com/api/?name=Stand%20Up%20Indo%20Jakarta%20Timur&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 1,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-07T15:15:00+07:00",
+      "end_time": "2026-08-07T16:15:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d1-voxy",
+      "artist_name": "Voxy",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/1cbd37c72dc9e21d0f660ce926c79919/250x250-000000-80-0-0.jpg",
+      "day_index": 1,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-07T16:30:00+07:00",
+      "end_time": "2026-08-07T17:30:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d1-upleaf",
+      "artist_name": "Upleaf",
+      "artist_image": "https://ui-avatars.com/api/?name=Upleaf&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 1,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-07T19:15:00+07:00",
+      "end_time": "2026-08-07T20:15:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d1-olsam",
+      "artist_name": "Olsam",
+      "artist_image": "https://ui-avatars.com/api/?name=Olsam&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 1,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-07T20:30:00+07:00",
+      "end_time": "2026-08-07T21:30:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d1-secret-guest",
+      "artist_name": "Secret Guest",
+      "artist_image": "https://ui-avatars.com/api/?name=Secret%20Guest&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 1,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-07T21:30:00+07:00",
+      "end_time": "2026-08-07T22:30:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d1-dj-tama",
+      "artist_name": "DJ Tama",
+      "artist_image": "https://ui-avatars.com/api/?name=DJ%20Tama&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 1,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-07T23:15:00+07:00",
+      "end_time": "2026-08-08T00:15:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d2-jen",
+      "artist_name": "Jen",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/46b81d6f2551900b284b1d128131960d/250x250-000000-80-0-0.jpg",
+      "day_index": 2,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-08T16:30:00+07:00",
+      "end_time": "2026-08-08T17:30:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d2-all-acc3ss",
+      "artist_name": "All Acc3ss",
+      "artist_image": "https://ui-avatars.com/api/?name=All%20Acc3ss&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 2,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-08T18:15:00+07:00",
+      "end_time": "2026-08-08T19:15:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d2-verryans",
+      "artist_name": "Verryans",
+      "artist_image": "https://ui-avatars.com/api/?name=Verryans&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 2,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-08T19:45:00+07:00",
+      "end_time": "2026-08-08T20:45:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d2-tiga-dara",
+      "artist_name": "Tiga Dara",
+      "artist_image": "https://ui-avatars.com/api/?name=Tiga%20Dara&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 2,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-08T21:00:00+07:00",
+      "end_time": "2026-08-08T22:00:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d2-secret-guest",
+      "artist_name": "Secret Guest",
+      "artist_image": "https://ui-avatars.com/api/?name=Secret%20Guest&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 2,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-08T22:15:00+07:00",
+      "end_time": "2026-08-08T23:15:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d3-oldies-but-goodies",
+      "artist_name": "Oldies But Goodies",
+      "artist_image": "https://ui-avatars.com/api/?name=Oldies%20But%20Goodies&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 3,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-09T15:15:00+07:00",
+      "end_time": "2026-08-09T16:15:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d3-inoya-house",
+      "artist_name": "Inoya House",
+      "artist_image": "https://cdn-images.dzcdn.net/images/artist/0e4aa71744b6699fe695d73da8ff3a57/250x250-000000-80-0-0.jpg",
+      "day_index": 3,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-09T16:30:00+07:00",
+      "end_time": "2026-08-09T17:30:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d3-secret-guest",
+      "artist_name": "Secret Guest",
+      "artist_image": "https://ui-avatars.com/api/?name=Secret%20Guest&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 3,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-09T18:15:00+07:00",
+      "end_time": "2026-08-09T19:15:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d3-pemuda-malam-senin",
+      "artist_name": "Pemuda Malam Senin",
+      "artist_image": "https://ui-avatars.com/api/?name=Pemuda%20Malam%20Senin&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 3,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-09T19:45:00+07:00",
+      "end_time": "2026-08-09T20:45:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d3-awcek-sound-fun",
+      "artist_name": "Awcek Sound Fun",
+      "artist_image": "https://ui-avatars.com/api/?name=Awcek%20Sound%20Fun&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 3,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-09T21:00:00+07:00",
+      "end_time": "2026-08-09T22:00:00+07:00"
+    },
+    {
+      "performance_id": "tspsquad-d3-tsp-squad",
+      "artist_name": "TSP Squad",
+      "artist_image": "https://ui-avatars.com/api/?name=TSP%20Squad&size=256&background=181A24&color=F5F6FA&bold=true&format=png",
+      "day_index": 3,
+      "stage_id": "tspsquad",
+      "start_time": "2026-08-09T22:15:00+07:00",
+      "end_time": "2026-08-09T23:15:00+07:00"
+    }
+  ]
+}

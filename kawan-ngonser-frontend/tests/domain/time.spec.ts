@@ -1,0 +1,91 @@
+import { describe, expect, it } from 'vitest'
+import {
+  countdownParts,
+  formatCountdown,
+  formatRelative,
+  formatTime,
+  minutesUntil,
+  parseVenueTime,
+  startOfVenueDay,
+  venueDateOf,
+} from '~/domain/time'
+
+const TZ = 'Asia/Jakarta' // UTC+7, no DST
+
+describe('parseVenueTime', () => {
+  const expected = Date.UTC(2026, 7, 7, 8, 30) // 15:30 Jakarta == 08:30 UTC
+
+  it('parses offset ISO', () => {
+    expect(parseVenueTime('2026-08-07T15:30:00+07:00', TZ)).toBe(expected)
+  })
+
+  it('parses Z-suffixed UTC ISO', () => {
+    expect(parseVenueTime('2026-08-07T08:30:00Z', TZ)).toBe(expected)
+    expect(parseVenueTime('2026-08-07T08:30:00.000Z', TZ)).toBe(expected)
+  })
+
+  it('interprets naive strings in the venue zone (§3.1)', () => {
+    expect(parseVenueTime('2026-08-07T15:30:00', TZ)).toBe(expected)
+  })
+
+  it('unwraps Mongo Extended JSON', () => {
+    expect(parseVenueTime({ $date: '2026-08-07T15:30:00+07:00' }, TZ)).toBe(expected)
+    expect(parseVenueTime({ $date: expected }, TZ)).toBe(expected)
+  })
+
+  it('passes through epoch numbers', () => {
+    expect(parseVenueTime(expected, TZ)).toBe(expected)
+  })
+
+  it('returns null on garbage', () => {
+    expect(parseVenueTime('yesterday', TZ)).toBeNull()
+    expect(parseVenueTime('', TZ)).toBeNull()
+    expect(parseVenueTime(undefined, TZ)).toBeNull()
+    expect(parseVenueTime(Number.NaN, TZ)).toBeNull()
+  })
+})
+
+describe('venue formatting (device TZ independent)', () => {
+  const ms = Date.UTC(2026, 7, 7, 8, 30)
+
+  it('formats wall-clock time in the venue zone', () => {
+    expect(formatTime(ms, TZ)).toBe('15:30')
+    expect(formatTime(ms, 'UTC')).toBe('08:30')
+  })
+
+  it('assigns the venue calendar date', () => {
+    // 00:15 Jakarta on the 8th is still the 7th in UTC
+    const lateMs = Date.UTC(2026, 7, 7, 17, 15)
+    expect(venueDateOf(lateMs, TZ)).toBe('2026-08-08')
+    expect(venueDateOf(lateMs, 'UTC')).toBe('2026-08-07')
+  })
+
+  it('computes venue midnight', () => {
+    expect(startOfVenueDay('2026-08-07', TZ)).toBe(Date.UTC(2026, 7, 6, 17, 0))
+  })
+})
+
+describe('countdown + relative labels', () => {
+  it('splits countdown parts', () => {
+    const delta = ((2 * 24 + 3) * 60 + 41) * 60_000
+    expect(countdownParts(delta)).toEqual({ days: 2, hours: 3, mins: 41 })
+    expect(formatCountdown(delta)).toBe('2d 3h 41m')
+  })
+
+  it('floors negative countdowns to zero', () => {
+    expect(formatCountdown(-5_000)).toBe('0d 0h 0m')
+  })
+
+  it('formats relative labels', () => {
+    expect(formatRelative(10_000)).toBe('now')
+    expect(formatRelative(60_000)).toBe('in 1 min')
+    expect(formatRelative(58 * 60_000)).toBe('in 58 mins')
+    expect(formatRelative(148 * 60_000)).toBe('in 2h 28m')
+    expect(formatRelative(-2 * 60_000)).toBe('started')
+  })
+
+  it('computes minutes until', () => {
+    expect(minutesUntil(1_000_000, 1_000_000 - 13 * 60_000)).toBe(13)
+    expect(minutesUntil(0, 60_000)).toBe(0)
+  })
+})

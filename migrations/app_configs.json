@@ -1,0 +1,65 @@
+[
+  {
+    "default_lead_time_min": 15,
+    "battery_low_threshold_pct": 20,
+    "notification_templates": [
+      {
+        "type": "performance",
+        "title": "{artist} in {x} mins",
+        "body": "Head to {stage} and grab your spot 🙌"
+      },
+      {
+        "type": "performance",
+        "title": "{artist} is performing in {x} mins",
+        "body": "Head to {stage} and prepare to enjoy"
+      },
+      {
+        "type": "performance",
+        "title": "{artist} is up next!",
+        "body": "{stage}, {x} minutes — time to start moving."
+      },
+      {
+        "type": "performance",
+        "title": "{x} mins till {artist}",
+        "body": "Front row won't wait — head to {stage}."
+      },
+      {
+        "type": "performance",
+        "title": "Incoming: {artist} 🎤",
+        "body": "Hitting {stage} in {x} mins. You know what to do."
+      },
+      {
+        "type": "custom_event",
+        "title": "{event} in {x} mins",
+        "body": "You planned this — don't bail on yourself."
+      },
+      {
+        "type": "custom_event",
+        "title": "Time for {event}",
+        "body": "{x} minutes to go — squeeze it in before the next set."
+      },
+      {
+        "type": "custom_event",
+        "title": "{event} — {x} mins away",
+        "body": "Future you says thanks."
+      }
+    ],
+    "copy_strings": {
+      "sync_banner": {
+        "text": "Fresh concert data just dropped. Sync it?",
+        "confirm": "Yes please",
+        "dismiss": "I'll handle it myself"
+      },
+      "sync_overwrite_confirm": {
+        "text": "Heads up — you've edited this concert's data. Syncing replaces those edits with the server version (your picks and custom events are safe). Replace them?",
+        "confirm": "Replace my edits",
+        "dismiss": "Keep my edits"
+      },
+      "day_complete_banner": "That's a wrap for today. See you on Day {x} — rest up! 🌙",
+      "concert_complete_banner": "That's a wrap. What a ride — get home safe, and keep the songs with you. 🎶"
+    },
+    "updated_at": {
+      "$date": "2026-08-04T00:00:00+07:00"
+    }
+  }
+]

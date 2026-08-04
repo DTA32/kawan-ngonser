@@ -1,0 +1,43 @@
+{
+  "name": "kawan-ngonser-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@nuxt/fonts": "^0.14.0",
+    "@nuxt/ui": "^4.10.0",
+    "@pinia/nuxt": "^1.0.1",
+    "@vite-pwa/nuxt": "^1.1.1",
+    "@vueuse/core": "^14.4.0",
+    "@vueuse/integrations": "^14.4.0",
+    "@vueuse/nuxt": "^14.4.0",
+    "dexie": "^4.4.4",
+    "luxon": "^3.7.2",
+    "nuxt": "^4.5.1",
+    "pinia": "^4.0.2",
+    "sortablejs": "^1.15.7",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.121",
+    "@types/luxon": "^3.7.3",
+    "@types/sortablejs": "^1.15.9",
+    "@vitest/coverage-v8": "^4.1.10",
+    "fake-indexeddb": "^6.2.5",
+    "playwright-core": "^1.62.1",
+    "typescript": "~5.9.0",
+    "vitest": "^4.1.10",
+    "vue-tsc": "^3.3.9",
+    "workbox-precaching": "^7.4.1",
+    "workbox-routing": "^7.4.1"
+  }
+}

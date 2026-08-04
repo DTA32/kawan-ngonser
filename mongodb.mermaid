@@ -1,0 +1,74 @@
+erDiagram
+    %% ============================================================
+    %% Kawan Ngonser - MongoDB ERD (from REQUIREMENTS.md v4)
+    %% Collections (3): concerts, artists, app_configs
+    %% days / stages / performances boxes are embedded subdocuments of
+    %% the concert doc (shown as fields on concerts too) - NOT collections.
+    %% artists is a standalone master-copy collection: the admin console
+    %% imports name/photo from it into performances; no reference is kept,
+    %% duplicated data between the two is intentional.
+    %% On-device user data lives in indexeddb.mermaid.
+    %% Solid line  = embedded subdocument (same document)
+    %% Dashed line = reference by id
+    %% ============================================================
+
+    concerts {
+        ObjectId _id PK "Mongo internal id only"
+        string event_id UK "business id used by API and clients, e.g. sounds-project-2026"
+        bool visible "admin toggle via DB: false hides the concert from every endpoint"
+        int version "bumped on every data change (TR-5), served by GET /concerts/:id/version"
+        string name
+        string logo "url or embedded asset"
+        string place
+        string description
+        string timezone "venue-local, e.g. Asia/Jakarta"
+        json days "embedded array - structure in days box"
+        json stages "embedded array - structure in stages box"
+        json performances "embedded array - structure in performances box"
+        datetime created_at
+        datetime updated_at
+    }
+
+    days {
+        int day_index "1-based, unique within concert"
+        string date "YYYY-MM-DD"
+    }
+
+    stages {
+        string stage_id "unique within concert, e.g. main"
+        string name
+        string color "hex, timetable coloring (W-2)"
+    }
+
+    performances {
+        string performance_id UK "business id, e.g. perf-001 - stable across syncs, referenced by local plans"
+        string artist_name "copied from artists on import - duplication is fine (payload: artistName)"
+        string artist_image "copied from artists on import - duplication is fine (payload: artistImage)"
+        int day_index "days.day_index"
+        string stage_id "stages.stage_id"
+        datetime start_time "venue-local"
+        datetime end_time "venue-local"
+    }
+
+    artists {
+        ObjectId _id PK
+        string name "master copy - admin console imports once, no re-searching"
+        string photo_url "master copy for performances.artist_image"
+        datetime created_at
+        datetime updated_at
+    }
+
+    app_configs {
+        ObjectId _id PK "single document"
+        int default_lead_time_min "15 (N-3)"
+        int battery_low_threshold_pct "20 (G-3)"
+        json notification_templates "pools of {type: performance|custom_event, title, body} - random pick per fire (C15/C16)"
+        json copy_strings "server-tweakable copy C11-C14 (section 11)"
+        datetime updated_at
+    }
+
+    concerts ||--|{ days : "embeds"
+    concerts ||--|{ stages : "embeds"
+    concerts ||--o{ performances : "embeds"
+    days ||..o{ performances : "day_index"
+    stages ||..o{ performances : "stage_id"
