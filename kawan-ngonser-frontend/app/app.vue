@@ -70,6 +70,8 @@ const isDev = import.meta.dev
 
 <template>
   <UApp :toaster="{ position: 'top-center', duration: 6000 }">
+    <!-- injects <link rel="manifest"> — without this vite-pwa adds no head tags -->
+    <NuxtPwaManifest />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

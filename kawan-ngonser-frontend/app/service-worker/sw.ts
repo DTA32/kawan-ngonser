@@ -1,4 +1,5 @@
 /// <reference lib="webworker" />
+import { clientsClaim } from 'workbox-core'
 import { cleanupOutdatedCaches, precacheAndRoute } from 'workbox-precaching'
 import { NavigationRoute, registerRoute } from 'workbox-routing'
 
@@ -7,6 +8,9 @@ declare const self: ServiceWorkerGlobalScope & { __WB_MANIFEST: Array<{ url: str
 const IMAGE_CACHE = 'kn-images-v1'
 
 // App shell (TR-2): precache everything the build emits + SPA fallback.
+// clientsClaim: control the page from the FIRST visit so the image route and
+// offline shell work without a reload (updates still wait for the prompt).
+clientsClaim()
 precacheAndRoute(self.__WB_MANIFEST)
 cleanupOutdatedCaches()
 
