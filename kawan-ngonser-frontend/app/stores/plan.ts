@@ -21,6 +21,7 @@ import {
   type PerformanceOverride,
   type PickMap,
   type PlanSettings,
+  type TimetableViewPref,
   type WidgetId,
 } from '~/domain/types'
 import { persist } from '~/utils/persist-feedback'
@@ -38,6 +39,7 @@ function settingsToRow(s: PlanSettings): PlanRow {
     attending_day_indexes: [...s.attendingDayIndexes],
     conflict_display_pref: s.conflictDisplayPref,
     backburner_notify_default: s.backburnerNotifyDefault,
+    timetable_view_pref: s.timetableViewPref,
     widget_order: [...s.widgetOrder],
     lead_time_override_min: s.leadTimeOverrideMin,
   }
@@ -90,6 +92,7 @@ export const usePlanStore = defineStore('plan', () => {
           attendingDayIndexes: row.attending_day_indexes,
           conflictDisplayPref: row.conflict_display_pref,
           backburnerNotifyDefault: row.backburner_notify_default ?? false,
+          timetableViewPref: row.timetable_view_pref ?? 'compact',
           widgetOrder: row.widget_order,
           leadTimeOverrideMin: row.lead_time_override_min,
         },
@@ -155,6 +158,7 @@ export const usePlanStore = defineStore('plan', () => {
           attendingDayIndexes: [],
           conflictDisplayPref: 'equal',
           backburnerNotifyDefault: false,
+          timetableViewPref: 'compact',
           widgetOrder: [...DEFAULT_WIDGET_ORDER],
           leadTimeOverrideMin: null,
         },
@@ -182,6 +186,8 @@ export const usePlanStore = defineStore('plan', () => {
     updateSettings(eventId, { attendingDayIndexes: [...days].sort((a, b) => a - b) })
   const setConflictDisplayPref = (eventId: string, pref: ConflictDisplayPref) =>
     updateSettings(eventId, { conflictDisplayPref: pref })
+  const setTimetableViewPref = (eventId: string, pref: TimetableViewPref) =>
+    updateSettings(eventId, { timetableViewPref: pref })
   const setWidgetOrder = (eventId: string, order: WidgetId[]) =>
     updateSettings(eventId, { widgetOrder: order })
   const setLeadTimeOverride = (eventId: string, min: number | null) =>
@@ -317,6 +323,7 @@ export const usePlanStore = defineStore('plan', () => {
     selectDays,
     setConflictDisplayPref,
     setBackburnerNotifyDefault,
+    setTimetableViewPref,
     setWidgetOrder,
     setLeadTimeOverride,
     setPicks,

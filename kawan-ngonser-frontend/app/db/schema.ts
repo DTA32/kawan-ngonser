@@ -8,7 +8,7 @@
  * readable pre-paint, §3.4).
  */
 import Dexie, { type Table } from 'dexie'
-import type { Concert, ConflictDisplayPref, PickStatus, WidgetId } from '~/domain/types'
+import type { Concert, ConflictDisplayPref, PickStatus, TimetableViewPref, WidgetId } from '~/domain/types'
 
 export interface CacheRow {
   event_id: string
@@ -27,6 +27,8 @@ export interface PlanRow {
   conflict_display_pref: ConflictDisplayPref
   /** Optional for pre-existing rows — hydrates as false */
   backburner_notify_default?: boolean
+  /** Optional for pre-existing rows — hydrates as 'compact' (W-2) */
+  timetable_view_pref?: TimetableViewPref
   widget_order: WidgetId[]
   lead_time_override_min: number | null
 }

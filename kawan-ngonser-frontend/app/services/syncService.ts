@@ -71,6 +71,8 @@ export async function commitSync(
           event_id: eventId,
           attending_day_indexes: revalidated.attendingDayIndexes,
           conflict_display_pref: plan.settings.conflictDisplayPref,
+          backburner_notify_default: plan.settings.backburnerNotifyDefault,
+          timetable_view_pref: plan.settings.timetableViewPref,
           widget_order: [...plan.settings.widgetOrder],
           lead_time_override_min: plan.settings.leadTimeOverrideMin,
         })

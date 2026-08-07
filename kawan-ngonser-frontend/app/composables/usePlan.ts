@@ -33,6 +33,7 @@ export function usePlan(eventId: MaybeRefOrGetter<string>) {
     selectDays: (days: number[]) => store.selectDays(id(), days),
     setConflictDisplayPref: (pref: 'equal' | 'hidden') => store.setConflictDisplayPref(id(), pref),
     setBackburnerNotifyDefault: (on: boolean) => store.setBackburnerNotifyDefault(id(), on),
+    setTimetableViewPref: (pref: 'compact' | 'detailed') => store.setTimetableViewPref(id(), pref),
     setWidgetOrder: (order: Parameters<typeof store.setWidgetOrder>[1]) => store.setWidgetOrder(id(), order),
     setLeadTimeOverride: (min: number | null) => store.setLeadTimeOverride(id(), min),
     cancelPlan: () => store.cancelPlan(id()),

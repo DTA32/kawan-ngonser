@@ -103,6 +103,10 @@ export const DESIGN_COPY = {
   showMore: 'Show {n} more · {remaining} left',
   addBreak: 'Add a break',
   emptySlot: 'Free · add something here',
+  // W-2 view toggle (new copy)
+  timetableViewCompact: 'Compact view',
+  timetableViewDetailed: 'Detailed view',
+  jumpToNow: 'Jump to now',
   liveBanner: 'Day {x} is happening now',
   liveBannerOpen: 'Open',
   previewingDay: 'Previewing Day {x} · {date}',

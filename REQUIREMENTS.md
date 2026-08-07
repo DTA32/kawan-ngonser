@@ -172,6 +172,9 @@ On a day the user attends, the homepage is **entirely different**: a widget dash
 - Shows the next few hours; **expandable** to the end of the day's performances, and collapsible back.
 - Entries are **colored by stage**.
 - Conflicting entries are rendered according to the conflict display preference (O-2).
+- Two **view modes**, toggled from the widget header and remembered per concert (defaults to compact):
+  - **Compact** — the cluster-row layout above: uniform-height rows, overlaps split equally.
+  - **Detailed** — a minute-proportional day canvas with an hour axis, block heights that match real durations, and side-by-side lanes so a *partial* clash reads as partial. Scrolls inside the widget, opens on the current time. Tapping empty canvas creates a custom event at that time. Same content as compact (preferred + backburner per O-2 + custom events).
 - Tapping a performance opens a **bottom sheet**: artist photo, artist name, time (relative first, then exact), stage. Actions:
   - **"Skip this one"** (C17) — cancel watching this performance.
   - If the tapped performance is the backburner one of a conflict: **"Make this my pick"** (C18) — swaps preferred ↔ backburner — and **"Notify me for this too"** (C19) — opts this backburner performance into notifications (N-1). Once opted in, the button flips to **"Stop notifying"** (C23).
@@ -298,6 +301,8 @@ The agreed wording for all user-facing strings — implementers should use these
 | H-5 download failure toast | "Couldn't download the concert — check your signal and try again." |
 | H-2b empty server list | "Nothing new to plan right now." / "New concerts show up here — JSON upload works too." |
 | W-4 pagination | "Show {n} more · {remaining} left" |
+| W-2 view toggle (aria labels) | "Compact view" / "Detailed view" |
+| W-2 detailed view, scrolled away from now | "Jump to now" |
 | S-5 confirm dialog | "Cancel this concert plan?" / "Your picks, custom events, and edits for {concert} will be deleted from this device. The concert stays available to plan again." — "Cancel plan" / "Keep my plan" |
 
 (Screen microcopy from design.pen — step titles, widget titles, empty states, timetable labels — is used verbatim from the design file and collected in `kawan-ngonser-frontend/app/utils/copy.ts`.)

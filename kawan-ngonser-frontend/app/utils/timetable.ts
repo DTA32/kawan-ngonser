@@ -47,6 +47,30 @@ const GAP_MIN_MS = 25 * 60 * 1000
 const MAX_COLUMNS = 3
 const ROLE_ORDER: Record<TimetableRole, number> = { preferred: 0, custom: 1, backburner: 2 }
 
+/**
+ * Role assignment + filtering, shared by BOTH timetable views (compact here,
+ * proportional in utils/timetable-detailed) so the two can never disagree on
+ * what belongs on the timetable. Sorted by start.
+ */
+export function toColumns(
+  entries: ScheduleEntry[],
+  picks: PickMap,
+  pref: ConflictDisplayPref,
+): TimetableColumn[] {
+  const columns: TimetableColumn[] = []
+  for (const entry of entries) {
+    if (entry.kind === 'custom') {
+      columns.push({ entry, role: 'custom' })
+      continue
+    }
+    const status = picks[entry.performance.performanceId]?.status
+    if (status === 'preferred') columns.push({ entry, role: 'preferred' })
+    else if (status === 'backburner' && pref === 'equal') columns.push({ entry, role: 'backburner' })
+  }
+  columns.sort((a, b) => a.entry.startMs - b.entry.startMs)
+  return columns
+}
+
 export function buildTimetableModel(input: {
   entries: ScheduleEntry[]
   picks: PickMap
@@ -59,17 +83,7 @@ export function buildTimetableModel(input: {
   const windowMs = input.forwardWindowMs ?? DEFAULT_WINDOW_MS
 
   // 1. Roles + filtering
-  const columns: TimetableColumn[] = []
-  for (const entry of input.entries) {
-    if (entry.kind === 'custom') {
-      columns.push({ entry, role: 'custom' })
-      continue
-    }
-    const status = picks[entry.performance.performanceId]?.status
-    if (status === 'preferred') columns.push({ entry, role: 'preferred' })
-    else if (status === 'backburner' && pref === 'equal') columns.push({ entry, role: 'backburner' })
-  }
-  columns.sort((a, b) => a.entry.startMs - b.entry.startMs)
+  const columns = toColumns(input.entries, picks, pref)
 
   // 2. Transitive overlap clustering
   const clusters: TimetableColumn[][] = []

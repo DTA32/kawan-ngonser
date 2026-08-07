@@ -1,11 +1,14 @@
 <script setup lang="ts">
 /**
- * W-2 timetable. Cluster-row layout from utils/timetable: past collapse,
- * now marker, hour-labeled slots with equal-split conflict columns, gap
- * slots (+ custom events), forward-window expand, add-a-break.
+ * W-2 timetable, in two renderings the user picks between (persisted per
+ * concert as `timetableViewPref`):
+ *  - compact  — cluster rows from utils/timetable: past collapse, now marker,
+ *               hour-labeled slots with equal-split conflict columns, gap
+ *               slots (+ custom events), forward-window expand, add-a-break.
+ *  - detailed — the minute-proportional canvas in TimetableDetailed.
  */
 import { formatTime } from '~/domain/time'
-import type { Concert } from '~/domain/types'
+import type { Concert, TimetableViewPref } from '~/domain/types'
 import { DESIGN_COPY, interpolate } from '~/utils/copy'
 import { buildTimetableModel, type SlotNode } from '~/utils/timetable'
 
@@ -37,6 +40,13 @@ const model = computed(() => buildTimetableModel({
   mode: props.mode,
 }))
 
+const view = computed(() => plan.settings.value?.timetableViewPref ?? 'compact')
+
+const VIEWS: { value: TimetableViewPref, icon: string, label: string }[] = [
+  { value: 'compact', icon: 'i-lucide-list', label: DESIGN_COPY.timetableViewCompact },
+  { value: 'detailed', icon: 'i-lucide-calendar-days', label: DESIGN_COPY.timetableViewDetailed },
+]
+
 const dayDone = computed(() =>
   props.mode === 'today'
   && model.value.visible.length === 0
@@ -54,8 +64,37 @@ function onEntrySelect(col: SlotNode['rows'][number][number]) {
   <CommonWidgetCard>
     <template #title>{{ DESIGN_COPY.widgetTimetable }}</template>
 
+    <!-- compact / detailed switch -->
+    <template #header-extra>
+      <div class="flex items-center gap-0.5 rounded-[9px] bg-surface-raised p-0.5" role="radiogroup" aria-label="Timetable view">
+        <button
+          v-for="v in VIEWS"
+          :key="v.value"
+          type="button"
+          role="radio"
+          :aria-checked="view === v.value"
+          :aria-label="v.label"
+          class="rounded-[7px] px-2 py-1"
+          :class="view === v.value ? 'bg-primary/15' : ''"
+          @click="plan.setTimetableViewPref(v.value)"
+        >
+          <UIcon :name="v.icon" class="size-3.5" :class="view === v.value ? 'text-primary' : 'text-text-muted'" />
+        </button>
+      </div>
+    </template>
+
+    <ConcertDayTimetableDetailed
+      v-if="view === 'detailed'"
+      :concert="concert"
+      :day-index="dayIndex"
+      :mode="mode"
+      @select-performance="emit('selectPerformance', $event)"
+      @select-custom="emit('selectCustom', $event)"
+      @add-event="emit('addEvent', $event)"
+    />
+
     <!-- past collapse (today only) -->
-    <template v-if="mode === 'today' && model.past.length > 0">
+    <template v-if="view === 'compact' && mode === 'today' && model.past.length > 0">
       <button
         type="button"
         class="flex w-full items-center justify-center gap-1.5 rounded-[10px] bg-bg px-2.5 py-2"
@@ -99,13 +138,13 @@ function onEntrySelect(col: SlotNode['rows'][number][number]) {
     </template>
 
     <!-- now marker (today only) -->
-    <div v-if="mode === 'today'" class="flex items-center gap-2">
+    <div v-if="view === 'compact' && mode === 'today'" class="flex items-center gap-2">
       <span class="text-[11px] font-bold text-primary">{{ formatTime(now, concert.timezone) }}</span>
       <span class="h-0.5 flex-1 rounded-[1px] bg-primary" />
     </div>
 
     <!-- upcoming slots -->
-    <template v-for="(node, ni) in laterExpanded ? [...model.visible, ...model.later] : model.visible" :key="ni">
+    <template v-for="(node, ni) in view === 'compact' ? (laterExpanded ? [...model.visible, ...model.later] : model.visible) : []" :key="ni">
       <button
         v-if="node.type === 'gap'"
         type="button"
@@ -165,9 +204,9 @@ function onEntrySelect(col: SlotNode['rows'][number][number]) {
       <span class="text-xs text-text-muted">{{ DESIGN_COPY.addBreak }}</span>
     </button>
 
-    <!-- expand to end of day -->
+    <!-- expand to end of day (compact only — detailed shows the whole day) -->
     <button
-      v-if="model.later.length > 0"
+      v-if="view === 'compact' && model.later.length > 0"
       type="button"
       class="flex w-full items-center justify-center gap-1.5 py-1"
       @click="laterExpanded = !laterExpanded"

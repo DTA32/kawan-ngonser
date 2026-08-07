@@ -73,10 +73,17 @@ export type PickMap = Record<string, Pick>
 
 export type ConflictDisplayPref = 'equal' | 'hidden'
 
+/**
+ * W-2 timetable rendering (per concert). 'compact' is the cluster-row default;
+ * 'detailed' is the minute-proportional day canvas (utils/timetable-detailed).
+ */
+export type TimetableViewPref = 'compact' | 'detailed'
+
 export interface PlanSettings {
   eventId: string
   attendingDayIndexes: number[]
   conflictDisplayPref: ConflictDisplayPref
+  timetableViewPref: TimetableViewPref
   /**
    * When true, performances that become backburner default to notifying
    * (N-1c flips from opt-in to opt-out). Per-performance C19/C23 toggles

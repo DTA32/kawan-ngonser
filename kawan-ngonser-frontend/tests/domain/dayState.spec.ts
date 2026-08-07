@@ -12,6 +12,7 @@ function settings(days: number[]): PlanSettings {
     attendingDayIndexes: days,
     conflictDisplayPref: 'equal',
     backburnerNotifyDefault: false,
+    timetableViewPref: 'compact',
     widgetOrder: [...DEFAULT_WIDGET_ORDER],
     leadTimeOverrideMin: null,
   }
