@@ -24,11 +24,11 @@ export interface DayState {
   dayComplete: boolean
   /** F-2: last (or only) attending day complete */
   concertComplete: boolean
-  /** W-1: next preferred performances (soonest first) */
+  /** W-1: in-progress + upcoming preferred performances (soonest first) */
   upNext: EffectivePerformance[]
-  /** W-3: upcoming backburner performances */
+  /** W-3: in-progress + upcoming backburner performances */
   upcomingBackburner: EffectivePerformance[]
-  /** W-4: upcoming performances with no active pick (incl. skipped — re-addable) */
+  /** W-4: in-progress + upcoming with no active pick (incl. skipped — re-addable) */
   upcomingOther: EffectivePerformance[]
   /** O-5 countdown target (first performance of the first attending day) */
   kickoffMs: number | null
@@ -115,8 +115,11 @@ export function deriveDayState(input: DayStateInput): DayState {
     dayComplete = yardstick.length > 0 && yardstick.every(e => e.endMs <= nowMs)
     concertComplete = dayComplete && todayDayIndex === lastDay
 
+    // Drop on END, not start: a set already playing is still catchable (and
+    // still re-addable from W-4), so it stays listed until it actually ends.
+    // Matches the timetable's past threshold (utils/timetable) and dayComplete.
     for (const e of entriesOf(schedule, todayDayIndex)) {
-      if (e.kind !== 'performance' || e.startMs <= nowMs) continue
+      if (e.kind !== 'performance' || e.endMs <= nowMs) continue
       const status = picks[e.performance.performanceId]?.status
       if (status === 'preferred') upNext.push(e.performance)
       else if (status === 'backburner') upcomingBackburner.push(e.performance)

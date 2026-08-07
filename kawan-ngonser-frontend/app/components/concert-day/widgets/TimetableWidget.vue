@@ -52,6 +52,15 @@ const dayDone = computed(() =>
   && model.value.visible.length === 0
   && model.value.later.length === 0)
 
+/**
+ * The now-line rides inside the running cluster. `nodeIndex` is an index into
+ * `model.visible`, and `visible` is always rendered before `later`, so the
+ * v-for index matches whether or not the day is expanded.
+ */
+function markerOn(nodeIndex: number): boolean {
+  return view.value === 'compact' && model.value.nowMarker?.nodeIndex === nodeIndex
+}
+
 function onEntrySelect(col: SlotNode['rows'][number][number]) {
   if (col.entry.kind === 'performance')
     emit('selectPerformance', col.entry.performance.performanceId)
@@ -137,8 +146,15 @@ function onEntrySelect(col: SlotNode['rows'][number][number]) {
       </template>
     </template>
 
-    <!-- now marker (today only) -->
-    <div v-if="view === 'compact' && mode === 'today'" class="flex items-center gap-2">
+    <!--
+      Now marker, today only. When a cluster is actually playing the line rides
+      inside it (below) — this standalone divider is the "nothing on right now"
+      case, where sitting between entries is the honest position.
+    -->
+    <div
+      v-if="view === 'compact' && mode === 'today' && model.nowMarker === null"
+      class="flex items-center gap-2"
+    >
       <span class="text-[11px] font-bold text-primary">{{ formatTime(now, concert.timezone) }}</span>
       <span class="h-0.5 flex-1 rounded-[1px] bg-primary" />
     </div>
@@ -155,9 +171,12 @@ function onEntrySelect(col: SlotNode['rows'][number][number]) {
         <span class="text-[11px] text-text-muted">{{ DESIGN_COPY.emptySlot }}</span>
       </button>
 
-      <div v-else class="flex gap-2.5">
+      <div v-else class="relative flex gap-2.5">
         <div class="w-[38px] shrink-0 pt-2.5">
-          <span class="text-[11px] text-text-muted">{{ formatTime(node.labelMs, concert.timezone) }}</span>
+          <span
+            v-if="!(markerOn(ni) && model.nowMarker!.suppressLabel)"
+            class="text-[11px] text-text-muted"
+          >{{ formatTime(node.labelMs, concert.timezone) }}</span>
         </div>
         <div class="flex min-w-0 flex-1 flex-col gap-1">
           <div v-for="(row, ri) in node.rows" :key="ri" class="flex items-stretch gap-1">
@@ -178,6 +197,19 @@ function onEntrySelect(col: SlotNode['rows'][number][number]) {
               />
             </template>
           </div>
+        </div>
+
+        <!--
+          Last in the row so it paints over the entries it crosses;
+          pointer-events-none keeps taps flowing through to them.
+        -->
+        <div
+          v-if="markerOn(ni)"
+          class="pointer-events-none absolute inset-x-0 z-10 flex items-center gap-2.5"
+          :style="{ top: `calc(${model.nowMarker!.fraction * 100}% - 1px)` }"
+        >
+          <span class="w-[38px] shrink-0 text-[11px] font-bold text-primary">{{ formatTime(now, concert.timezone) }}</span>
+          <span class="h-0.5 flex-1 rounded-[1px] bg-primary" />
         </div>
       </div>
     </template>

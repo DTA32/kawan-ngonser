@@ -19,6 +19,8 @@ export interface SlotNode {
   type: 'slot'
   /** Earliest start in the cluster — the hour-column label */
   labelMs: number
+  /** Latest end in the cluster — the past threshold and the now-line denominator */
+  maxEndMs: number
   /** Columns chunked into rows of ≤3 (50/50, 33/33/33 per O-2a) */
   rows: TimetableColumn[][]
 }
@@ -31,6 +33,22 @@ export interface GapNode {
 
 export type TimetableNode = SlotNode | GapNode
 
+/**
+ * Where the compact now-line goes. The compact view is a card list with no
+ * time→pixel axis, so the line can't float freely: it rides INSIDE the cluster
+ * that is currently playing, at the elapsed fraction of that cluster's span.
+ * `null` means nothing is playing — the line falls back to a plain divider
+ * between the ended and not-yet-started entries.
+ */
+export interface NowMarker {
+  /** Index into `visible` (always rendered before `later`, so it stays valid) */
+  nodeIndex: number
+  /** 0..1 down the slot row */
+  fraction: number
+  /** The line would collide with the row's own gutter time label */
+  suppressLabel: boolean
+}
+
 export interface TimetableModel {
   /** Fully-ended clusters, collapsed behind "Earlier today" (today mode) */
   past: SlotNode[]
@@ -40,11 +58,19 @@ export interface TimetableModel {
   visible: TimetableNode[]
   /** Behind "Show until end of day" */
   later: TimetableNode[]
+  /** Today only, and only while a cluster is actually running */
+  nowMarker: NowMarker | null
 }
 
 const DEFAULT_WINDOW_MS = 3 * 60 * 60 * 1000
 const GAP_MIN_MS = 25 * 60 * 1000
 const MAX_COLUMNS = 3
+/**
+ * Below this fraction the marker's own time label overlaps the slot's gutter
+ * label. The detailed view has the same problem and solves it the same way
+ * (LABEL_SUPPRESS_MS in utils/timetable-detailed).
+ */
+const LABEL_SUPPRESS_FRACTION = 0.18
 const ROLE_ORDER: Record<TimetableRole, number> = { preferred: 0, custom: 1, backburner: 2 }
 
 /**
@@ -103,7 +129,7 @@ export function buildTimetableModel(input: {
   if (current.length > 0) clusters.push(current)
 
   // 3. Slots: order columns, chunk into rows of ≤3
-  function toSlot(cluster: TimetableColumn[]): SlotNode & { maxEndMs: number } {
+  function toSlot(cluster: TimetableColumn[]): SlotNode {
     const ordered = [...cluster].sort((a, b) =>
       ROLE_ORDER[a.role] - ROLE_ORDER[b.role] || a.entry.startMs - b.entry.startMs)
     const rows: TimetableColumn[][] = []
@@ -120,7 +146,7 @@ export function buildTimetableModel(input: {
 
   // 4. Partition + gaps
   const past: SlotNode[] = []
-  const upcoming: (SlotNode & { maxEndMs: number })[] = []
+  const upcoming: SlotNode[] = []
   for (const slot of slots) {
     if (mode === 'today' && slot.maxEndMs <= nowMs) past.push(slot)
     else upcoming.push(slot)
@@ -129,6 +155,7 @@ export function buildTimetableModel(input: {
   const visible: TimetableNode[] = []
   const later: TimetableNode[] = []
   const horizonMs = nowMs + windowMs
+  let nowMarker: NowMarker | null = null
   for (let i = 0; i < upcoming.length; i++) {
     const slot = upcoming[i]!
     const bucket = mode === 'preview' || slot.labelMs <= horizonMs ? visible : later
@@ -138,7 +165,20 @@ export function buildTimetableModel(input: {
       const rounded = Math.ceil(prev.maxEndMs / (5 * 60_000)) * 5 * 60_000
       bucket.push({ type: 'gap', prefillMs: rounded })
     }
-    bucket.push({ type: 'slot', labelMs: slot.labelMs, rows: slot.rows })
+    bucket.push(slot)
+
+    // Clusters are disjoint and sorted, so at most one can contain `now`; and a
+    // running one is always in `visible` (it started, so labelMs <= horizonMs).
+    if (mode === 'today' && bucket === visible
+      && slot.labelMs <= nowMs && nowMs < slot.maxEndMs) {
+      const span = Math.max(1, slot.maxEndMs - slot.labelMs)
+      const fraction = Math.min(1, Math.max(0, (nowMs - slot.labelMs) / span))
+      nowMarker = {
+        nodeIndex: visible.length - 1,
+        fraction,
+        suppressLabel: fraction < LABEL_SUPPRESS_FRACTION,
+      }
+    }
   }
 
   const pastSetCount = past.reduce(
@@ -146,5 +186,5 @@ export function buildTimetableModel(input: {
     0,
   )
 
-  return { past, pastSetCount, visible, later }
+  return { past, pastSetCount, visible, later, nowMarker }
 }

@@ -92,6 +92,26 @@ export function formatRelative(deltaMs: number): string {
   return `in ${h}h ${String(m).padStart(2, '0')}m`
 }
 
+/**
+ * Countdown for a set that is CURRENTLY RUNNING: "1 min left", "15 mins left",
+ * "1h 05m left". `formatRelative` only says "started" once a set is under way,
+ * which is exactly the ambiguity the live treatment exists to remove.
+ */
+export function formatRemaining(endMs: number, nowMs: number): string {
+  const mins = Math.round((endMs - nowMs) / 60_000)
+  if (mins <= 0) return 'ending now'
+  if (mins === 1) return '1 min left'
+  if (mins < 60) return `${mins} mins left`
+  const h = Math.floor(mins / 60)
+  const m = mins % 60
+  return `${h}h ${String(m).padStart(2, '0')}m left`
+}
+
+/** True while `nowMs` is inside [startMs, endMs) — the live window. */
+export function isLive(startMs: number, endMs: number, nowMs: number): boolean {
+  return nowMs >= startMs && nowMs < endMs
+}
+
 /** Whole minutes until a start, floored at zero — feeds the {x} in C15/C16. */
 export function minutesUntil(startMs: number, nowMs: number): number {
   return Math.max(0, Math.round((startMs - nowMs) / 60_000))

@@ -3,7 +3,9 @@ import {
   countdownParts,
   formatCountdown,
   formatRelative,
+  formatRemaining,
   formatTime,
+  isLive,
   minutesUntil,
   parseVenueTime,
   startOfVenueDay,
@@ -87,5 +89,21 @@ describe('countdown + relative labels', () => {
   it('computes minutes until', () => {
     expect(minutesUntil(1_000_000, 1_000_000 - 13 * 60_000)).toBe(13)
     expect(minutesUntil(0, 60_000)).toBe(0)
+  })
+
+  it('counts down to the end of a running set', () => {
+    const end = 10_000_000
+    expect(formatRemaining(end, end - 15 * 60_000)).toBe('15 mins left')
+    expect(formatRemaining(end, end - 60_000)).toBe('1 min left')
+    expect(formatRemaining(end, end - 65 * 60_000)).toBe('1h 05m left')
+    expect(formatRemaining(end, end)).toBe('ending now')
+    expect(formatRemaining(end, end + 60_000)).toBe('ending now')
+  })
+
+  it('brackets the live window as [start, end)', () => {
+    expect(isLive(100, 200, 99)).toBe(false)
+    expect(isLive(100, 200, 100)).toBe(true)
+    expect(isLive(100, 200, 199)).toBe(true)
+    expect(isLive(100, 200, 200)).toBe(false)
   })
 })

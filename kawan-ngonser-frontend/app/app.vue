@@ -69,7 +69,19 @@ const isDev = import.meta.dev
 </script>
 
 <template>
-  <UApp :toaster="{ position: 'top-center', duration: 6000 }">
+  <!--
+    The toaster viewport is portaled to <body>, so it escapes the layout's
+    pt-[env(safe-area-inset-top)] — with viewport-fit=cover + a translucent iOS
+    status bar, the theme's default `top-4` lands under the notch. Push it down
+    by the inset (0 outside standalone, so nothing else changes).
+  -->
+  <UApp
+    :toaster="{
+      position: 'top-center',
+      duration: 6000,
+      ui: { viewport: 'top-[calc(1rem+env(safe-area-inset-top))]' },
+    }"
+  >
     <!-- injects <link rel="manifest"> — without this vite-pwa adds no head tags -->
     <NuxtPwaManifest />
     <NuxtLayout>

@@ -2,8 +2,12 @@
 // The small performance card (design "Performance Card"): 4px stage bar,
 // name + "20:00 – 21:00 · in 58 mins", stage chip @15% tint. `dimmed` for
 // backburner rows (W-3).
-import { formatRelative, formatTimeRange } from '~/domain/time'
+//
+// A set that is already under way stays in these lists until it ends, so it
+// gets a LIVE dot and counts DOWN to its end instead of up from its start.
+import { formatRelative, formatRemaining, formatTimeRange, isLive } from '~/domain/time'
 import type { EffectivePerformance, Stage } from '~/domain/types'
+import { DESIGN_COPY } from '~/utils/copy'
 import { stageStyleVars } from '~/utils/stage-color'
 
 const props = defineProps<{
@@ -17,9 +21,15 @@ const props = defineProps<{
 defineEmits<{ select: [] }>()
 
 const vars = computed(() => stageStyleVars(props.stage?.color ?? ''))
+
+const live = computed(() =>
+  isLive(props.performance.startMs, props.performance.endMs, props.nowMs))
+
 const timeLine = computed(() => {
   const range = formatTimeRange(props.performance.startMs, props.performance.endMs, props.timezone)
-  const rel = formatRelative(props.performance.startMs - props.nowMs)
+  const rel = live.value
+    ? formatRemaining(props.performance.endMs, props.nowMs)
+    : formatRelative(props.performance.startMs - props.nowMs)
   return `${range} · ${rel}`
 })
 </script>
@@ -34,7 +44,13 @@ const timeLine = computed(() => {
   >
     <span class="h-10 w-1 shrink-0 rounded-sm bg-(--stage)" />
     <span class="flex min-w-0 flex-1 flex-col gap-1">
-      <span class="truncate text-[15px] font-semibold text-text">{{ performance.artistName }}</span>
+      <span class="flex min-w-0 items-center gap-1.5">
+        <span v-if="live" class="flex shrink-0 items-center gap-1 rounded-full bg-primary/15 px-1.5 py-0.5">
+          <span class="size-1.5 animate-pulse rounded-full bg-primary" />
+          <span class="text-[10px] font-bold leading-none tracking-wide text-primary">{{ DESIGN_COPY.liveBadge }}</span>
+        </span>
+        <span class="truncate text-[15px] font-semibold text-text">{{ performance.artistName }}</span>
+      </span>
       <span class="truncate text-xs text-text-secondary">{{ timeLine }}</span>
     </span>
     <span class="shrink-0 rounded-full px-2.5 py-[5px] text-[11px] font-medium" :style="{ background: vars['--stage-chip'], color: vars['--stage'] }">

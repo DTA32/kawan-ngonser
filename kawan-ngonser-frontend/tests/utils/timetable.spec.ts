@@ -87,6 +87,56 @@ describe('buildTimetableModel — content + clustering', () => {
   })
 })
 
+describe('buildTimetableModel — now marker', () => {
+  function markerAt(nowIso: string, mode: 'today' | 'preview' = 'today') {
+    return buildTimetableModel({
+      entries: day1Entries(),
+      picks: allPicked,
+      pref: 'equal',
+      nowMs: t(nowIso),
+      mode,
+    })
+  }
+
+  it('rides inside the running cluster at the elapsed fraction', () => {
+    // a+b cluster: 19:00 → 21:00 (b's end). At 19:30 that's a quarter in.
+    const model = markerAt('2026-08-07T19:30:00')
+    expect(model.nowMarker).not.toBeNull()
+    expect(model.nowMarker!.fraction).toBeCloseTo(0.25)
+
+    const node = model.visible[model.nowMarker!.nodeIndex]
+    expect(node?.type).toBe('slot')
+    expect(slotIds(node as SlotNode).sort()).toEqual(['a', 'b'])
+  })
+
+  it('suppresses the gutter label only right after a cluster starts', () => {
+    // 6 min into a 120-min cluster = 0.05 → collides with the row's own label
+    expect(markerAt('2026-08-07T19:06:00').nowMarker!.suppressLabel).toBe(true)
+    expect(markerAt('2026-08-07T19:30:00').nowMarker!.suppressLabel).toBe(false)
+  })
+
+  it('is null in a gap between clusters — nothing is playing', () => {
+    // f ends 17:00, a starts 19:00
+    expect(markerAt('2026-08-07T18:00:00').nowMarker).toBeNull()
+  })
+
+  it('is null before the day starts and after it ends', () => {
+    expect(markerAt('2026-08-07T14:00:00').nowMarker).toBeNull()
+    expect(markerAt('2026-08-08T02:00:00').nowMarker).toBeNull()
+  })
+
+  it('is null in preview mode', () => {
+    expect(markerAt('2026-08-07T19:30:00', 'preview').nowMarker).toBeNull()
+  })
+
+  it('spans the whole cluster, not the entry that happens to be playing', () => {
+    // 20:30: a (19:00–20:00) is over but b (–21:00) still runs, so the cluster
+    // is still live and the line is 75% down it.
+    const model = markerAt('2026-08-07T20:30:00')
+    expect(model.nowMarker!.fraction).toBeCloseTo(0.75)
+  })
+})
+
 describe('buildTimetableModel — past / window / gaps', () => {
   it('collapses fully-ended clusters and counts played sets', () => {
     const model = buildTimetableModel({

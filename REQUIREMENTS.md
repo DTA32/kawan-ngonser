@@ -110,7 +110,7 @@ Notes:
 | ID | Requirement |
 |----|-------------|
 | G-1 | **Install reminder:** while the app is not installed as a PWA, a component at the bottom of the page (in normal content flow — **not** sticky/fixed) reminds the user to install (C2). Always shown until installed. |
-| G-2 | **Connectivity indicator:** a globe icon at the top right — **greyed when offline, colored when online**. Tapping it shows a tooltip: offline → title "Offline", body "You are currently offline" (C3); online → title "Online", body "You can download or sync latest concert data" (C4). |
+| G-2 | **Connectivity indicator:** a globe icon at the top right — **greyed when offline, colored when online**. Tapping it shows a tooltip: offline → title "Offline", body "You are currently offline" (C3); online → title "Online", body "You can download or sync latest concert data" (C4). **Third state (post-day-1 feedback):** `navigator.onLine` only reports that an interface exists, so at a venue it reads "Online" on a connection that carries nothing. Connection quality is therefore **measured** — every API call is timed, and a `GET /health` probe fills the gaps only when the app has gone quiet (visible tab, browser online, no sample for 60s). A sustained slow round trip shows an **amber** globe with title "Online (slow)"; repeated unreachability falls back to the offline presentation even while the browser claims to be online. Hysteresis (two consecutive samples) prevents flicker. ⚠️ `navigator.connection`/`effectiveType` is Chromium-only (unavailable on iOS Safari) — used as a bonus signal only, never the primary one. |
 | G-3 | **Battery indicator:** when battery is low (**≤20% by default; threshold served via app config**), a battery icon appears beside the globe. On crossing the threshold: if **online**, show a toast advising to switch to airplane/offline mode (save battery); if **offline**, show a toast advising to find a charging station or rent a powerbank. ⚠️ Constraint: the Battery Status API is Chromium-only (unavailable on iOS Safari) — the feature must degrade gracefully (icon/toast simply never appear). |
 | G-4 | **Offline states, never errors:** any view that needs the network shows a friendly offline state instead of an error. Actions that work offline (e.g., JSON upload) remain available in that state. |
 | G-5 | **Theme toggle:** a sun/moon icon beside the connectivity indicator (G-2). Tapping it opens a small popover (same interaction pattern as the globe tooltip) with three options (C24): **System** (default), **Light**, **Dark**. Behavior: **(a)** the choice is an **app-wide setting**, persisted locally (§3.4); **(b)** "System" follows the OS color-scheme preference and falls back to **dark** when no preference is detectable (§12); **(c)** the active theme is applied **before first paint** — no flash of the wrong theme on load — and switching is instant, no reload; **(d)** the PWA `theme-color` (status/title bar tint) follows the active theme; **(e)** stage colors are data-driven and identical in both themes — only app chrome changes (§12.4 contrast rules apply in both). |
@@ -160,10 +160,10 @@ On a day the user attends, the homepage is **entirely different**: a widget dash
 
 | ID | Widget | Requirement |
 |----|--------|-------------|
-| W-1 | **Upcoming performances** | The next performance as a large card — artist name, time (with relative "in xx mins"), stage — followed by the two performances after it as smaller cards with the same content. |
+| W-1 | **Upcoming performances** | The next performance as a large card — artist name, time (with relative "in xx mins"), stage — followed by the two performances after it as smaller cards with the same content. A performance stays listed until it **ends**, not until it starts: a set already under way is still catchable, and shows a **LIVE** marker and a countdown to its end instead of to its start. |
 | W-2 | **Timetable** | See detailed spec below. |
-| W-3 | **"Backburner" performances** | Lists all upcoming *least-preferred* (conflict-losing) performances. Tapping one opens the same sheet as the timetable entry sheet. |
-| W-4 | **Other performances** | Lists all upcoming performances the user did **not** select at all. Tapping one opens a similar sheet with a **"Watch this"** (C21) button to add it to the plan. If the added performance overlaps an existing pick, the conflict-resolution flow (O-4 sheet) triggers. The list is **paginated**: 5 cards, then a "Show 5 more · {n} left" control. |
+| W-3 | **"Backburner" performances** | Lists all in-progress and upcoming *least-preferred* (conflict-losing) performances (same end-based rule as W-1). Tapping one opens the same sheet as the timetable entry sheet. |
+| W-4 | **Other performances** | Lists all in-progress and upcoming performances the user did **not** select at all (same end-based rule as W-1 — a set that is currently playing must stay re-addable). Tapping one opens a similar sheet with a **"Watch this"** (C21) button to add it to the plan. If the added performance overlaps an existing pick, the conflict-resolution flow (O-4 sheet) triggers. The list is **paginated**: 5 cards, then a "Show 5 more · {n} left" control. |
 | W-5 | **Next days** | Only shown if the user attends further days. Lists those days; tapping one opens a **preview of that day's home** so the plan can be re-adjusted in advance. |
 
 #### W-2 Timetable — detailed spec
@@ -172,6 +172,7 @@ On a day the user attends, the homepage is **entirely different**: a widget dash
 - Shows the next few hours; **expandable** to the end of the day's performances, and collapsible back.
 - Entries are **colored by stage**.
 - Conflicting entries are rendered according to the conflict display preference (O-2).
+- A **now-line** (today only) marks the current time. Because it must answer "is this set already going?", it **overlays the cluster that is currently playing**, positioned at the elapsed fraction of that cluster's span, and only falls back to a plain divider between entries when nothing is playing. In compact view the position is indicative rather than to scale (rows are uniform-height); in detailed view it is minute-accurate. Where the line would collide with a row's own time label, that label is suppressed.
 - Two **view modes**, toggled from the widget header and remembered per concert (defaults to compact):
   - **Compact** — the cluster-row layout above: uniform-height rows, overlaps split equally.
   - **Detailed** — a minute-proportional day canvas with an hour axis, block heights that match real durations, and side-by-side lanes so a *partial* clash reads as partial. Scrolls inside the widget, opens on the current time. Tapping empty canvas creates a custom event at that time. Same content as compact (preferred + backburner per O-2 + custom events).
@@ -304,6 +305,8 @@ The agreed wording for all user-facing strings — implementers should use these
 | W-2 view toggle (aria labels) | "Compact view" / "Detailed view" |
 | W-2 detailed view, scrolled away from now | "Jump to now" |
 | S-5 confirm dialog | "Cancel this concert plan?" / "Your picks, custom events, and edits for {concert} will be deleted from this device. The concert stays available to plan again." — "Cancel plan" / "Keep my plan" |
+| W-1/W-3/W-4 currently-playing marker | "LIVE" · countdown reads "{n} mins left" / "{h}h {mm}m left" / "ending now" |
+| G-2 globe, measured-slow state | "Online (slow)" / "Your connection is sluggish — syncing may take a while." |
 
 (Screen microcopy from design.pen — step titles, widget titles, empty states, timetable labels — is used verbatim from the design file and collected in `kawan-ngonser-frontend/app/utils/copy.ts`.)
 

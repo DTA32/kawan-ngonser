@@ -99,6 +99,10 @@ export const DESIGN_COPY = {
   widgetOther: 'Everything else',
   widgetNextDays: 'Your next days',
   pastCollapse: 'Earlier today · {n} sets played',
+  liveBadge: 'LIVE',
+  // G-2 third state — measured round trips, not navigator.onLine (new copy)
+  onlineSlowTitle: 'Online (slow)',
+  onlineSlowBody: 'Your connection is sluggish — syncing may take a while.',
   expandToEndOfDay: 'Show until end of day',
   showMore: 'Show {n} more · {remaining} left',
   addBreak: 'Add a break',

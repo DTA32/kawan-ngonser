@@ -114,9 +114,21 @@ describe('deriveDayState — widget lists', () => {
     expect(st.upcomingOther.map(p => p.performanceId)).toContain('c')
   })
 
-  it('excludes started sets from upNext', () => {
-    const st = derive('2026-08-07T19:01:00')
-    expect(st.upNext.map(p => p.performanceId)).not.toContain('a')
+  it('keeps a running set listed until it ENDS, not when it starts', () => {
+    // a: preferred, 19:00–20:00 — still catchable while it plays
+    expect(derive('2026-08-07T19:30:00').upNext.map(p => p.performanceId)).toContain('a')
+    expect(derive('2026-08-07T20:00:00').upNext.map(p => p.performanceId)).not.toContain('a')
+  })
+
+  it('applies the same end-based rule to backburner and other', () => {
+    // b: backburner 19:59–21:00
+    const mid = derive('2026-08-07T20:30:00')
+    expect(mid.upcomingBackburner.map(p => p.performanceId)).toContain('b')
+
+    // c: unpicked 21:00–22:00 — the W-4 case from the field report
+    const inC = derive('2026-08-07T21:30:00')
+    expect(inC.upcomingOther.map(p => p.performanceId)).toContain('c')
+    expect(inC.upcomingBackburner.map(p => p.performanceId)).not.toContain('b')
   })
 })
 
