@@ -3,6 +3,7 @@ import express, { type Express, type NextFunction, type Request, type Response }
 import type { Db } from "mongodb";
 import { concertsRouter } from "./routes/concerts.js";
 import { configRouter } from "./routes/config.js";
+import { healthRouter } from "./routes/health.js";
 
 export function createApp(db: Db): Express {
   const app = express();
@@ -23,6 +24,7 @@ export function createApp(db: Db): Express {
 
   app.use("/concerts", concertsRouter(db));
   app.use("/config", configRouter(db));
+  app.use("/health", healthRouter());
 
   app.use((_req, res) => {
     res.status(404).json({ error: "not_found", message: "Route not found" });

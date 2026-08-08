@@ -108,6 +108,21 @@ describe("GET /config", () => {
   });
 });
 
+describe("GET /health", () => {
+  it("answers without touching the database", async () => {
+    // Registered before the catch-all 404, and independent of Mongo — the
+    // /config suite above deletes the config doc and this must still pass.
+    const res = await request(app).get("/health");
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ ok: true });
+  });
+
+  it("is uncacheable, so the client always measures a real round trip", async () => {
+    const res = await request(app).get("/health");
+    expect(res.headers["cache-control"]).toBe("no-store");
+  });
+});
+
 describe("unknown routes", () => {
   it("404s with the JSON error shape", async () => {
     const res = await request(app).get("/nope");
