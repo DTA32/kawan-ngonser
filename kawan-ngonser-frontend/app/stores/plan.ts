@@ -21,6 +21,7 @@ import {
   type PerformanceOverride,
   type PickMap,
   type PlanSettings,
+  reconcileWidgetOrder,
   type TimetableViewPref,
   type WidgetId,
 } from '~/domain/types'
@@ -41,6 +42,7 @@ function settingsToRow(s: PlanSettings): PlanRow {
     backburner_notify_default: s.backburnerNotifyDefault,
     timetable_view_pref: s.timetableViewPref,
     widget_order: [...s.widgetOrder],
+    hidden_widgets: [...s.hiddenWidgets],
     lead_time_override_min: s.leadTimeOverrideMin,
   }
 }
@@ -93,7 +95,11 @@ export const usePlanStore = defineStore('plan', () => {
           conflictDisplayPref: row.conflict_display_pref,
           backburnerNotifyDefault: row.backburner_notify_default ?? false,
           timetableViewPref: row.timetable_view_pref ?? 'compact',
-          widgetOrder: row.widget_order,
+          // The ONLY reconcile site: rows written before a widget existed hold
+          // a short order, and the board renders only what is in it. Idempotent
+          // and self-healing on every boot — don't add a second call site.
+          widgetOrder: reconcileWidgetOrder(row.widget_order),
+          hiddenWidgets: row.hidden_widgets ?? [],
           leadTimeOverrideMin: row.lead_time_override_min,
         },
         picks: {},
@@ -160,6 +166,7 @@ export const usePlanStore = defineStore('plan', () => {
           backburnerNotifyDefault: false,
           timetableViewPref: 'compact',
           widgetOrder: [...DEFAULT_WIDGET_ORDER],
+          hiddenWidgets: [],
           leadTimeOverrideMin: null,
         },
         picks: {},
@@ -190,6 +197,8 @@ export const usePlanStore = defineStore('plan', () => {
     updateSettings(eventId, { timetableViewPref: pref })
   const setWidgetOrder = (eventId: string, order: WidgetId[]) =>
     updateSettings(eventId, { widgetOrder: order })
+  const setHiddenWidgets = (eventId: string, hidden: WidgetId[]) =>
+    updateSettings(eventId, { hiddenWidgets: hidden })
   const setLeadTimeOverride = (eventId: string, min: number | null) =>
     updateSettings(eventId, { leadTimeOverrideMin: min })
 
@@ -325,6 +334,7 @@ export const usePlanStore = defineStore('plan', () => {
     setBackburnerNotifyDefault,
     setTimetableViewPref,
     setWidgetOrder,
+    setHiddenWidgets,
     setLeadTimeOverride,
     setPicks,
     addCustomEvent,

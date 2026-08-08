@@ -2,8 +2,10 @@ import { describe, expect, it } from 'vitest'
 import {
   countdownParts,
   formatCountdown,
+  formatElapsed,
   formatRelative,
   formatRemaining,
+  formatSetStatus,
   formatTime,
   isLive,
   minutesUntil,
@@ -84,6 +86,41 @@ describe('countdown + relative labels', () => {
     expect(formatRelative(58 * 60_000)).toBe('in 58 mins')
     expect(formatRelative(148 * 60_000)).toBe('in 2h 28m')
     expect(formatRelative(-2 * 60_000)).toBe('started')
+  })
+
+  it('counts up from the end of a finished set', () => {
+    const end = 10_000_000
+    expect(formatElapsed(end, end + 17 * 60_000)).toBe('17m ago')
+    expect(formatElapsed(end, end + 47 * 60_000)).toBe('47m ago')
+    expect(formatElapsed(end, end + 92 * 60_000)).toBe('1h 32m ago')
+  })
+
+  it('zero-pads the minute remainder, like formatRemaining', () => {
+    const end = 10_000_000
+    expect(formatElapsed(end, end + 182 * 60_000)).toBe('3h 02m ago')
+    expect(formatElapsed(end, end + 60 * 60_000)).toBe('1h 00m ago')
+  })
+
+  it('reads "just ended" at and before the boundary', () => {
+    const end = 10_000_000
+    expect(formatElapsed(end, end)).toBe('just ended')
+    expect(formatElapsed(end, end - 60_000)).toBe('just ended')
+  })
+
+  it('formatSetStatus picks the right label for each side of now', () => {
+    const start = 10_000_000
+    const end = start + 60 * 60_000
+    expect(formatSetStatus(start, end, start - 58 * 60_000)).toBe('in 58 mins')
+    expect(formatSetStatus(start, end, start + 45 * 60_000)).toBe('15 mins left')
+    expect(formatSetStatus(start, end, end + 17 * 60_000)).toBe('17m ago')
+  })
+
+  it('formatSetStatus never says "started" for a set that has ended', () => {
+    const start = 10_000_000
+    const end = start + 60 * 60_000
+    for (const after of [0, 1, 30, 120, 600]) {
+      expect(formatSetStatus(start, end, end + after * 60_000)).not.toBe('started')
+    }
   })
 
   it('computes minutes until', () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildEffectiveSchedule } from '~/domain/schedule'
+import { buildEffectiveSchedule, dayIndexOfCustomEvent } from '~/domain/schedule'
 import { makeRemoval } from '~/domain/overrides'
 import type { CustomEvent } from '~/domain/types'
 import { miniConcert, t } from '../fixtures/mini'
@@ -46,5 +46,22 @@ describe('buildEffectiveSchedule', () => {
     const s = buildEffectiveSchedule(miniConcert, {}, events)
     const entry = s.byDay.get(1)!.find(e => e.kind === 'custom')!
     expect(entry.endMs - entry.startMs).toBe(30 * 60_000)
+  })
+})
+
+describe('dayIndexOfCustomEvent', () => {
+  const events: CustomEvent[] = [
+    { customEventId: 'late-night', name: 'Supper', startMs: t('2026-08-07T23:50:00'), endMs: null },
+    { customEventId: 'after-midnight', name: 'Taxi', startMs: t('2026-08-08T00:30:00'), endMs: null },
+  ]
+  const s = buildEffectiveSchedule(miniConcert, {}, events)
+
+  it('reads back the placement byDay made, spill rule included', () => {
+    expect(dayIndexOfCustomEvent(s, 'late-night')).toBe(1)
+    expect(dayIndexOfCustomEvent(s, 'after-midnight')).toBe(2)
+  })
+
+  it('returns null for an unknown id', () => {
+    expect(dayIndexOfCustomEvent(s, 'nope')).toBeNull()
   })
 })

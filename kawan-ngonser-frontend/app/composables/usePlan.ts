@@ -35,6 +35,7 @@ export function usePlan(eventId: MaybeRefOrGetter<string>) {
     setBackburnerNotifyDefault: (on: boolean) => store.setBackburnerNotifyDefault(id(), on),
     setTimetableViewPref: (pref: 'compact' | 'detailed') => store.setTimetableViewPref(id(), pref),
     setWidgetOrder: (order: Parameters<typeof store.setWidgetOrder>[1]) => store.setWidgetOrder(id(), order),
+    setHiddenWidgets: (hidden: Parameters<typeof store.setHiddenWidgets>[1]) => store.setHiddenWidgets(id(), hidden),
     setLeadTimeOverride: (min: number | null) => store.setLeadTimeOverride(id(), min),
     cancelPlan: () => store.cancelPlan(id()),
 

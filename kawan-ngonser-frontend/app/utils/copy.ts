@@ -97,7 +97,9 @@ export const DESIGN_COPY = {
   widgetTimetable: 'Timetable',
   widgetBackburner: 'On the backburner',
   widgetOther: 'Everything else',
+  widgetPastPerformances: 'Past performances',
   widgetNextDays: 'Your next days',
+  widgetPastDays: 'Past days',
   pastCollapse: 'Earlier today · {n} sets played',
   liveBadge: 'LIVE',
   // G-2 third state — measured round trips, not navigator.onLine (new copy)
@@ -114,6 +116,7 @@ export const DESIGN_COPY = {
   liveBanner: 'Day {x} is happening now',
   liveBannerOpen: 'Open',
   previewingDay: 'Previewing Day {x} · {date}',
+  relivingDay: 'Reliving Day {x} · {date}',
   // Empty states
   emptyPlanned: 'Nothing planned yet — pick a concert below.',
   emptyAvailableOffline: 'You\'re offline — new concerts appear when you\'re back.',
@@ -125,6 +128,7 @@ export const DESIGN_COPY = {
   emptyUpNextSub: 'See you on Day {x} 🌙',
   emptyBackburner: 'No clashes left — every set has your full attention.',
   emptyOther: 'Nothing else today — you picked them all.',
+  emptyPastPerformances: 'Nothing\'s wrapped up yet — the day is still ahead of you.',
   // Backburner-notify default (O-2 step + S-3 sheet, new copy)
   backburnerNotifyLabel: 'Also notify me for backburner sets',
   backburnerNotifySub: 'Nudges for clash runner-ups too — you can still mute them one by one.',
@@ -132,7 +136,10 @@ export const DESIGN_COPY = {
   downloadFailure: 'Couldn\'t download the concert — check your signal and try again.',
   yourDaysLabel: 'Your days',
   dayPreviewSub: '{n} picks · tap to preview',
+  dayRelivedSub: '{n} sets watched · tap to relive',
   editPlanCta: 'Edit your plan',
+  // H-5: a day that is over is relive-only (new copy)
+  pastDayReadOnly: 'This day\'s in the books — look back, but no changes.',
   // S-5 confirm (new copy)
   cancelPlanTitle: 'Cancel this concert plan?',
   cancelPlanBody: 'Your picks, custom events, and edits for {concert} will be deleted from this device. The concert stays available to plan again.',

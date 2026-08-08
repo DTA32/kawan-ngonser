@@ -7,15 +7,16 @@
  *               slots (+ custom events), forward-window expand, add-a-break.
  *  - detailed — the minute-proportional canvas in TimetableDetailed.
  */
+import type { DayPhase } from '~/domain/dayState'
 import { formatTime } from '~/domain/time'
 import type { Concert, TimetableViewPref } from '~/domain/types'
 import { DESIGN_COPY, interpolate } from '~/utils/copy'
-import { buildTimetableModel, type SlotNode } from '~/utils/timetable'
+import { buildTimetableModel, customEventPrefillMs, type SlotNode } from '~/utils/timetable'
 
 const props = defineProps<{
   concert: Concert
   dayIndex: number
-  mode: 'today' | 'preview'
+  phase: DayPhase
 }>()
 
 const emit = defineEmits<{
@@ -37,8 +38,25 @@ const model = computed(() => buildTimetableModel({
   picks: plan.picks.value,
   pref: plan.settings.value?.conflictDisplayPref ?? 'equal',
   nowMs: now.value,
-  mode: props.mode,
+  phase: props.phase,
 }))
+
+/** H-5: a day that is over is relive-only — no adding, no editing. */
+const editable = computed(() => props.phase !== 'past')
+
+/**
+ * Anchored to the day being SHOWN. The wall clock would stamp the event with
+ * today's venue date, filing it on a day the user isn't looking at.
+ */
+function prefillFor(offsetMs: number): number {
+  return customEventPrefillMs({
+    phase: props.phase,
+    nowMs: now.value,
+    dayWindow: plan.schedule.value?.dayWindows.get(props.dayIndex),
+    firstEntryMs: plan.schedule.value?.byDay.get(props.dayIndex)?.[0]?.startMs,
+    offsetMs,
+  })
+}
 
 const view = computed(() => plan.settings.value?.timetableViewPref ?? 'compact')
 
@@ -48,7 +66,7 @@ const VIEWS: { value: TimetableViewPref, icon: string, label: string }[] = [
 ]
 
 const dayDone = computed(() =>
-  props.mode === 'today'
+  props.phase === 'today'
   && model.value.visible.length === 0
   && model.value.later.length === 0)
 
@@ -96,14 +114,14 @@ function onEntrySelect(col: SlotNode['rows'][number][number]) {
       v-if="view === 'detailed'"
       :concert="concert"
       :day-index="dayIndex"
-      :mode="mode"
+      :phase="phase"
       @select-performance="emit('selectPerformance', $event)"
       @select-custom="emit('selectCustom', $event)"
       @add-event="emit('addEvent', $event)"
     />
 
     <!-- past collapse (today only) -->
-    <template v-if="view === 'compact' && mode === 'today' && model.past.length > 0">
+    <template v-if="view === 'compact' && phase === 'today' && model.past.length > 0">
       <button
         type="button"
         class="flex w-full items-center justify-center gap-1.5 rounded-[10px] bg-bg px-2.5 py-2"
@@ -152,7 +170,7 @@ function onEntrySelect(col: SlotNode['rows'][number][number]) {
       case, where sitting between entries is the honest position.
     -->
     <div
-      v-if="view === 'compact' && mode === 'today' && model.nowMarker === null"
+      v-if="view === 'compact' && phase === 'today' && model.nowMarker === null"
       class="flex items-center gap-2"
     >
       <span class="text-[11px] font-bold text-primary">{{ formatTime(now, concert.timezone) }}</span>
@@ -161,15 +179,18 @@ function onEntrySelect(col: SlotNode['rows'][number][number]) {
 
     <!-- upcoming slots -->
     <template v-for="(node, ni) in view === 'compact' ? (laterExpanded ? [...model.visible, ...model.later] : model.visible) : []" :key="ni">
-      <button
-        v-if="node.type === 'gap'"
-        type="button"
-        class="flex w-full items-center justify-center gap-1.5 rounded-lg px-3 py-2.5 ring-1 ring-inset ring-border"
-        @click="emit('addEvent', node.prefillMs)"
-      >
-        <UIcon name="i-lucide-plus" class="size-3 text-text-muted" />
-        <span class="text-[11px] text-text-muted">{{ DESIGN_COPY.emptySlot }}</span>
-      </button>
+      <!-- the type check stays the v-if discriminator so v-else still narrows -->
+      <template v-if="node.type === 'gap'">
+        <button
+          v-if="editable"
+          type="button"
+          class="flex w-full items-center justify-center gap-1.5 rounded-lg px-3 py-2.5 ring-1 ring-inset ring-border"
+          @click="emit('addEvent', node.prefillMs)"
+        >
+          <UIcon name="i-lucide-plus" class="size-3 text-text-muted" />
+          <span class="text-[11px] text-text-muted">{{ DESIGN_COPY.emptySlot }}</span>
+        </button>
+      </template>
 
       <div v-else class="relative flex gap-2.5">
         <div class="w-[38px] shrink-0 pt-2.5">
@@ -187,12 +208,14 @@ function onEntrySelect(col: SlotNode['rows'][number][number]) {
                 :stage="stageOf.get(col.entry.performance.stageId)"
                 :timezone="concert.timezone"
                 :backburner="col.role === 'backburner'"
+                :past="node.past"
                 @select="onEntrySelect(col)"
               />
               <ConcertDayTimetableCustomEventEntry
                 v-else
                 :event="col.entry.event"
                 :timezone="concert.timezone"
+                :past="node.past"
                 @select="onEntrySelect(col)"
               />
             </template>
@@ -216,10 +239,10 @@ function onEntrySelect(col: SlotNode['rows'][number][number]) {
 
     <!-- day-done: everything played, still allow adding a late event -->
     <button
-      v-if="dayDone"
+      v-if="dayDone && editable"
       type="button"
       class="flex w-full items-center justify-center gap-1.5 rounded-lg px-3 py-2.5 ring-1 ring-inset ring-border"
-      @click="emit('addEvent', now)"
+      @click="emit('addEvent', prefillFor(0))"
     >
       <UIcon name="i-lucide-plus" class="size-3 text-text-muted" />
       <span class="text-[11px] text-text-muted">{{ DESIGN_COPY.emptySlot }}</span>
@@ -227,10 +250,10 @@ function onEntrySelect(col: SlotNode['rows'][number][number]) {
 
     <!-- add a break -->
     <button
-      v-if="!dayDone"
+      v-if="!dayDone && editable"
       type="button"
       class="flex w-full items-center justify-center gap-1.5 rounded-[10px] px-2.5 py-[9px] ring-1 ring-inset ring-border"
-      @click="emit('addEvent', now + 15 * 60_000)"
+      @click="emit('addEvent', prefillFor(15 * 60_000))"
     >
       <UIcon name="i-lucide-plus" class="size-3.5 text-text-muted" />
       <span class="text-xs text-text-muted">{{ DESIGN_COPY.addBreak }}</span>

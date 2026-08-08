@@ -3,6 +3,7 @@ import 'fake-indexeddb/auto'
 import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { KawanDB, getDB, setDB } from '~/db/schema'
+import { DEFAULT_WIDGET_ORDER } from '~/domain/types'
 import { commitSync } from '~/services/syncService'
 import { useConcertCacheStore } from '~/stores/concertCache'
 import { usePlanStore } from '~/stores/plan'
@@ -104,8 +105,16 @@ describe('commitSync — atomic Dexie commit + rehydration', () => {
     expect(planRow!.lead_time_override_min).toBe(10)
     expect(planRow!.conflict_display_pref).toBe('equal')
 
-    // Stores rehydrated
+    // The seeded row above is a LEGACY 5-element widget_order — hydration
+    // reconciles it to the current registry, and the sync write persists the
+    // upgrade. This is the migration proving itself end-to-end.
     const planStore = usePlanStore()
+    expect(planStore.getPlan(miniConcert.eventId)!.settings.widgetOrder).toEqual(DEFAULT_WIDGET_ORDER)
+    expect(planStore.getPlan(miniConcert.eventId)!.settings.hiddenWidgets).toEqual([])
+    expect(planRow!.widget_order).toEqual(DEFAULT_WIDGET_ORDER)
+    expect(planRow!.hidden_widgets).toEqual([])
+
+    // Stores rehydrated
     expect(planStore.getPlan(miniConcert.eventId)!.picks.b!.status).toBe('preferred')
     expect(planStore.hasLocalEdits(miniConcert.eventId)).toBe(false)
     expect(useConcertCacheStore().getRow(miniConcert.eventId)!.version).toBe(2)

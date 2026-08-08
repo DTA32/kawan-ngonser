@@ -91,13 +91,69 @@ export interface PlanSettings {
    */
   backburnerNotifyDefault: boolean
   widgetOrder: WidgetId[]
+  /** S-1: widgets the user switched off. Independent of `widgetOrder` — a
+   *  hidden widget keeps its position so unhiding restores it in place. */
+  hiddenWidgets: WidgetId[]
   /** null → fall back to app config (S-2) */
   leadTimeOverrideMin: number | null
 }
 
-export type WidgetId = 'upNext' | 'timetable' | 'backburner' | 'other' | 'nextDays'
+export type WidgetId =
+  | 'upNext'
+  | 'timetable'
+  | 'backburner'
+  | 'other'
+  | 'pastPerformances'
+  | 'nextDays'
+  | 'pastDays'
 
-export const DEFAULT_WIDGET_ORDER: WidgetId[] = ['upNext', 'timetable', 'backburner', 'other', 'nextDays']
+export const DEFAULT_WIDGET_ORDER: WidgetId[] = [
+  'upNext',
+  'timetable',
+  'backburner',
+  'other',
+  'pastPerformances',
+  'nextDays',
+  'pastDays',
+]
+
+/**
+ * Bring a persisted order up to date with the registry. Plans written before a
+ * widget existed hold a short array, and the board renders only what is IN that
+ * array — so without this a new widget is invisible forever (the S-1 page seeds
+ * from the same array and writes it straight back).
+ *
+ * Unknown and duplicate ids are dropped; each missing id is spliced in directly
+ * after its nearest canonical predecessor that is present, so a new widget lands
+ * where the design puts it without disturbing the user's arrangement.
+ */
+export function reconcileWidgetOrder(stored: readonly unknown[] | null | undefined): WidgetId[] {
+  const known = new Set<string>(DEFAULT_WIDGET_ORDER)
+  const seen = new Set<WidgetId>()
+  const out: WidgetId[] = []
+
+  for (const id of stored ?? []) {
+    if (typeof id !== 'string' || !known.has(id) || seen.has(id as WidgetId)) continue
+    seen.add(id as WidgetId)
+    out.push(id as WidgetId)
+  }
+  if (out.length === DEFAULT_WIDGET_ORDER.length) return out
+
+  for (const id of DEFAULT_WIDGET_ORDER) {
+    if (seen.has(id)) continue
+    let at = 0
+    for (let k = DEFAULT_WIDGET_ORDER.indexOf(id) - 1; k >= 0; k--) {
+      const pos = out.indexOf(DEFAULT_WIDGET_ORDER[k]!)
+      if (pos !== -1) {
+        at = pos + 1
+        break
+      }
+    }
+    out.splice(at, 0, id)
+    seen.add(id)
+  }
+  return out
+}
 
 export interface CustomEvent {
   customEventId: string

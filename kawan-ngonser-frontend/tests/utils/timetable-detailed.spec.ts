@@ -60,7 +60,7 @@ function build(entries: ScheduleEntry[], over: Partial<Parameters<typeof buildDe
       e.kind === 'performance' ? [e.performance.performanceId] : [])),
     pref: 'equal',
     nowMs: t('2026-08-07T19:02:00'),
-    mode: 'preview',
+    phase: 'future',
     ...over,
   })
 }
@@ -80,10 +80,10 @@ describe('buildDetailedModel — canvas window', () => {
     expect(model.height).toBe(2 * HOUR_PX)
   })
 
-  it('stretches the window to include now in today mode', () => {
+  it('stretches the window to include now, on today only', () => {
     const model = build(
       [perfEntry('x', '2026-08-07T19:00:00', '2026-08-07T20:00:00')],
-      { mode: 'today', nowMs: t('2026-08-07T17:30:00') },
+      { phase: 'today', nowMs: t('2026-08-07T17:30:00') },
     )
     expect(model.startMs).toBe(t('2026-08-07T17:00:00'))
     expect(model.height).toBe(3 * HOUR_PX)
@@ -107,7 +107,7 @@ describe('buildDetailedModel — block geometry', () => {
   it('positions and sizes blocks proportionally to real time', () => {
     const model = build(
       [perfEntry('x', '2026-08-07T19:30:00', '2026-08-07T20:15:00')],
-      { mode: 'today', nowMs: t('2026-08-07T19:00:00') },
+      { phase: 'today', nowMs: t('2026-08-07T19:00:00') },
     )
     // window starts 19:00 → 30 min down, 45 min tall
     expect(model.blocks[0]!.top).toBe(32)
@@ -126,12 +126,32 @@ describe('buildDetailedModel — block geometry', () => {
     expect(model.blocks[0]!.width).toBe(1)
   })
 
-  it('flags entries that have already ended in today mode', () => {
+  it('flags entries that have already ended', () => {
     const model = build(
       [perfEntry('x', '2026-08-07T19:00:00', '2026-08-07T20:00:00')],
-      { mode: 'today', nowMs: t('2026-08-07T21:00:00') },
+      { phase: 'today', nowMs: t('2026-08-07T21:00:00') },
     )
     expect(model.blocks[0]!.past).toBe(true)
+  })
+
+  it('dims a whole day that is over, without stretching the canvas to now', () => {
+    const model = build(
+      [perfEntry('x', '2026-08-07T19:00:00', '2026-08-07T20:00:00')],
+      { phase: 'past', nowMs: t('2026-08-09T12:00:00') },
+    )
+    expect(model.blocks.every(b => b.past)).toBe(true)
+    expect(model.nowTop).toBeNull()
+    expect(model.hours.some(h => h.suppressed)).toBe(false)
+    // The canvas stays on the day's own hours — not Aug 7 → Aug 9.
+    expect(model.endMs).toBe(t('2026-08-07T20:00:00'))
+  })
+
+  it('leaves a day still ahead unflagged', () => {
+    const model = build(
+      [perfEntry('x', '2026-08-08T19:00:00', '2026-08-08T20:00:00')],
+      { phase: 'future', nowMs: t('2026-08-07T19:02:00') },
+    )
+    expect(model.blocks.every(b => b.past)).toBe(false)
   })
 })
 
@@ -171,7 +191,7 @@ describe('buildDetailedModel — lane packing', () => {
       picks: picksOf([['tulus', 'preferred'], ['barasuara', 'backburner']]),
       pref: 'equal',
       nowMs: t('2026-08-07T19:02:00'),
-      mode: 'today',
+      phase: 'today',
     })
     const byId = Object.fromEntries(model.blocks.map(b => [idOf(b.entry), b]))
     expect(byId.tulus!).toMatchObject({ left: 0, width: 0.5, density: 'full' })
@@ -243,7 +263,7 @@ describe('buildDetailedModel — density + now line', () => {
   it('places the now line and suppresses the hour label it sits on', () => {
     const model = build(
       [perfEntry('x', '2026-08-07T19:15:00', '2026-08-07T20:00:00')],
-      { mode: 'today', nowMs: t('2026-08-07T19:02:00') },
+      { phase: 'today', nowMs: t('2026-08-07T19:02:00') },
     )
     expect(model.nowTop).toBeCloseTo(2 * (HOUR_PX / 60))
     expect(model.hours.find(h => h.labelMs === t('2026-08-07T19:00:00'))!.suppressed).toBe(true)

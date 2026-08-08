@@ -6,6 +6,7 @@
  * The timetable shows ONLY planned content: preferred picks, backburner picks
  * (per display pref), and custom events. Unpicked/skipped sets live in W-4.
  */
+import type { DayPhase } from '~/domain/dayState'
 import type { ConflictDisplayPref, PickMap, ScheduleEntry } from '~/domain/types'
 
 export type TimetableRole = 'preferred' | 'backburner' | 'custom'
@@ -21,6 +22,12 @@ export interface SlotNode {
   labelMs: number
   /** Latest end in the cluster — the past threshold and the now-line denominator */
   maxEndMs: number
+  /**
+   * The cluster has ENDED. Distinct from the `past` bucket below: that means
+   * "collapsed behind Earlier today" and only ever fills on today's board,
+   * whereas this is true in any phase and drives the dimmed entry styling.
+   */
+  past: boolean
   /** Columns chunked into rows of ≤3 (50/50, 33/33/33 per O-2a) */
   rows: TimetableColumn[][]
 }
@@ -50,7 +57,7 @@ export interface NowMarker {
 }
 
 export interface TimetableModel {
-  /** Fully-ended clusters, collapsed behind "Earlier today" (today mode) */
+  /** Fully-ended clusters, collapsed behind "Earlier today" (today only) */
   past: SlotNode[]
   /** Performances (not custom events) inside `past` — "{n} sets played" */
   pastSetCount: number
@@ -102,10 +109,10 @@ export function buildTimetableModel(input: {
   picks: PickMap
   pref: ConflictDisplayPref
   nowMs: number
-  mode: 'today' | 'preview'
+  phase: DayPhase
   forwardWindowMs?: number
 }): TimetableModel {
-  const { picks, pref, nowMs, mode } = input
+  const { picks, pref, nowMs, phase } = input
   const windowMs = input.forwardWindowMs ?? DEFAULT_WINDOW_MS
 
   // 1. Roles + filtering
@@ -135,11 +142,13 @@ export function buildTimetableModel(input: {
     const rows: TimetableColumn[][] = []
     for (let i = 0; i < ordered.length; i += MAX_COLUMNS)
       rows.push(ordered.slice(i, i + MAX_COLUMNS))
+    const maxEndMs = Math.max(...cluster.map(c => c.entry.endMs))
     return {
       type: 'slot',
       labelMs: Math.min(...cluster.map(c => c.entry.startMs)),
       rows,
-      maxEndMs: Math.max(...cluster.map(c => c.entry.endMs)),
+      maxEndMs,
+      past: maxEndMs <= nowMs,
     }
   }
   const slots = clusters.map(toSlot)
@@ -148,7 +157,9 @@ export function buildTimetableModel(input: {
   const past: SlotNode[] = []
   const upcoming: SlotNode[] = []
   for (const slot of slots) {
-    if (mode === 'today' && slot.maxEndMs <= nowMs) past.push(slot)
+    // Only today collapses its ended clusters — a finished day shows in full,
+    // and a day still ahead has nothing to collapse.
+    if (phase === 'today' && slot.past) past.push(slot)
     else upcoming.push(slot)
   }
 
@@ -158,7 +169,8 @@ export function buildTimetableModel(input: {
   let nowMarker: NowMarker | null = null
   for (let i = 0; i < upcoming.length; i++) {
     const slot = upcoming[i]!
-    const bucket = mode === 'preview' || slot.labelMs <= horizonMs ? visible : later
+    // Only today has a forward window; any other day renders whole.
+    const bucket = phase !== 'today' || slot.labelMs <= horizonMs ? visible : later
     // gap before this slot (from the previous upcoming cluster)
     const prev = upcoming[i - 1]
     if (prev && slot.labelMs - prev.maxEndMs >= GAP_MIN_MS) {
@@ -169,7 +181,7 @@ export function buildTimetableModel(input: {
 
     // Clusters are disjoint and sorted, so at most one can contain `now`; and a
     // running one is always in `visible` (it started, so labelMs <= horizonMs).
-    if (mode === 'today' && bucket === visible
+    if (phase === 'today' && bucket === visible
       && slot.labelMs <= nowMs && nowMs < slot.maxEndMs) {
       const span = Math.max(1, slot.maxEndMs - slot.labelMs)
       const fraction = Math.min(1, Math.max(0, (nowMs - slot.labelMs) / span))
@@ -187,4 +199,32 @@ export function buildTimetableModel(input: {
   )
 
   return { past, pastSetCount, visible, later, nowMarker }
+}
+
+/**
+ * Start time to prefill the custom-event sheet with, for the day BEING SHOWN.
+ *
+ * The "add a break" buttons used to emit the wall clock, but CustomEventSheet
+ * stamps the venue DATE of whatever it is given — so adding a break while
+ * looking at another day silently filed it on today, where it vanished from the
+ * board it was created on. Anchor to the shown day instead. Rounded to 5 min,
+ * matching the gap-slot prefill above.
+ */
+export function customEventPrefillMs(input: {
+  phase: DayPhase
+  nowMs: number
+  dayWindow: [number, number] | undefined
+  /** Earliest planned start on that day, when there is one */
+  firstEntryMs?: number
+  offsetMs?: number
+}): number {
+  const { phase, nowMs, dayWindow, firstEntryMs, offsetMs = 0 } = input
+  const round5 = (ms: number) => Math.round(ms / (5 * 60_000)) * 5 * 60_000
+
+  // "15 minutes from now" only means something on the day that is actually now.
+  if (phase === 'today' || !dayWindow) return round5(nowMs + offsetMs)
+
+  const [start, end] = dayWindow
+  const anchor = firstEntryMs ?? start
+  return round5(Math.min(Math.max(anchor, start), end - 5 * 60_000))
 }

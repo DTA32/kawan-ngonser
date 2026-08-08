@@ -74,6 +74,7 @@ export async function commitSync(
           backburner_notify_default: plan.settings.backburnerNotifyDefault,
           timetable_view_pref: plan.settings.timetableViewPref,
           widget_order: [...plan.settings.widgetOrder],
+          hidden_widgets: [...plan.settings.hiddenWidgets],
           lead_time_override_min: plan.settings.leadTimeOverrideMin,
         })
         await db.local_picks.where('event_id').equals(eventId).delete()

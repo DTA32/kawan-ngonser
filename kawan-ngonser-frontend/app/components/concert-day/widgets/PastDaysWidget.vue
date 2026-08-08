@@ -1,12 +1,13 @@
 <script setup lang="ts">
-// W-5: further attending days → preview of that day's board
+// W-7: attending days that are already over → relive that day's board.
+// The mirror of W-5; self-hides when there is nothing behind you.
 import { formatDayTitle } from '~/utils/time-format'
 import type { Concert, PickMap } from '~/domain/types'
 import { DESIGN_COPY, interpolate } from '~/utils/copy'
 
 const props = defineProps<{
   concert: Concert
-  /** Attending days after today */
+  /** Attending days before the one being shown, nearest first */
   dayIndexes: number[]
   picks: PickMap
 }>()
@@ -30,20 +31,20 @@ function title(dayIndex: number): string {
 
 <template>
   <CommonWidgetCard v-if="dayIndexes.length">
-    <template #title>{{ DESIGN_COPY.widgetNextDays }}</template>
+    <template #title>{{ DESIGN_COPY.widgetPastDays }}</template>
     <NuxtLink
       v-for="day in dayIndexes"
       :key="day"
       :to="`/concerts/${concert.eventId}/day/${day}`"
       class="flex items-center gap-3 rounded-xl bg-surface-raised p-3.5"
     >
-      <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/12">
-        <UIcon name="i-lucide-calendar-days" class="size-5 text-primary" />
+      <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/8">
+        <UIcon name="i-lucide-calendar-check" class="size-5 text-text-secondary" />
       </span>
       <span class="flex min-w-0 flex-1 flex-col gap-0.5">
         <span class="text-[15px] font-semibold text-text">{{ title(day) }}</span>
         <span class="text-xs text-text-secondary">
-          {{ interpolate(DESIGN_COPY.dayPreviewSub, { n: pickCount(day) }) }}
+          {{ interpolate(DESIGN_COPY.dayRelivedSub, { n: pickCount(day) }) }}
         </span>
       </span>
       <UIcon name="i-lucide-chevron-right" class="size-[18px] shrink-0 text-text-muted" />

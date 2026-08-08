@@ -8,6 +8,7 @@
  * it is handed, so the fiddly parts stay unit-testable without a DOM.
  */
 import { overlaps } from '~/domain/conflicts'
+import type { DayPhase } from '~/domain/dayState'
 import type { ConflictDisplayPref, PickMap, ScheduleEntry } from '~/domain/types'
 import { type TimetableColumn, type TimetableRole, toColumns } from './timetable'
 
@@ -124,17 +125,19 @@ export function buildDetailedModel(input: {
   picks: PickMap
   pref: ConflictDisplayPref
   nowMs: number
-  mode: 'today' | 'preview'
+  phase: DayPhase
   /** dayWindows fallback for a day with nothing planned yet */
   dayWindow?: [number, number]
 }): DetailedModel {
-  const { picks, pref, nowMs, mode } = input
+  const { picks, pref, nowMs, phase } = input
   const columns = toColumns(input.entries, picks, pref)
 
   // 1. Canvas window — whole hours around the content, including now today
   const bounds: number[] = []
   for (const col of columns) bounds.push(col.entry.startMs, col.entry.endMs)
-  if (mode === 'today') bounds.push(nowMs)
+  // Only today stretches the canvas to reach `now` — on any other day that
+  // would span the days between here and there.
+  if (phase === 'today') bounds.push(nowMs)
   if (bounds.length === 0 && input.dayWindow) bounds.push(...input.dayWindow)
 
   const startMs = bounds.length > 0
@@ -152,7 +155,7 @@ export function buildDetailedModel(input: {
     hours.push({
       labelMs: ms,
       top: topOf(ms),
-      suppressed: mode === 'today' && Math.abs(ms - nowMs) < LABEL_SUPPRESS_MS,
+      suppressed: phase === 'today' && Math.abs(ms - nowMs) < LABEL_SUPPRESS_MS,
     })
   }
 
@@ -171,13 +174,15 @@ export function buildDetailedModel(input: {
         height: blockHeight,
         left: lane / lanes,
         width: span / lanes,
-        past: mode === 'today' && col.entry.endMs <= nowMs,
+        // No phase guard: an entry is past iff it has ended. On a day still
+        // ahead every endMs > nowMs anyway, so today's output is unchanged.
+        past: col.entry.endMs <= nowMs,
         density: densityOf(blockHeight),
       })
     }
   }
 
-  const nowTop = mode === 'today' && nowMs >= startMs && nowMs <= endMs
+  const nowTop = phase === 'today' && nowMs >= startMs && nowMs <= endMs
     ? topOf(nowMs)
     : null
 

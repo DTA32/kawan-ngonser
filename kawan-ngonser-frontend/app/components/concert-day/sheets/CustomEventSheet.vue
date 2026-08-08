@@ -4,7 +4,9 @@
  * add-a-break, edit or delete after creation via the same sheet.
  */
 import { DateTime } from 'luxon'
+import { dayIndexOfCustomEvent } from '~/domain/schedule'
 import { venueDateOf, venueDateTime } from '~/domain/time'
+import { DESIGN_COPY } from '~/utils/copy'
 import { useConcertCacheStore } from '~/stores/concertCache'
 
 const props = defineProps<{
@@ -43,6 +45,17 @@ watchEffect(() => {
 })
 
 const canSave = computed(() => name.value.trim().length > 0 && startInput.value.length > 0)
+
+/**
+ * H-5. Create mode is always editable — its only entrances are the board's own
+ * add buttons, which are already gated on the shown day.
+ */
+const eventDayIndex = computed(() => {
+  const schedule = plan.schedule.value
+  if (!schedule || !props.customEventId) return null
+  return dayIndexOfCustomEvent(schedule, props.customEventId)
+})
+const editable = useDayEditable(() => props.eventId, eventDayIndex)
 
 function toMs(hhmm: string, baseMs: number): number | null {
   const date = venueDateOf(baseMs, tz.value)
@@ -109,7 +122,10 @@ function onDelete() {
     </label>
   </div>
 
-  <div class="flex flex-col gap-2">
+  <!-- H-5: a day that's over is relive-only -->
+  <p v-if="!editable" class="text-sm text-text-muted">{{ DESIGN_COPY.pastDayReadOnly }}</p>
+
+  <div v-else class="flex flex-col gap-2">
     <button
       type="button"
       class="w-full rounded-[28px] bg-primary px-6 py-3.5 text-[15px] font-semibold text-on-primary disabled:opacity-40"

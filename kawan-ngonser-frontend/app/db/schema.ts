@@ -30,6 +30,8 @@ export interface PlanRow {
   /** Optional for pre-existing rows — hydrates as 'compact' (W-2) */
   timetable_view_pref?: TimetableViewPref
   widget_order: WidgetId[]
+  /** Optional for pre-existing rows — hydrates as [] (S-1 show/hide) */
+  hidden_widgets?: WidgetId[]
   lead_time_override_min: number | null
 }
 

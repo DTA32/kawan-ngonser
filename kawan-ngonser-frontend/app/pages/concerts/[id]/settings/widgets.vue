@@ -1,11 +1,13 @@
 <script setup lang="ts">
 /**
- * S-1 widget rearrange: Sortable drag (touch-safe delay so scrolling isn't
- * hijacked) + keyboard/Move-up-down fallback for accessibility. Order writes
- * live; "Done" navigates back with the C30 toast.
+ * S-1 widget rearrange + show/hide: Sortable drag (touch-safe delay so
+ * scrolling isn't hijacked) + keyboard/Move-up-down fallback for
+ * accessibility, and a per-row eye toggle. A hidden widget keeps its place in
+ * the list so unhiding puts it straight back where it was. Both write live;
+ * "Done" navigates back with the C30 toast.
  */
 import { useSortable } from '@vueuse/integrations/useSortable'
-import type { WidgetId } from '~/domain/types'
+import { DEFAULT_WIDGET_ORDER, type WidgetId } from '~/domain/types'
 import { COPY, DESIGN_COPY } from '~/utils/copy'
 
 definePageMeta({ layout: 'flow' })
@@ -22,12 +24,23 @@ const TITLES: Record<WidgetId, string> = {
   timetable: DESIGN_COPY.widgetTimetable,
   backburner: DESIGN_COPY.widgetBackburner,
   other: DESIGN_COPY.widgetOther,
+  pastPerformances: DESIGN_COPY.widgetPastPerformances,
   nextDays: DESIGN_COPY.widgetNextDays,
+  pastDays: DESIGN_COPY.widgetPastDays,
 }
 
-const order = ref<WidgetId[]>([...(plan.settings.value?.widgetOrder ?? ['upNext', 'timetable', 'backburner', 'other', 'nextDays'])])
+const order = ref<WidgetId[]>([...(plan.settings.value?.widgetOrder ?? DEFAULT_WIDGET_ORDER)])
+const hidden = ref<WidgetId[]>([...(plan.settings.value?.hiddenWidgets ?? [])])
 const listEl = ref<HTMLElement | null>(null)
 const dirty = ref(false)
+
+const isHidden = (widget: WidgetId) => hidden.value.includes(widget)
+
+function toggle(widget: WidgetId) {
+  hidden.value = isHidden(widget)
+    ? hidden.value.filter(w => w !== widget)
+    : [...hidden.value, widget]
+}
 
 onMounted(() => {
   if (!plan.exists.value) router.replace('/')
@@ -43,6 +56,11 @@ useSortable(listEl, order, {
 
 watch(order, (next) => {
   plan.setWidgetOrder([...next])
+  dirty.value = true
+}, { deep: true })
+
+watch(hidden, (next) => {
+  plan.setHiddenWidgets([...next])
   dirty.value = true
 }, { deep: true })
 
@@ -69,7 +87,7 @@ function done() {
 
     <div class="flex flex-1 flex-col gap-4 px-5 pb-7 pt-4">
       <p class="text-sm leading-relaxed text-text-secondary">
-        Drag to reorder — this is how your concert-day home stacks up.
+        Drag to reorder, tap the eye to hide — this is how your concert-day home stacks up.
       </p>
 
       <div class="flex items-center gap-3 rounded-[14px] bg-surface p-3.5 opacity-55">
@@ -85,14 +103,18 @@ function done() {
           v-for="(widget, i) in order"
           :key="widget"
           class="flex cursor-grab items-center gap-3 rounded-[14px] bg-surface p-3.5"
+          :class="isHidden(widget) ? 'opacity-55' : ''"
           tabindex="0"
           role="listitem"
-          :aria-label="`${TITLES[widget]}, position ${i + 1} of ${order.length}`"
+          :aria-label="`${TITLES[widget]}, position ${i + 1} of ${order.length}${isHidden(widget) ? ', hidden' : ''}`"
           @keydown.arrow-up.prevent="move(i, -1)"
           @keydown.arrow-down.prevent="move(i, 1)"
         >
           <UIcon name="i-lucide-grip-vertical" class="size-[18px] shrink-0 text-text-muted" />
-          <span class="flex-1 text-[15px] font-semibold text-text">{{ TITLES[widget] }}</span>
+          <span
+            class="flex-1 text-[15px] font-semibold"
+            :class="isHidden(widget) ? 'text-text-muted' : 'text-text'"
+          >{{ TITLES[widget] }}</span>
           <!-- always-visible fallback: drag isn't discoverable for everyone -->
           <span class="flex gap-1">
             <button
@@ -112,6 +134,15 @@ function done() {
               @click="move(i, 1)"
             >
               <UIcon name="i-lucide-chevron-down" class="size-4" />
+            </button>
+            <button
+              type="button"
+              :aria-label="isHidden(widget) ? `Show ${TITLES[widget]}` : `Hide ${TITLES[widget]}`"
+              :aria-pressed="isHidden(widget)"
+              class="rounded-lg p-1.5 text-text-secondary"
+              @click="toggle(widget)"
+            >
+              <UIcon :name="isHidden(widget) ? 'i-lucide-eye-off' : 'i-lucide-eye'" class="size-4" />
             </button>
           </span>
         </div>

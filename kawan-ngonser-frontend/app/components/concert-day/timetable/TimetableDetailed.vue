@@ -4,6 +4,7 @@
  * comes from utils/timetable-detailed; this component only paints it and
  * owns the scroll behaviour (auto-scroll to now, jump-back pill).
  */
+import type { DayPhase } from '~/domain/dayState'
 import { formatTime } from '~/domain/time'
 import type { Concert } from '~/domain/types'
 import { DESIGN_COPY } from '~/utils/copy'
@@ -12,7 +13,7 @@ import { type DetailedBlock, buildDetailedModel, timeAtOffset } from '~/utils/ti
 const props = defineProps<{
   concert: Concert
   dayIndex: number
-  mode: 'today' | 'preview'
+  phase: DayPhase
 }>()
 
 const emit = defineEmits<{
@@ -31,9 +32,12 @@ const model = computed(() => buildDetailedModel({
   picks: plan.picks.value,
   pref: plan.settings.value?.conflictDisplayPref ?? 'equal',
   nowMs: now.value,
-  mode: props.mode,
+  phase: props.phase,
   dayWindow: plan.schedule.value?.dayWindows.get(props.dayIndex),
 }))
+
+/** H-5: a day that is over is relive-only — the tap-to-add canvas comes off. */
+const editable = computed(() => props.phase !== 'past')
 
 /** Gutter width matches the compact view's hour column. */
 const GUTTER_PX = 38
@@ -114,8 +118,9 @@ function blockStyle(block: DetailedBlock) {
           />
         </div>
 
-        <!-- tap-to-add surface, behind the blocks -->
+        <!-- tap-to-add surface, behind the blocks (gone on a day that's over) -->
         <div
+          v-if="editable"
           class="absolute inset-y-0 right-0"
           :style="{ left: `${GUTTER_PX}px` }"
           @click="onCanvasClick"

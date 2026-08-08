@@ -5,7 +5,8 @@
 //
 // A set that is already under way stays in these lists until it ends, so it
 // gets a LIVE dot and counts DOWN to its end instead of up from its start.
-import { formatRelative, formatRemaining, formatTimeRange, isLive } from '~/domain/time'
+// `past` (W-6) is the other end of that: dimmer, and counting up from the end.
+import { formatSetStatus, formatTimeRange, isLive } from '~/domain/time'
 import type { EffectivePerformance, Stage } from '~/domain/types'
 import { DESIGN_COPY } from '~/utils/copy'
 import { stageStyleVars } from '~/utils/stage-color'
@@ -16,6 +17,8 @@ const props = defineProps<{
   timezone: string
   nowMs: number
   dimmed?: boolean
+  /** W-6: the set has ended — dimmer than `dimmed`, time line counts up */
+  past?: boolean
 }>()
 
 defineEmits<{ select: [] }>()
@@ -27,9 +30,7 @@ const live = computed(() =>
 
 const timeLine = computed(() => {
   const range = formatTimeRange(props.performance.startMs, props.performance.endMs, props.timezone)
-  const rel = live.value
-    ? formatRemaining(props.performance.endMs, props.nowMs)
-    : formatRelative(props.performance.startMs - props.nowMs)
+  const rel = formatSetStatus(props.performance.startMs, props.performance.endMs, props.nowMs)
   return `${range} · ${rel}`
 })
 </script>
@@ -38,7 +39,7 @@ const timeLine = computed(() => {
   <button
     type="button"
     class="flex w-full items-center gap-3 rounded-2xl bg-surface-raised p-3.5 text-left"
-    :class="dimmed ? 'opacity-80' : ''"
+    :class="past ? 'opacity-60' : dimmed ? 'opacity-80' : ''"
     :style="vars"
     @click="$emit('select')"
   >

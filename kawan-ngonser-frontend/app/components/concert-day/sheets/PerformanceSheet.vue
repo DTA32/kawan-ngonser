@@ -6,9 +6,9 @@
  *   other/skipped → Watch this (C21)
  * Every action confirms with its verbatim C29 toast; promotions surface too.
  */
-import { formatRelative, formatTimeRange } from '~/domain/time'
+import { formatSetStatus, formatTimeRange } from '~/domain/time'
 import type { PickEffect } from '~/domain/picks'
-import { COPY, interpolate } from '~/utils/copy'
+import { COPY, DESIGN_COPY, interpolate } from '~/utils/copy'
 import { stageStyleVars } from '~/utils/stage-color'
 import { useConcertCacheStore } from '~/stores/concertCache'
 
@@ -40,10 +40,13 @@ const vars = computed(() => stageStyleVars(stage.value?.color ?? ''))
 
 const timeLine = computed(() => {
   if (!performance.value || !concert.value) return ''
-  const rel = formatRelative(performance.value.startMs - now.value)
+  const rel = formatSetStatus(performance.value.startMs, performance.value.endMs, now.value)
   const range = formatTimeRange(performance.value.startMs, performance.value.endMs, concert.value.timezone)
   return `${rel} · ${range}`
 })
+
+/** H-5: the sheet of a set on a day that is over shows no actions. */
+const editable = useDayEditable(() => props.eventId, () => performance.value?.dayIndex)
 
 const imgFailed = ref(false)
 const artist = computed(() => performance.value?.artistName ?? '')
@@ -135,7 +138,10 @@ function onWatchThis() {
 
     <p class="text-sm text-text-secondary">{{ timeLine }}</p>
 
-    <div class="flex flex-col gap-2.5">
+    <!-- H-5: a day that's over is relive-only -->
+    <p v-if="!editable" class="text-sm text-text-muted">{{ DESIGN_COPY.pastDayReadOnly }}</p>
+
+    <div v-else class="flex flex-col gap-2.5">
       <!-- backburner: make my pick + notify toggle -->
       <template v-if="role === 'backburner'">
         <button

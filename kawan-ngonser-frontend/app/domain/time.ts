@@ -79,7 +79,8 @@ export function formatCountdown(deltaMs: number): string {
 
 /**
  * Relative label for lists and sheets: "now", "in 1 min", "in 58 mins",
- * "in 2h 05m". Past deltas return "started".
+ * "in 2h 05m". Past deltas return "started" — for a set that has ENDED use
+ * `formatElapsed`, or `formatSetStatus` to pick the right one automatically.
  */
 export function formatRelative(deltaMs: number): string {
   if (deltaMs < -60_000) return 'started'
@@ -105,6 +106,33 @@ export function formatRemaining(endMs: number, nowMs: number): string {
   const h = Math.floor(mins / 60)
   const m = mins % 60
   return `${h}h ${String(m).padStart(2, '0')}m left`
+}
+
+/**
+ * How long ago a set FINISHED (W-6 past performances): "just ended", "17m ago",
+ * "1h 32m ago". The past counterpart to `formatRemaining` — `formatRelative`
+ * collapses everything that already happened into "started", which is exactly
+ * the ambiguity a recap has to remove. Compact by design: these sit in the same
+ * narrow column as the stage chip.
+ */
+export function formatElapsed(endMs: number, nowMs: number): string {
+  const mins = Math.round((nowMs - endMs) / 60_000)
+  if (mins <= 0) return 'just ended'
+  if (mins < 60) return `${mins}m ago`
+  const h = Math.floor(mins / 60)
+  const m = mins % 60
+  return `${h}h ${String(m).padStart(2, '0')}m ago`
+}
+
+/**
+ * The one time-status label: counts down to a start, counts down to an end
+ * while live, counts up once ended. Keeps the three-way choice in a single
+ * place instead of re-deriving it in every card, sheet and widget.
+ */
+export function formatSetStatus(startMs: number, endMs: number, nowMs: number): string {
+  if (isLive(startMs, endMs, nowMs)) return formatRemaining(endMs, nowMs)
+  if (nowMs >= endMs) return formatElapsed(endMs, nowMs)
+  return formatRelative(startMs - nowMs)
 }
 
 /** True while `nowMs` is inside [startMs, endMs) — the live window. */

@@ -20,7 +20,6 @@ const showConcertDay = computed(() => activeDay.value !== null && !browsing.valu
       v-if="showConcertDay"
       :event-id="activeDay!.eventId"
       :day-index="activeDay!.dayState.todayDayIndex!"
-      mode="today"
     />
     <HomeDefaultView v-else :live-day="browsing ? activeDay : null" />
   </div>

@@ -82,3 +82,19 @@ export function buildEffectiveSchedule(
 
   return { byDay, performances, dayWindows }
 }
+
+/**
+ * Which day a custom event was placed on. `byDay` is the placement authority
+ * (the midnight-spill rule above), so read it back rather than re-deriving.
+ */
+export function dayIndexOfCustomEvent(
+  schedule: EffectiveSchedule,
+  customEventId: string,
+): number | null {
+  for (const [dayIndex, entries] of schedule.byDay) {
+    for (const e of entries) {
+      if (e.kind === 'custom' && e.event.customEventId === customEventId) return dayIndex
+    }
+  }
+  return null
+}

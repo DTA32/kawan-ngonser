@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest'
+import type { DayPhase } from '~/domain/dayState'
 import { buildEffectiveSchedule } from '~/domain/schedule'
+import { venueDateOf } from '~/domain/time'
 import type { CustomEvent, PickMap } from '~/domain/types'
-import { buildTimetableModel, type SlotNode } from '~/utils/timetable'
-import { miniConcert, t } from '../fixtures/mini'
+import { buildTimetableModel, customEventPrefillMs, type SlotNode } from '~/utils/timetable'
+import { miniConcert, t, TZ } from '../fixtures/mini'
 
 function picksOf(entries: Array<[string, 'preferred' | 'backburner' | 'skipped']>): PickMap {
   return Object.fromEntries(entries.map(([id, status]) => [
@@ -34,7 +36,7 @@ describe('buildTimetableModel — content + clustering', () => {
       picks: picksOf([['a', 'preferred'], ['b', 'backburner'], ['c', 'skipped']]),
       pref: 'equal',
       nowMs: t('2026-08-07T14:00:00'),
-      mode: 'today',
+      phase: 'today',
     })
     const ids = model.visible.concat(model.later)
       .filter((n): n is SlotNode => n.type === 'slot')
@@ -48,7 +50,7 @@ describe('buildTimetableModel — content + clustering', () => {
       picks: picksOf([['a', 'preferred'], ['b', 'backburner']]),
       pref: 'equal',
       nowMs: t('2026-08-07T18:30:00'),
-      mode: 'today',
+      phase: 'today',
     })
     const slot = model.visible.find(n => n.type === 'slot') as SlotNode
     expect(slot.rows).toHaveLength(1)
@@ -62,7 +64,7 @@ describe('buildTimetableModel — content + clustering', () => {
       picks: picksOf([['a', 'preferred'], ['b', 'backburner']]),
       pref: 'hidden',
       nowMs: t('2026-08-07T18:30:00'),
-      mode: 'today',
+      phase: 'today',
     })
     const slot = model.visible.find(n => n.type === 'slot') as SlotNode
     expect(slot.rows[0]).toHaveLength(1)
@@ -78,7 +80,7 @@ describe('buildTimetableModel — content + clustering', () => {
       picks: picksOf([['d', 'preferred'], ['e', 'backburner'], ['f', 'preferred']]),
       pref: 'equal',
       nowMs: t('2026-08-07T14:00:00'),
-      mode: 'today',
+      phase: 'today',
     })
     const slot = model.visible.find(n => n.type === 'slot') as SlotNode
     expect(slot.rows).toHaveLength(2)
@@ -88,13 +90,13 @@ describe('buildTimetableModel — content + clustering', () => {
 })
 
 describe('buildTimetableModel — now marker', () => {
-  function markerAt(nowIso: string, mode: 'today' | 'preview' = 'today') {
+  function markerAt(nowIso: string, phase: DayPhase = 'today') {
     return buildTimetableModel({
       entries: day1Entries(),
       picks: allPicked,
       pref: 'equal',
       nowMs: t(nowIso),
-      mode,
+      phase,
     })
   }
 
@@ -125,8 +127,9 @@ describe('buildTimetableModel — now marker', () => {
     expect(markerAt('2026-08-08T02:00:00').nowMarker).toBeNull()
   })
 
-  it('is null in preview mode', () => {
-    expect(markerAt('2026-08-07T19:30:00', 'preview').nowMarker).toBeNull()
+  it('is null on any day but today', () => {
+    expect(markerAt('2026-08-07T19:30:00', 'future').nowMarker).toBeNull()
+    expect(markerAt('2026-08-07T19:30:00', 'past').nowMarker).toBeNull()
   })
 
   it('spans the whole cluster, not the entry that happens to be playing', () => {
@@ -144,7 +147,7 @@ describe('buildTimetableModel — past / window / gaps', () => {
       picks: allPicked,
       pref: 'equal',
       nowMs: t('2026-08-07T18:00:00'), // d/e/f done, a onward upcoming
-      mode: 'today',
+      phase: 'today',
     })
     expect(model.past).toHaveLength(1)
     expect(model.pastSetCount).toBe(3)
@@ -158,7 +161,7 @@ describe('buildTimetableModel — past / window / gaps', () => {
       picks: allPicked,
       pref: 'equal',
       nowMs: t('2026-08-07T16:10:00'), // d done, e/f still running
-      mode: 'today',
+      phase: 'today',
     })
     expect(model.past).toHaveLength(0)
     const first = model.visible.find(n => n.type === 'slot') as SlotNode
@@ -171,7 +174,7 @@ describe('buildTimetableModel — past / window / gaps', () => {
       picks: allPicked,
       pref: 'equal',
       nowMs: t('2026-08-07T18:00:00'), // horizon 21:00 → late (23:15) is later
-      mode: 'today',
+      phase: 'today',
     })
     const laterSlots = model.later.filter((n): n is SlotNode => n.type === 'slot')
     expect(laterSlots.flatMap(slotIds)).toContain('late')
@@ -185,7 +188,7 @@ describe('buildTimetableModel — past / window / gaps', () => {
       picks: allPicked,
       pref: 'equal',
       nowMs: t('2026-08-07T14:00:00'),
-      mode: 'preview',
+      phase: 'future',
     })
     // 17:00 (f ends) → 19:00 (a starts): 2h gap
     const gaps = model.visible.filter(n => n.type === 'gap')
@@ -199,24 +202,114 @@ describe('buildTimetableModel — past / window / gaps', () => {
       picks: picksOf([['b', 'preferred'], ['c', 'preferred']]),
       pref: 'equal',
       nowMs: t('2026-08-07T19:30:00'),
-      mode: 'today',
+      phase: 'today',
     })
     // b ends 21:00, c starts 21:00 — no gap
     expect(model.visible.filter(n => n.type === 'gap')).toHaveLength(0)
   })
 
-  it('preview mode: nothing is past, everything visible', () => {
+  it('a day still ahead: nothing is past, everything visible', () => {
     const model = buildTimetableModel({
       entries: day1Entries(),
       picks: allPicked,
       pref: 'equal',
       nowMs: t('2026-08-07T23:59:00'),
-      mode: 'preview',
+      phase: 'future',
     })
     expect(model.past).toHaveLength(0)
     expect(model.later).toHaveLength(0)
     const ids = model.visible.filter((n): n is SlotNode => n.type === 'slot').flatMap(slotIds)
     expect(ids).toContain('d')
     expect(ids).toContain('late')
+  })
+})
+
+describe('buildTimetableModel — a day that is over', () => {
+  function pastDay() {
+    return buildTimetableModel({
+      entries: day1Entries(),
+      picks: allPicked,
+      pref: 'equal',
+      nowMs: t('2026-08-09T12:00:00'),
+      phase: 'past',
+    })
+  }
+
+  it('renders the whole day expanded, not collapsed behind "Earlier today"', () => {
+    const model = pastDay()
+    expect(model.past).toHaveLength(0)
+    expect(model.pastSetCount).toBe(0)
+    expect(model.later).toHaveLength(0)
+
+    const ids = model.visible.filter((n): n is SlotNode => n.type === 'slot').flatMap(slotIds)
+    expect(ids).toContain('d')
+    expect(ids).toContain('late')
+  })
+
+  it('flags every slot as ended, and carries no now-marker', () => {
+    const model = pastDay()
+    const slots = model.visible.filter((n): n is SlotNode => n.type === 'slot')
+    expect(slots.every(s => s.past)).toBe(true)
+    expect(model.nowMarker).toBeNull()
+  })
+
+  it('leaves slots unflagged on a day still ahead', () => {
+    const model = buildTimetableModel({
+      entries: day1Entries(),
+      picks: allPicked,
+      pref: 'equal',
+      nowMs: t('2026-08-06T12:00:00'),
+      phase: 'future',
+    })
+    const slots = model.visible.filter((n): n is SlotNode => n.type === 'slot')
+    expect(slots.every(s => s.past)).toBe(false)
+    expect(slots.some(s => s.past)).toBe(false)
+  })
+})
+
+describe('customEventPrefillMs', () => {
+  const day2Window = buildEffectiveSchedule(miniConcert, {}, []).dayWindows.get(2)!
+
+  it('offsets from now on today', () => {
+    expect(customEventPrefillMs({
+      phase: 'today',
+      nowMs: t('2026-08-07T19:02:00'),
+      dayWindow: day2Window,
+      offsetMs: 15 * 60_000,
+    })).toBe(t('2026-08-07T19:15:00'))
+  })
+
+  it('anchors to the shown day, not the wall clock', () => {
+    // Previewing day 2 while day 1 is running: the wall clock would file the
+    // event on Aug 7, where it would vanish from the board that created it.
+    const ms = customEventPrefillMs({
+      phase: 'future',
+      nowMs: t('2026-08-07T19:02:00'),
+      dayWindow: day2Window,
+      firstEntryMs: t('2026-08-08T20:00:00'),
+      offsetMs: 15 * 60_000,
+    })
+    expect(venueDateOf(ms, TZ)).toBe('2026-08-08')
+    expect(ms).toBe(t('2026-08-08T20:00:00'))
+  })
+
+  it('falls back to the start of a day with nothing planned', () => {
+    const ms = customEventPrefillMs({
+      phase: 'future',
+      nowMs: t('2026-08-07T19:02:00'),
+      dayWindow: day2Window,
+    })
+    expect(venueDateOf(ms, TZ)).toBe('2026-08-08')
+    expect(ms).toBe(day2Window[0])
+  })
+
+  it('clamps an anchor past the end of the window', () => {
+    const ms = customEventPrefillMs({
+      phase: 'past',
+      nowMs: t('2026-08-09T12:00:00'),
+      dayWindow: day2Window,
+      firstEntryMs: day2Window[1] + 60 * 60_000,
+    })
+    expect(ms).toBeLessThanOrEqual(day2Window[1])
   })
 })
