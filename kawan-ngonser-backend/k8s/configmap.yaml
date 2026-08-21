@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kawan-ngonser-be-config
+data:
+  DB_NAME: "kawan-ngonser"
+  PORT: "3001"
