@@ -1,6 +1,8 @@
 # Kawan Ngonser — Festival Planner PWA Requirements
 
-> **Status:** v7 — v6 (settled) plus implementation-phase updates: the wire contract is finalized (§3.1), and post-implementation feedback added the backburner-notify default (O-2/S-3), planned-concert detail-sheet variants (H-5), W-4 pagination, an empty server-list state (H-2), and storage-quota protection (§3.1). New copy introduced by these features is collected in §11.1 pending deck sign-off.
+> **Status:** v8
+>
+> **v7** plus the **Concert Builder** (§13): a user can author a whole concert schedule on-device and export it as JSON for other people to plan against. Adds the `local_concert_builds` store (§3.5), TR-7, the H-6 Home entry, the H-5 "Edit a copy" remix action, and §11.2 copy.
 >
 > **First real-world use:** Sounds Project music festival, weekend of 2026-08-08/09. The app itself is generic — any festival/concert that follows the data schema should work.
 
@@ -23,6 +25,7 @@ Feature highlights:
 - **Local notifications:** a heads-up a configurable number of minutes before every performance you plan to watch (and custom events) — scheduled on-device so they fire with zero signal.
 - **Offline-first by design:** concert data comes from the server or a manual JSON upload; after that, everything works offline. Connectivity and low-battery indicators keep you informed at a glance.
 - **Schedule-change friendly:** performances can be edited locally (time changed, or removed when a performer cancels), and server updates sync without destroying your plan.
+- **Build your own:** no data for your festival? Author the entire schedule inside the app (§13) — days, stages, sets — keep it on your device, and export it as a JSON file so friends can plan against the same lineup.
 
 ---
 
@@ -36,6 +39,7 @@ Feature highlights:
 | TR-4 | **No accounts / no auth.** All user data (plans, preferences, conflict resolutions, custom events, widget order) is stored **locally on-device** (e.g., IndexedDB). The backend holds no user state. |
 | TR-5 | Concert data carries a **version** so the client can detect when the server has newer data (see F-1 sync advisory). |
 | TR-6 | Concert data can alternatively be **uploaded manually as a JSON file** (same schema as the server serves). This must work fully offline. |
+| TR-7 | **Concert Builder (§13):** the user can author concert data on-device. Builds are stored **locally only** (`local_concert_builds`, §3.5) — the backend never learns they exist, so TR-4 still holds — and are shared by **exporting JSON in the §3.1 wire shape**, which any other device imports through the TR-6 upload path with no Builder-specific handling. Fully offline, end to end. |
 
 ---
 
@@ -103,6 +107,44 @@ Notes:
 
 - Theme choice: **system / light / dark** (G-5)
 
+### 3.5 Local concert builds (Concert Builder, §13)
+
+One row per authored concert in `local_concert_builds`. The row **mirrors the Mongo `concerts` document** (§3.1 / `mongodb.mermaid`) — a build is simply a concert document the user happens to own — plus four local-only bookkeeping fields:
+
+```jsonc
+{
+  "build_id": "build-8f2a91c4",        // local PK: survives event_id edits and forks
+  "event_id": "my-festival-2026-a4f9", // business id that ships in the export (B-11)
+  "version": 7,                        // bumped on every saved change (TR-5 semantics)
+  "name": "…",
+  "logo": "<url>",
+  "place": "…",
+  "description": "…",
+  "timezone": "Asia/Jakarta",
+  "days":         [{ "day_index": 1, "date": "2026-08-08" }],
+  "stages":       [{ "stage_id": "main", "name": "Main Stage", "color": "#E85D75" }],
+  "performances": [{
+    "performance_id": "perf-001",
+    "artist_name": "…",
+    "artist_image": "<url>",
+    "day_index": 1,
+    "stage_id": "main",
+    "start_time": "2026-08-08T19:00:00",  // naive venue-local, as in §3.1
+    "end_time":   "2026-08-08T20:00:00"
+  }],
+  "origin": "scratch",                 // scratch | forked (B-15)
+  "forked_from_event_id": null,
+  "created_at": 1755820800000,
+  "updated_at": 1755907200000
+}
+```
+
+Notes:
+- Rows are stored in the **snake_case Mongo shape**, consistent with every other local table (each mirrors its server counterpart); the repo maps to the canonical camelCase domain types exactly like the other repos do.
+- **Export (B-13) emits the §3.1 camelCase wire shape, not this row shape.** The file must be indistinguishable from a `GET /concerts/:id` response so the H-3 upload path needs no special case.
+- Builds are **not** concert cache entries. They never appear in the H-2 lists (a) – (c), they may be incomplete, and editing one never mutates a concert already planned from it (B-12).
+- **No plan data lives here.** Picks, conflict resolutions, custom events, overrides, and preferences belong to `local_plans` (§3.3) and are never exported.
+
 ---
 
 ## 4. Global UI Elements
@@ -122,10 +164,11 @@ Notes:
 | ID | Requirement |
 |----|-------------|
 | H-1 | **First visit:** welcome text + a few sentences explaining what the app does (C1). |
-| H-2 | Below the welcome, concert lists in this order: **(a) upcoming planned concerts**, **(b) available concerts to plan** (fetched from server), **(c) past planned concerts**. |
+| H-2 | Below the welcome, concert lists in this order: **(a) upcoming planned concerts**, **(b) available concerts to plan** (fetched from server), **(c) past planned concerts**, **(d) your builds** (§13, B-2 — concerts you authored; the section is omitted entirely when you have none). |
 | H-3 | The user can **upload a concert JSON file** as an alternative to picking from the server list. Available at all times, including offline. |
 | H-4 | When offline, list (b) is replaced by an **offline state** (per G-4); manual upload stays available. When online but the server has nothing new to plan (empty list, or everything already planned), list (b) shows an **empty state** instead of collapsing silently. |
-| H-5 | Tapping a concert opens a **detail sheet** (bottom sheet) with three variants: **(a) unplanned** — logo, name, date(s), place, description, CTA **"Plan for this concert"** → downloads the full payload (server concerts), then navigates to onboarding; **(b) planned, upcoming** — a **"Your days"** list (attending days with pick counts, tap to preview that day's board) plus an **"Edit your plan"** button that re-enters onboarding with all answers pre-filled; **(c) planned, past** — the "Your days" preview list only (relive the days; no editing). |
+| H-5 | Tapping a concert opens a **detail sheet** (bottom sheet) with three variants: **(a) unplanned** — logo, name, date(s), place, description, CTA **"Plan for this concert"** → downloads the full payload (server concerts), then navigates to onboarding; **(b) planned, upcoming** — a **"Your days"** list (attending days with pick counts, tap to preview that day's board) plus an **"Edit your plan"** button that re-enters onboarding with all answers pre-filled; **(c) planned, past** — the "Your days" preview list only (relive the days; no editing). All three variants also carry **"Edit a copy"** (C38): it forks the concert data into the Concert Builder under a fresh `event_id` (B-15), leaving the original entry and any plan on it untouched. |
+| H-6 | **Build a concert:** beside the upload card (H-3), a **"Build a concert"** card (C32) opens the Concert Builder (§13). Available at all times, including offline. |
 
 ---
 
@@ -239,10 +282,20 @@ None right now — all raised questions have been settled.
 - **Storage-quota protection** → image cache is the evictable tier; plan writes retry after dropping it (§3.1).
 - **Sync edge interpretations** (implemented, pending product nod): a backburner whose conflict dissolves after sync is auto-promoted; attending days that vanish are clamped out; skipped picks stay skipped while their performance survives.
 
+### Concert Builder decisions (v8)
+
+- **Build storage** → a dedicated `local_concert_builds` store (§3.5), *not* the concert cache. Half-finished builds must never surface as plannable concerts, and editing a build must never mutate a concert already planned from it (B-12).
+- **Row shape** → snake_case Mongo `concerts` shape, matching the rest of the local schema; the **export** is the §3.1 camelCase wire shape so it round-trips through H-3 untouched (B-13).
+- **Sharing scope** → concert data only. Picks, custom events, overrides, and preferences are never written to the export — §10 "sharing plans" stays out of scope.
+- **Reuse means remix** → a received (or server) concert can be forked back into the Builder via "Edit a copy" (B-15), always under a new `event_id`, so nothing diverges silently.
+- **Flow shape** → the Builder is **non-linear** (jump between steps, leave any time, autosave), unlike the linear onboarding flow (§6). Authoring is iterative; planning is not (B-3, B-9).
+- **Overlaps** → cross-stage overlaps are legitimate content (they are what the app exists to resolve) and are never flagged; a **same-stage** overlap is a data error and is warned about (B-7).
+- **Re-import** → an uploaded file that is a newer `version` of an already-planned concert runs the F-1 plan re-validation instead of overwriting blindly (B-14). ⚠️ Behavior change to the current upload path.
+
 ## 10. Out of Scope (for now)
 
 - User accounts / authentication / cross-device sync
-- Sharing plans with friends
+- Sharing **plans** with friends — the Concert Builder (§13) shares *concert data* only; picks, conflict resolutions, custom events, overrides, and preferences never leave the device
 - Venue maps / navigation
 
 ---
@@ -284,6 +337,15 @@ The agreed wording for all user-facing strings — implementers should use these
 | C29 | Toast: performance-action confirmations (W-2 / W-4) | Per-action — see below |
 | C30 | Toast: settings saved (S-1 / S-2 / S-3) | Per-setting — see below |
 | C31 | Toast: local save failure (any local write) | "Hmm, that didn't save. Give it another go?" |
+| C32 | Home builder card (H-6) | "Build a concert" / "Make your own schedule — works offline" |
+| C33 | Home builds section (B-2) | Section "Your builds" · row sub "{d} days · {n} sets · edited {when}" · status chips "Draft" / "Ready" |
+| C34 | Builder step titles (B-3) | "Concert details" / "Days" / "Stages" / "Performances" |
+| C35 | Builder readiness checklist (B-10) | "Almost there — {n} to go" · items see §11.2 |
+| C36 | Builder: plan CTA (B-12) | "Plan this concert" — and the build stays editable |
+| C37 | Export sheet (B-13) | "Share this concert" / "One JSON file with the lineup — days, stages and sets. Your picks, custom events and edits stay on this device." — "Download" / "Share" |
+| C38 | Concert sheet: remix (H-5 / B-15) | "Edit a copy" |
+| C39 | Delete build confirm (B-16) | "Delete this build?" / "{concert} will be removed from this device. A concert you already planned from it stays put." — "Delete build" / "Keep it" |
+| C40 | Builder toasts (§13) | Per-action — see §11.2 |
 
 ### C15 — performance notification pool (title / body)
 
@@ -309,6 +371,31 @@ The agreed wording for all user-facing strings — implementers should use these
 | G-2 globe, measured-slow state | "Online (slow)" / "Your connection is sluggish — syncing may take a while." |
 
 (Screen microcopy from design.pen — step titles, widget titles, empty states, timetable labels — is used verbatim from the design file and collected in `kawan-ngonser-frontend/app/utils/copy.ts`.)
+
+### 11.2 Concert Builder copy (C35 / C40 detail)
+
+**C35 readiness checklist items** (B-10) — only the unmet ones are listed:
+
+- "Name your concert"
+- "Set a timezone"
+- "Add at least one day"
+- "Add at least one stage"
+- "Add at least one set"
+- "Finish {n} incomplete set(s)"
+
+**C40 toast confirmations:**
+
+- Build created (B-1): "New build started — add your days next."
+- Export downloaded (B-13): "{concert} exported — v{n} is ready to share. 🎫"
+- Export blocked (B-10): "Add {what} before you can share this one."
+- Planned from a build (B-12): "{concert} is on your list — let's plan it."
+- Forked (B-15): "Copied — {concert} is yours to edit now."
+- Build deleted (B-16): "Build deleted."
+- Stage removed with sets (B-6): "{stage} removed — {n} set(s) moved to {other}."
+- Same-stage overlap (B-7): "{stage} has two sets at once — check the times."
+- Re-import, older file (B-14): "That file is v{n} — you already have v{m}. Keeping yours."
+- Re-import, newer file (B-14): "Updated to v{n} — your plan survived the update. ✨"
+- `event_id` collision (B-11): "That id is taken on this device — try {suggestion}."
 
 ### C16 — custom event notification pool (title / body)
 
@@ -405,3 +492,67 @@ Same hues, darkened where needed for AA contrast on light surfaces. Values as im
 | `info` | `#1E9DE0` |
 
 `on-primary`, the hero gradient, and stage colors are identical in both themes (G-5e).
+
+---
+
+## 13. Concert Builder
+
+> **Purpose:** let a user author a concert schedule themselves — for a festival the app doesn't carry, a lineup announced only on Instagram, a campus gig, a private event — and hand it to friends as a single JSON file they can plan against. The Builder is a pure **authoring** tool: it never talks to the backend, and it never exports personal plan data.
+
+### 13.1 Lifecycle
+
+A build lives in `local_concert_builds` (§3.5), separate from the concert cache, and can leave that store by two independent doors:
+
+```
+                         ┌─ "Plan this concert" (B-12) ─┐
+                         │                              ▼
+   Concert Builder ──────┤          local_concert_cache (source: 'builder')
+   local_concert_builds  │                              │
+        ▲                │                              ▼
+        │                └─ "Export JSON" (B-13) ─┐   onboarding (§6) → plan → concert-day home (§7)
+        │                                         ▼
+        │                                {event_id}-v{n}.json
+        │                                         │
+        │                                   (any device)
+        │                                         ▼
+        └────── "Edit a copy" (B-15) ◄──── H-3 upload ──► "Plan for this concert" (H-5a)
+```
+
+The build itself is never consumed by either door — it stays in the list, editable, as the master copy.
+
+### 13.2 Requirements
+
+| ID | Requirement |
+|----|-------------|
+| B-1 | **Entry point:** the H-6 "Build a concert" card (C32) on the default home, beside the JSON-upload card. Tapping it creates an empty build and opens step 1. Available offline. |
+| B-2 | **Your builds:** home list (d) (H-2). Each row shows name, "{d} days · {n} sets · edited {when}", and a **Draft** or **Ready** chip (B-10). Tapping opens the Builder at the last step edited. Swipe/overflow exposes **Export** (B-13) and **Delete** (B-16). The whole section is omitted when there are no builds — the B-1 card is the empty state. |
+| B-3 | **Builder shell:** four steps — **Concert details · Days · Stages · Performances** (C34) — behind a tappable step rail. Unlike onboarding (§6) the flow is **non-linear**: any step can be opened at any time, in any order, and the user can leave and come back. There is no "finish" button; a build is done when it is Ready (B-10). |
+| B-4 | **Step 1 — Concert details:** `name` (required), `place`, `description`, `timezone` (required; IANA picker defaulting to the device zone), `logo` (a **URL string**, per §3.1 — no file picker, so exports stay small and the store stays inside quota). An **Advanced** disclosure exposes the `event_id` (B-11). |
+| B-5 | **Step 2 — Days:** add, remove, and re-date days. `day_index` is **derived from date order**, 1-based, and renumbered automatically on every change — performances follow their day, never their old index. At least one day is required. Removing a day that holds performances is confirmed and names the count. |
+| B-6 | **Step 3 — Stages:** add, rename, recolor, remove. `stage_id` is slugified from the name and unique within the build. Color is chosen from a preset swatch row plus a free hex field, and the preview applies the §12.4 clamp so an unreadable pick is visibly corrected before it is saved. Removing a stage that holds performances is confirmed and offers to **reassign them to another stage** or delete them with it. |
+| B-7 | **Step 4 — Performances:** grouped by day, sorted by start time, each row bearing its stage color exactly as the timetable does (§12.4). Per-day **"Add a set"** button. Cross-stage overlaps are **legitimate content and never flagged** — they are the clashes the whole app exists to resolve. A **same-stage overlap is a data error** and shows an inline warning on both rows. |
+| B-8 | **Add / edit performance sheet:** `artist_name` (required), `artist_image` (URL), day, stage, start time, end time. **An end at or before the start is read as a past-midnight spill** and the set keeps its `day_index` (§3.1) — the sheet says so rather than rejecting it. Carries a delete action. |
+| B-9 | **Autosave:** every change writes through to `local_concert_builds` immediately, bumping `updated_at` and incrementing `version` (TR-5 semantics). There is no save button. Write failure surfaces C31 like every other local write. |
+| B-10 | **Readiness:** a build is **Ready** when it has a name, a timezone, ≥1 day, ≥1 stage, ≥1 performance, and every performance has an artist name, a valid day and stage, and a resolvable time. Until then it is a **Draft**: "Plan this concert" and "Export JSON" are disabled, and a checklist (C35) lists exactly what is missing. |
+| B-11 | **`event_id`:** generated once at creation as the slugified name plus a 4-character random suffix (`the-sounds-project-a4f9`), editable under Advanced (B-4). It must be unique across **both** local builds and cached concerts; a collision is refused with a suggested alternative (C40). Forks always regenerate it (B-15). |
+| B-12 | **Plan this concert** (C36): copies the build into `local_concert_cache` with `source: 'builder'` and enters onboarding (§6). The build **stays in the builds list and stays editable** — later edits do not touch the planned copy. Re-planning an already-planned build goes through the F-1 re-validation path (B-14) so an existing plan survives. |
+| B-13 | **Export JSON:** serializes the build to the **§3.1 camelCase wire shape** — structurally identical to a `GET /concerts/:id` response — and offers it as `{event_id}-v{version}.json`. The export sheet (C37) states the day / stage / set counts and what the file does **not** contain (no picks, no custom events, no personal data). Where `navigator.share` exists, **Share** sits beside **Download**; both work offline. Disabled while the build is a Draft (B-10). |
+| B-14 | **Re-import of a newer version:** uploading (H-3) a file whose `id` matches an already-planned concert and whose `version` is **higher** replaces the cached concert data and runs the **F-1 plan re-validation** (§7.1) — including the C12 confirmation when local performance edits exist. A lower or equal version is declined with a toast instead of silently overwriting (C40). ⚠️ This changes today's upload path, which overwrites unconditionally. |
+| B-15 | **Edit a copy (remix):** the H-5 concert detail sheet offers **"Edit a copy"** (C38) for any cached concert — server, upload, or builder alike. It forks the concert data into a new build with a fresh `event_id`, `version: 1`, `origin: 'forked'`, and `forked_from_event_id` recorded. The source cache entry and any plan on it are untouched, and **no plan data is copied**. |
+| B-16 | **Delete a build:** destructive — last in the overflow, visually distinct, behind the C39 confirmation, which states explicitly that a concert already planned from this build is *not* removed. |
+| B-17 | **Offline:** the entire Builder works with zero connectivity (TR-2). The only network-dependent element is the *preview* of a logo or artist image, which degrades to a placeholder; the URL is stored either way. |
+
+### 13.3 Screens (design.pen)
+
+| Node | Covers |
+|------|--------|
+| `Home – Default` · `Home – Default (Light)` · `Home – Other Concerts (S-4)` | **Updated in place, not duplicated:** the H-6 build card beside the H-3 upload card, and the B-2 "Your builds" section between past concerts and the install reminder. All three home variants stay in sync. |
+| `Builder – Concert Details` | B-3 step rail, B-4 fields, B-11 `event_id` under Advanced, B-9 autosave note |
+| `Builder – Days` | B-5, including the renumbering note |
+| `Builder – Stages` | B-6 stage list and colour editor, §12.4 clamp note with a live entry preview |
+| `Builder – Performances` | B-7 day groups (cross-stage overlap unflagged, same-stage overlap warned), B-10 **Ready** state, B-12 / B-13 actions |
+| `Sheet – Add Performance` | B-8, including the past-midnight note |
+| `Sheet – Export Concert` | B-13 file card, what's-in / what's-out list, Download + Share |
+| `Builder States` | B-2 empty (the B-1 card alone), B-10 **Draft** checklist with disabled CTAs, B-7 warning strip, two C40 toasts |
+
+Five reusable components back these screens: **`Builder Step Rail`** (the non-linear B-3 rail — tappable pills, deliberately not the linear onboarding progress bars), **`Builder Field`** (label + boxed input, used on the step screens and inside the sheets), **`Builder List Row`** (the day and stage rows), **`Build Concert Card`** (the H-6 entry card), and **`Build Row`** (a B-2 list row). The last two are instanced across all three home screens, so C32/C33 copy changes propagate to every variant at once. Everything else reuses the existing kit — `Status Bar`, `Performance Card`, `Button Primary` / `Button Secondary`, `Toast`.

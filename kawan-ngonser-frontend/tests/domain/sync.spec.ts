@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { revalidatePlan } from '~/domain/sync'
+import { classifyUpload, revalidatePlan } from '~/domain/sync'
 import type { Concert, PickMap } from '~/domain/types'
 import { miniConcert, P, t } from '../fixtures/mini'
 
@@ -102,5 +102,41 @@ describe('revalidatePlan (F-1)', () => {
     expect(r.picks.a!.status).toBe('skipped')
     // a is skipped (not preferred) → b's conflict dissolved → promoted
     expect(r.picks.b!.status).toBe('preferred')
+  })
+})
+
+describe('classifyUpload (B-14)', () => {
+  it('treats an unplanned concert as a plain save', () => {
+    expect(classifyUpload({
+      planned: false, incomingVersion: 3, currentVersion: null, hasLocalEdits: false,
+    })).toEqual({ kind: 'fresh' })
+  })
+
+  it('treats a planned-but-uncached concert as a plain save', () => {
+    // Defensive: a plan without its cache row has nothing to revalidate against.
+    expect(classifyUpload({
+      planned: true, incomingVersion: 3, currentVersion: null, hasLocalEdits: true,
+    })).toEqual({ kind: 'fresh' })
+  })
+
+  it('runs the revalidation path for a newer file', () => {
+    expect(classifyUpload({
+      planned: true, incomingVersion: 4, currentVersion: 3, hasLocalEdits: false,
+    })).toEqual({ kind: 'reimport', needsEditConfirm: false })
+  })
+
+  it('asks before discarding local performance edits (C12)', () => {
+    expect(classifyUpload({
+      planned: true, incomingVersion: 4, currentVersion: 3, hasLocalEdits: true,
+    })).toEqual({ kind: 'reimport', needsEditConfirm: true })
+  })
+
+  it('declines a file that is not newer, rather than overwriting silently', () => {
+    expect(classifyUpload({
+      planned: true, incomingVersion: 3, currentVersion: 3, hasLocalEdits: false,
+    })).toEqual({ kind: 'stale', incoming: 3, current: 3 })
+    expect(classifyUpload({
+      planned: true, incomingVersion: 2, currentVersion: 5, hasLocalEdits: false,
+    })).toEqual({ kind: 'stale', incoming: 2, current: 5 })
   })
 })

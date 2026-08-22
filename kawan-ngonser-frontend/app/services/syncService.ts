@@ -7,11 +7,12 @@
  */
 import type { $Fetch } from 'ofetch'
 import { getConcert } from '~/api/endpoints'
-import { getDB } from '~/db/schema'
+import { type CacheRow, getDB } from '~/db/schema'
 import { kvRepo } from '~/db/repos/kvRepo'
 import { parseConcertPayload } from '~/domain/normalize'
 import { revalidatePlan, type SyncReport } from '~/domain/sync'
 import type { Concert, ConflictPrompt } from '~/domain/types'
+import { useBuildsStore } from '~/stores/builds'
 import { useConcertCacheStore } from '~/stores/concertCache'
 import { usePlanStore } from '~/stores/plan'
 import type { AppConfig } from '~/domain/types'
@@ -35,7 +36,7 @@ export async function syncFromServer(api: $Fetch, eventId: string, nowMs: number
 export async function commitSync(
   eventId: string,
   payload: unknown,
-  source: 'server' | 'json_upload',
+  source: CacheRow['source'],
   nowMs: number,
 ): Promise<SyncOutcome> {
   const result = parseConcertPayload(payload)
@@ -112,15 +113,17 @@ export async function commitSync(
 /** Re-read every table into the stores (post-transaction consistency). */
 export async function rehydrateStores(): Promise<void> {
   const db = getDB()
-  const [cacheRows, planRows, pickRows, eventRows, overrideRows, cachedConfig] = await Promise.all([
+  const [cacheRows, planRows, pickRows, eventRows, overrideRows, buildRows, cachedConfig] = await Promise.all([
     db.local_concert_cache.toArray(),
     db.local_plans.toArray(),
     db.local_picks.toArray(),
     db.local_custom_events.toArray(),
     db.local_performance_overrides.toArray(),
+    db.local_concert_builds.toArray(),
     kvRepo.get<Partial<AppConfig>>('app-config'),
   ])
   useConcertCacheStore().hydrate(cacheRows)
   usePlanStore().hydrate(planRows, pickRows, eventRows, overrideRows)
+  useBuildsStore().hydrate(buildRows)
   useAppConfigStore().hydrate(cachedConfig)
 }

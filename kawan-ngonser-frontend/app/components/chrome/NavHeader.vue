@@ -18,6 +18,7 @@ function goBack() {
     <button type="button" aria-label="Back" class="-ml-1 flex items-center p-1" @click="goBack">
       <UIcon name="i-lucide-chevron-left" class="size-6 text-text" />
     </button>
-    <span class="font-heading text-[17px] font-bold text-text">{{ title }}</span>
+    <span class="min-w-0 flex-1 truncate font-heading text-[17px] font-bold text-text">{{ title }}</span>
+    <slot name="actions" />
   </div>
 </template>

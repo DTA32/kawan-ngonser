@@ -1,7 +1,8 @@
 <script setup lang="ts">
 /**
  * The default home (§5): welcome (C1), planned / available / past lists,
- * JSON upload, install reminder. In `browse` mode (S-4 "See other concerts"
+ * your builds (§13 B-2), JSON upload + Build a concert (H-6), install
+ * reminder. In `browse` mode (S-4 "See other concerts"
  * while a concert day is live) the welcome hero is replaced by the LiveBanner
  * (design frame "Home – Other Concerts (S-4)").
  */
@@ -10,6 +11,7 @@ import { buildEffectiveSchedule } from '~/domain/schedule'
 import type { ConcertSummary } from '~/domain/types'
 import { COPY, DESIGN_COPY } from '~/utils/copy'
 import { formatDaysLabel } from '~/utils/time-format'
+import { useBuildsStore } from '~/stores/builds'
 import { useConcertCacheStore } from '~/stores/concertCache'
 import { usePlanStore } from '~/stores/plan'
 import type { ActiveConcertDay } from '~/composables/useActiveConcertDay'
@@ -21,6 +23,7 @@ const props = defineProps<{
 
 const cache = useConcertCacheStore()
 const planStore = usePlanStore()
+const builds = useBuildsStore()
 const { online } = useConnectivity()
 const now = useNow()
 const router = useRouter()
@@ -166,6 +169,8 @@ function dateLabelOf(c: ConcertSummary): string {
         :sub="DESIGN_COPY.emptyAvailableOfflineSub"
       />
       <HomeUploadJsonCard @uploaded="id => router.push(`/concerts/${id}/onboarding`)" />
+      <!-- H-6 -->
+      <HomeBuildConcertCard />
     </section>
 
     <!-- (c) past planned -->
@@ -183,6 +188,17 @@ function dateLabelOf(c: ConcertSummary): string {
         />
       </template>
       <CommonEmptyState v-else card icon="i-lucide-history" :main="DESIGN_COPY.emptyPast" />
+    </section>
+
+    <!-- (d) your builds (B-2) — omitted when empty; the H-6 card is the
+         empty state, so an untouched home gains nothing to scroll past -->
+    <section v-if="builds.allBuilds.length" class="flex flex-col gap-3">
+      <CommonSectionLabel>{{ COPY.buildsSectionLabel }}</CommonSectionLabel>
+      <HomeBuildListItem
+        v-for="b in builds.allBuilds"
+        :key="b.buildId"
+        :build="b"
+      />
     </section>
 
     <ChromeInstallReminder />

@@ -78,3 +78,40 @@ export function revalidatePlan(input: {
     },
   }
 }
+
+// ---------------------------------------------------------------------------
+// B-14 — re-import of an uploaded concert
+// ---------------------------------------------------------------------------
+
+/**
+ * What an H-3 upload should DO, decided before anything is written.
+ *
+ * Before the Concert Builder, every upload simply overwrote the cache row, so
+ * re-uploading a newer file for a concert you had already planned replaced the
+ * data without ever re-validating the plan against it — picks could end up
+ * pointing at performances that no longer existed. Sharing exported builds
+ * makes that the normal case rather than an edge case (§13), so the version is
+ * now the deciding input:
+ *
+ *  - not planned yet     → plain save, nothing to protect
+ *  - newer than ours     → run the F-1 revalidation path (C12 first when the
+ *                          user has local performance edits to lose)
+ *  - same or older       → decline; the user's copy is at least as fresh
+ */
+export type UploadDecision
+  = | { kind: 'fresh' }
+    | { kind: 'reimport', needsEditConfirm: boolean }
+    | { kind: 'stale', incoming: number, current: number }
+
+export function classifyUpload(input: {
+  planned: boolean
+  incomingVersion: number
+  currentVersion: number | null
+  hasLocalEdits: boolean
+}): UploadDecision {
+  if (!input.planned || input.currentVersion === null) return { kind: 'fresh' }
+  if (input.incomingVersion <= input.currentVersion) {
+    return { kind: 'stale', incoming: input.incomingVersion, current: input.currentVersion }
+  }
+  return { kind: 'reimport', needsEditConfirm: input.hasLocalEdits }
+}

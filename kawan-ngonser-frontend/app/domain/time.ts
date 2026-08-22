@@ -144,3 +144,47 @@ export function isLive(startMs: number, endMs: number, nowMs: number): boolean {
 export function minutesUntil(startMs: number, nowMs: number): number {
   return Math.max(0, Math.round((startMs - nowMs) / 60_000))
 }
+
+// ---------------------------------------------------------------------------
+// Concert Builder (§13) — the authoring direction: ms → naive wall time, and
+// calendar-date arithmetic. Builds store §3.1 naive local strings rather than
+// epoch ms, because a build's day can be RE-DATED (B-5) and every set on it
+// has to follow; wall time is the stable part, the date is the movable part.
+// ---------------------------------------------------------------------------
+
+/** Epoch ms → naive venue-local "YYYY-MM-DDTHH:mm:ss" (the §3.1 wire form). */
+export function formatVenueIso(ms: number, tz: string): string {
+  return venueDateTime(ms, tz).toFormat('yyyy-MM-dd\'T\'HH:mm:ss')
+}
+
+/** Shift a "YYYY-MM-DD" by whole days. Returns the input when unparseable. */
+export function addDays(date: string, days: number): string {
+  const dt = DateTime.fromISO(date, { zone: 'utc' })
+  return dt.isValid ? dt.plus({ days }).toFormat('yyyy-MM-dd') : date
+}
+
+/** Today in the given zone as "YYYY-MM-DD" — the default for a new day row. */
+export function todayInZone(tz: string, nowMs: number): string {
+  return venueDateTime(nowMs, tz).toFormat('yyyy-MM-dd')
+}
+
+/** "Sat, 8 Aug 2026" — the B-5 day-row title. */
+export function formatDayDateLong(date: string, tz: string): string {
+  const dt = DateTime.fromISO(date, { zone: tz })
+  return dt.isValid ? dt.toFormat('ccc, d LLL yyyy') : date
+}
+
+/**
+ * B-2 last-edited stamp: "just now" / "12m ago" / "3h ago" / "yesterday" /
+ * "4 Aug". Distinct from `formatElapsed`, which is a compact set-recap label
+ * and tops out at hours — a build can sit untouched for weeks.
+ */
+export function formatEditedAgo(ms: number, nowMs: number, tz: string): string {
+  const mins = Math.floor((nowMs - ms) / 60_000)
+  if (mins < 1) return 'just now'
+  if (mins < 60) return `${mins}m ago`
+  const hours = Math.floor(mins / 60)
+  if (hours < 24) return `${hours}h ago`
+  if (hours < 48) return 'yesterday'
+  return venueDateTime(ms, tz).toFormat('d LLL')
+}

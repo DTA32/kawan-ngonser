@@ -1,12 +1,17 @@
 erDiagram
     %% ============================================================
-    %% Kawan Ngonser - IndexedDB ERD (matches REQUIREMENTS.md v7 and
+    %% Kawan Ngonser - IndexedDB ERD (matches REQUIREMENTS.md v8 and
     %% the implemented Dexie schema in kawan-ngonser-frontend/app/db).
     %% On-device user data (TR-4 / section 3.3), one set per planned
     %% concert. The backend holds none of this - server-side schema
     %% lives in mongodb.mermaid.
     %% performance_id / event_id refer to the concert data cached in
     %% local_concert_cache.payload (same business ids the server uses).
+    %% local_concert_builds (REQUIREMENTS v8 section 3.5 / section 13) holds
+    %% USER-AUTHORED concerts - it mirrors the mongodb `concerts` document
+    %% rather than any server-held user state, and is deliberately NOT a
+    %% cache row: a build may be incomplete, never shows in the H-2 lists,
+    %% and editing it never mutates a concert already planned from it.
     %% All datetime fields are stored as epoch milliseconds.
     %% Theme (section 3.4) lives in localStorage, not here - it must be
     %% readable before first paint.
@@ -58,9 +63,28 @@ erDiagram
         bool removed "performer cancelled (W-2)"
     }
 
+    local_concert_builds {
+        string build_id PK "local id - survives event_id edits and forks"
+        string event_id UK "business id shipped in the export (B-11), unique vs builds AND cache"
+        int version "bumped on every saved change (B-9), carried into the export"
+        string name
+        string logo "url string only - no embedded assets (B-4)"
+        string place
+        string description
+        string timezone "IANA, defaults to the device zone"
+        json days "embedded - same shape as concerts.days (day_index derived from date order, B-5)"
+        json stages "embedded - same shape as concerts.stages (B-6)"
+        json performances "embedded - same shape as concerts.performances (B-7/B-8)"
+        string origin "scratch | forked (B-15)"
+        string forked_from_event_id "nullable - set when origin is forked"
+        datetime created_at
+        datetime updated_at
+    }
+
     local_plans ||..|| local_concert_cache : "same event_id"
     local_plans ||--o{ local_picks : "owns"
     local_plans ||--o{ local_custom_events : "owns"
     local_plans ||--o{ local_performance_overrides : "owns"
     local_picks }o..|| local_concert_cache : "performance_id in payload"
     local_performance_overrides }o..|| local_concert_cache : "performance_id in payload"
+    local_concert_builds ||..o| local_concert_cache : "Plan this concert (B-12) copies into the cache, source=builder"

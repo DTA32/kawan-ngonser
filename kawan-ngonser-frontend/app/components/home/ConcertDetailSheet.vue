@@ -5,6 +5,11 @@
  *  - planned, upcoming    → attended-day preview rows + "Edit your plan"
  *                           (re-runs onboarding with answers pre-filled)
  *  - planned, past        → attended-day preview rows only (relive the days)
+ *
+ * All three also carry B-15 "Edit a copy": fork the concert data into the
+ * Concert Builder under a fresh event id. Available for server, uploaded and
+ * built concerts alike — the fork never touches the original or its plan, so
+ * there is nothing to protect it from.
  */
 import { getConcert } from '~/api/endpoints'
 import { classifyPlannedConcert } from '~/domain/dayState'
@@ -13,6 +18,7 @@ import type { ConcertSummary } from '~/domain/types'
 import { warmConcertImages } from '~/services/imageCache'
 import { COPY, DESIGN_COPY, interpolate } from '~/utils/copy'
 import { formatDaysLabel, formatDayTitle, formatTagline } from '~/utils/time-format'
+import { useBuildsStore } from '~/stores/builds'
 import { useConcertCacheStore } from '~/stores/concertCache'
 import { usePlanStore } from '~/stores/plan'
 
@@ -26,6 +32,7 @@ const open = defineModel<boolean>('open', { required: true })
 
 const cache = useConcertCacheStore()
 const planStore = usePlanStore()
+const builds = useBuildsStore()
 const now = useNow()
 
 const imgFailed = ref(false)
@@ -107,6 +114,23 @@ function previewDay(dayIndex: number) {
 function editPlan() {
   open.value = false
   navigateTo(`/concerts/${props.concert.eventId}/onboarding`)
+}
+
+/**
+ * B-15. Needs the FULL cached payload — a server summary has no performances
+ * to fork — so it is only offered for concerts already on the device.
+ */
+function editACopy() {
+  const concert = cached.value
+  if (!concert) return
+  const build = builds.forkFromConcert(concert, nowMs())
+  toast.add({
+    description: interpolate(COPY.toastForked, { concert: build.name }),
+    icon: 'i-lucide-copy',
+    color: 'success',
+  })
+  open.value = false
+  navigateTo(`/builds/${build.buildId}?step=details`)
 }
 </script>
 
@@ -191,5 +215,17 @@ function editPlan() {
         {{ DESIGN_COPY.editPlanCta }}
       </button>
     </template>
+
+    <!-- B-15: secondary to whichever primary CTA the variant showed. Needs
+         the full cached payload — a server summary has no sets to fork. -->
+    <button
+      v-if="cached"
+      type="button"
+      class="flex w-full items-center justify-center gap-2 rounded-[28px] px-6 py-3 text-sm font-semibold text-text-secondary"
+      @click="editACopy"
+    >
+      <UIcon name="i-lucide-copy" class="size-4" />
+      {{ COPY.editACopyCta }}
+    </button>
   </CommonBottomSheet>
 </template>
