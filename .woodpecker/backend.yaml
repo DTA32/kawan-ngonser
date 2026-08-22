@@ -1,0 +1,21 @@
+when:
+  - event: [push, manual]
+    path:
+      include: ['kawan-ngonser-backend/**', '.woodpecker/backend.yaml']
+
+steps:
+  - name: publish
+    image: woodpeckerci/plugin-docker-buildx
+    privileged: true
+    settings:
+      repo: dta32/kawan-ngonser-backend
+      context: kawan-ngonser-backend
+      dockerfile: kawan-ngonser-backend/Dockerfile
+      platforms: linux/amd64
+      tags: ${CI_COMMIT_SHA:0:7}
+      cache_images:
+        - dta32/kawan-ngonser-backend:cache
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password

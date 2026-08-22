@@ -1,0 +1,25 @@
+when:
+  - event: [push, manual]
+    path:
+      include: ['kawan-ngonser-frontend/**', '.woodpecker/frontend.yaml']
+
+steps:
+  - name: publish
+    image: woodpeckerci/plugin-docker-buildx
+    privileged: true
+    settings:
+      repo: dta32/kawan-ngonser-frontend
+      context: kawan-ngonser-frontend
+      dockerfile: kawan-ngonser-frontend/Dockerfile
+      platforms: linux/amd64
+      tags: ${CI_COMMIT_SHA:0:7}
+      cache_images:
+        - dta32/kawan-ngonser-frontend:cache
+      build_args:
+        # Vite bakes this in at build time. Derived from the backend's HTTPRoute,
+        # which serves kawan-ngonser-backend under api.kawan-ngonser.dta32.my.id
+        NUXT_PUBLIC_API_BASE: https://kawan-ngonser.dta32.my.id/api
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
