@@ -3,7 +3,33 @@ when:
     path:
       include: ['kawan-ngonser-backend/**', '.woodpecker/backend.yaml']
 
+services:
+  - name: mongo
+    image: mongo:8
+
 steps:
+  - name: test
+    image: node:24-alpine
+    directory: kawan-ngonser-backend
+    environment:
+      MONGODB_URI: mongodb://mongo:27017
+    commands:
+      - >-
+        node -e "const net=require('net');const t=Date.now();
+        (function w(){const s=net.connect(27017,'mongo');
+        s.on('connect',()=>{s.end();console.log('mongo ready');process.exit(0)});
+        s.on('error',()=>{if(Date.now()-t>60000){console.error('mongo not reachable after 60s');process.exit(1)}
+        setTimeout(w,1000)})})()"
+      - npm ci
+      - npm test
+
+  - name: lint
+    image: node:24-alpine
+    directory: kawan-ngonser-backend
+    failure: ignore
+    commands:
+      - npm run lint
+
   - name: publish
     image: woodpeckerci/plugin-docker-buildx
     privileged: true

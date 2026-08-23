@@ -4,6 +4,26 @@ when:
       include: ['kawan-ngonser-frontend/**', '.woodpecker/frontend.yaml']
 
 steps:
+  - name: install
+    image: oven/bun:1
+    directory: kawan-ngonser-frontend
+    commands:
+      - bun install --frozen-lockfile
+
+  - name: test
+    image: node:24-alpine
+    directory: kawan-ngonser-frontend
+    commands:
+      - npm run test
+
+  - name: typecheck
+    image: node:24-alpine
+    directory: kawan-ngonser-frontend
+    failure: ignore
+    commands:
+      - npm run postinstall
+      - npm run typecheck
+
   - name: publish
     image: woodpeckerci/plugin-docker-buildx
     privileged: true
